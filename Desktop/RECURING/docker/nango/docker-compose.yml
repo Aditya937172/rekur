@@ -1,0 +1,93 @@
+services:
+  retention-nango-db:
+    image: postgres:16-alpine
+    container_name: retention-nango-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-nango}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-nango}
+    ports:
+      - "${NANGO_DB_HOST_PORT:-5544}:5432"
+    volumes:
+      - retention-nango-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-nango} -d ${POSTGRES_DB:-nango}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - retention-nango-network
+
+  retention-nango-redis:
+    image: redis:7.2-alpine
+    container_name: retention-nango-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "no"]
+    ports:
+      - "${NANGO_REDIS_HOST_PORT:-6381}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - retention-nango-network
+
+  retention-nango-server:
+    image: nangohq/nango-server:hosted
+    container_name: retention-nango-server
+    platform: linux/amd64
+    restart: unless-stopped
+    depends_on:
+      retention-nango-db:
+        condition: service_healthy
+      retention-nango-redis:
+        condition: service_healthy
+    environment:
+      NANGO_ENCRYPTION_KEY: ${NANGO_ENCRYPTION_KEY}
+      NANGO_DB_USER: ${NANGO_DB_USER:-nango}
+      NANGO_DB_PASSWORD: ${NANGO_DB_PASSWORD}
+      NANGO_DB_HOST: retention-nango-db
+      NANGO_DB_NAME: ${NANGO_DB_NAME:-nango}
+      NANGO_DB_SSL: "false"
+      RECORDS_DATABASE_URL: postgresql://${NANGO_DB_USER:-nango}:${NANGO_DB_PASSWORD}@retention-nango-db:5432/${NANGO_DB_NAME:-nango}
+      REDIS_URL: redis://retention-nango-redis:6379
+      NANGO_REDIS_URL: redis://retention-nango-redis:6379
+      SERVER_PORT: ${SERVER_PORT:-3005}
+      CONNECT_UI_PORT: ${CONNECT_UI_PORT:-3010}
+      NANGO_CONNECT_UI_PORT: ${CONNECT_UI_PORT:-3010}
+      NANGO_PUBLIC_CONNECT_URL: ${NANGO_PUBLIC_CONNECT_URL:-http://localhost:3010}
+      NANGO_SERVER_URL: ${NANGO_SERVER_URL:-http://localhost:3005}
+      NANGO_PUBLIC_SERVER_URL: ${NANGO_PUBLIC_SERVER_URL:-http://localhost:3005}
+      FLAG_AUTH_ENABLED: ${FLAG_AUTH_ENABLED:-true}
+      NANGO_DASHBOARD_USERNAME: ${NANGO_DASHBOARD_USERNAME}
+      NANGO_DASHBOARD_PASSWORD: ${NANGO_DASHBOARD_PASSWORD}
+      FLAG_SERVE_CONNECT_UI: ${FLAG_SERVE_CONNECT_UI:-true}
+      NANGO_LOGS_ENABLED: ${NANGO_LOGS_ENABLED:-false}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      CSP_REPORT_ONLY: "true"
+    ports:
+      - "${SERVER_PORT:-3005}:${SERVER_PORT:-3005}"
+      - "${CONNECT_UI_PORT:-3010}:${CONNECT_UI_PORT:-3010}"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "node -e \"fetch('http://127.0.0.1:' + (process.env.SERVER_PORT || '3005') + '/health').then(r => process.exit(r.status < 500 ? 0 : 1)).catch(() => process.exit(1))\""
+        ]
+      interval: 20s
+      timeout: 10s
+      retries: 15
+      start_period: 60s
+    networks:
+      - retention-nango-network
+
+networks:
+  retention-nango-network:
+    name: retention-nango-network
+    driver: bridge
+
+volumes:
+  retention-nango-data:
+    name: retention-nango-data

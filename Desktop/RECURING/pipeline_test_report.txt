@@ -1,0 +1,118 @@
+[2026-05-01T05:40:15.815547+00:00] [START] STARTING COMPREHENSIVE PIPELINE TESTS
+[2026-05-01T05:40:15.815608+00:00] [INFO] Test email: adityapalghar@gmail.com
+[2026-05-01T05:40:15.815629+00:00] [INFO] Dry run: False
+[2026-05-01T05:40:15.815647+00:00] [TEST] ============================================================
+[2026-05-01T05:40:15.815658+00:00] [TEST] TEST 1: DATABASE STATE
+[2026-05-01T05:40:15.898464+00:00] [INFO] Stores: 1
+[2026-05-01T05:40:15.898491+00:00] [INFO] Customers: 1003
+[2026-05-01T05:40:15.898499+00:00] [INFO] Products: 167
+[2026-05-01T05:40:15.898504+00:00] [INFO] Orders: 776
+[2026-05-01T05:40:15.898510+00:00] [INFO] Buyer Memories: 3
+[2026-05-01T05:40:15.898515+00:00] [INFO] Events: 8
+[2026-05-01T05:40:15.898520+00:00] [SUCCESS] PASS: Database has minimum required data
+[2026-05-01T05:40:15.898529+00:00] [TEST] ============================================================
+[2026-05-01T05:40:15.898534+00:00] [TEST] TEST 2: BUYER MEMORY PIPELINE
+[2026-05-01T05:40:15.903759+00:00] [INFO] Testing with customer 1 (aarav.das.0995@example.com)
+[2026-05-01T05:40:15.927029+00:00] [INFO] Memory ID: 1
+[2026-05-01T05:40:15.927058+00:00] [INFO] Total Orders: 0
+[2026-05-01T05:40:15.927083+00:00] [INFO] Total Spent: 0
+[2026-05-01T05:40:15.927091+00:00] [INFO] Favorite Categories: tee
+[2026-05-01T05:40:15.927098+00:00] [INFO] Favorite Colors: None
+[2026-05-01T05:40:15.927105+00:00] [INFO] Style Tags: bestseller, color black, color ivory, gender unisex, occasion casual, price tier core, seed product black air knit oversized tee 021, seeded by retention app, style streetwear buyer, t shirts
+[2026-05-01T05:40:15.927112+00:00] [INFO] Price Band: unknown
+[2026-05-01T05:40:15.927120+00:00] [INFO] Memory Summary: Aarav Das has 0 orders and belongs to the unknown price band. Favorite categories: tee. Style signals: bestseller, color black, color ivory, gender unisex, occasion casual, price tier core, seed produ...
+[2026-05-01T05:40:15.927128+00:00] [ERROR] FAIL: Buyer memory incomplete
+[2026-05-01T05:40:15.927153+00:00] [TEST] ============================================================
+[2026-05-01T05:40:15.927160+00:00] [TEST] TEST 3: INTENT ENGINE PIPELINE
+[2026-05-01T05:40:15.943443+00:00] [INFO] Found 1 customers with intent signals
+[2026-05-01T05:40:15.943473+00:00] [INFO] Top customer: 1
+[2026-05-01T05:40:15.943482+00:00] [INFO] Name: Aarav Das
+[2026-05-01T05:40:15.943488+00:00] [INFO] Email: aarav.das.0995@example.com
+[2026-05-01T05:40:15.943493+00:00] [INFO] Intent: low
+[2026-05-01T05:40:15.943499+00:00] [INFO] Score: 0
+[2026-05-01T05:40:15.943504+00:00] [INFO] Reason: Limited recent buying signals
+[2026-05-01T05:40:15.943512+00:00] [INFO] Signals: product_views=0, sessions=0
+[2026-05-01T05:40:15.943517+00:00] [SUCCESS] PASS: Intent engine working
+[2026-05-01T05:40:15.943526+00:00] [TEST] ============================================================
+[2026-05-01T05:40:15.943531+00:00] [TEST] TEST 4: RECOMMENDATION ENGINE PIPELINE
+[2026-05-01T05:40:15.978120+00:00] [INFO] Customer: 98 (rohan.bansal.0336@example.com)
+[2026-05-01T05:40:15.978146+00:00] [INFO] Intent: low
+[2026-05-01T05:40:15.978155+00:00] [INFO] Score: 0
+[2026-05-01T05:40:15.978161+00:00] [INFO] Recommendations: 5
+[2026-05-01T05:40:15.978171+00:00] [INFO]   1. Lilac Everyday Linen Shirt - Similar to previous purchase
+[2026-05-01T05:40:15.978178+00:00] [INFO]   2. Indigo Relaxed Oxford Shirt - Similar to previous purchase
+[2026-05-01T05:40:15.978184+00:00] [INFO]   3. Sage Tailored Poplin Shirt - Similar to previous purchase
+[2026-05-01T05:40:15.978190+00:00] [SUCCESS] PASS: Recommendation engine working
+[2026-05-01T05:40:15.978208+00:00] [TEST] ============================================================
+[2026-05-01T05:40:15.978214+00:00] [TEST] TEST 5: CHURN RISK COMPUTATION
+[2026-05-01T05:40:16.047624+00:00] [INFO] Found 10 customers with churn scores
+[2026-05-01T05:40:16.047659+00:00] [INFO] 
+Top churn risks:
+[2026-05-01T05:40:16.047683+00:00] [INFO]   1. Tara Nair (ID: 99) - Score: 55.0 - Stage: monitor
+[2026-05-01T05:40:16.047697+00:00] [INFO]      Signals: purchase_drop=True, email_drop=False
+[2026-05-01T05:40:16.047709+00:00] [INFO]   2. Ishaan Gupta (ID: 100) - Score: 55.0 - Stage: monitor
+[2026-05-01T05:40:16.047719+00:00] [INFO]      Signals: purchase_drop=True, email_drop=False
+[2026-05-01T05:40:16.047730+00:00] [INFO]   3. Rohan Malhotra (ID: 101) - Score: 55.0 - Stage: monitor
+[2026-05-01T05:40:16.047739+00:00] [INFO]      Signals: purchase_drop=True, email_drop=False
+[2026-05-01T05:40:16.047752+00:00] [INFO]   4. Meera Mehta (ID: 106) - Score: 55.0 - Stage: monitor
+[2026-05-01T05:40:16.047762+00:00] [INFO]      Signals: purchase_drop=True, email_drop=False
+[2026-05-01T05:40:16.047771+00:00] [INFO]   5. Nikhil Rao (ID: 109) - Score: 55.0 - Stage: monitor
+[2026-05-01T05:40:16.047780+00:00] [INFO]      Signals: purchase_drop=True, email_drop=False
+[2026-05-01T05:40:16.047790+00:00] [SUCCESS] PASS: Churn risk computation working
+[2026-05-01T05:40:16.047812+00:00] [TEST] ============================================================
+[2026-05-01T05:40:16.047820+00:00] [TEST] TEST 6: SILENT CUSTOMER DETECTION
+[2026-05-01T05:40:16.079361+00:00] [INFO] Found 0 silent customers
+[2026-05-01T05:40:16.079389+00:00] [SUCCESS] PASS: Silent customer detection working
+[2026-05-01T05:40:16.079400+00:00] [TEST] ============================================================
+[2026-05-01T05:40:16.079409+00:00] [TEST] TEST 12: SEND POLICY ENFORCEMENT
+[2026-05-01T05:40:16.080105+00:00] [INFO] PASS: Send policy allows with force=True
+[2026-05-01T05:40:16.083031+00:00] [SUCCESS] PASS: Send policy enforcement working
+[2026-05-01T05:40:16.083055+00:00] [TEST] ============================================================
+[2026-05-01T05:40:16.083062+00:00] [TEST] TEST 7: OUTFIT GENERATION PIPELINE (WITH EMAIL)
+[2026-05-01T05:40:16.086278+00:00] [INFO] Generating outfit for customer 98 (rohan.bansal.0336@example.com)
+[2026-05-01T05:40:16.086300+00:00] [INFO] Order ID: 62
+[2026-05-01T05:40:16.086307+00:00] [INFO] This will call GPT-Image API and Gmail API...
+[2026-05-01T05:41:19.581087+00:00] [INFO] Outfit ID: 9
+[2026-05-01T05:41:19.581138+00:00] [INFO] Status: sent
+[2026-05-01T05:41:19.581153+00:00] [INFO] Provider: gpt-image
+[2026-05-01T05:41:19.581162+00:00] [INFO] Model: gpt-image-2
+[2026-05-01T05:41:19.581174+00:00] [INFO] Image URL: https://files.evolink.ai/001SNK0R121FKPFF5G/images/2026/05/01/bfc6589de29749e08cefb4f34d0c0fd0.png
+[2026-05-01T05:41:19.581184+00:00] [INFO] Email Subject: An outfit idea for your Lilac Soft-Wash Oxford Shirt
+[2026-05-01T05:41:19.581194+00:00] [SUCCESS] PASS: Outfit generated and email sent to adityapalghar@gmail.com
+[2026-05-01T05:41:19.581263+00:00] [TEST] ============================================================
+[2026-05-01T05:41:19.581273+00:00] [TEST] TEST 8: ANNIVERSARY CAMPAIGN (WITH EMAIL)
+[2026-05-01T05:41:19.582671+00:00] [INFO] Running anniversary campaign for customer 98
+[2026-05-01T05:41:19.582691+00:00] [INFO] This will generate outfit image and send email...
+[2026-05-01T05:41:19.587643+00:00] [ERROR] FAIL: Exception - 1 validation error for FirstOrderAnniversaryCampaignRequest
+days_window
+  Input should be less than or equal to 14 [type=less_than_equal, input_value=365, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.12/v/less_than_equal
+[2026-05-01T05:41:19.636162+00:00] [TEST] ============================================================
+[2026-05-01T05:41:19.636190+00:00] [TEST] TEST 9: PRE-CHURN CAMPAIGN (WITH EMAIL)
+[2026-05-01T05:41:19.636203+00:00] [INFO] Running pre-churn campaign (finding at-risk customers)...
+[2026-05-01T05:41:19.636211+00:00] [INFO] This will generate outfit image and send email...
+[2026-05-01T05:42:17.863428+00:00] [INFO] Processed: 1
+[2026-05-01T05:42:17.863458+00:00] [INFO] Generated: 1
+[2026-05-01T05:42:17.863466+00:00] [INFO] Sent: 1
+[2026-05-01T05:42:17.863473+00:00] [INFO] Skipped: 0
+[2026-05-01T05:42:17.863481+00:00] [SUCCESS] PASS: Pre-churn campaign sent email to adityapalghar@gmail.com
+[2026-05-01T05:42:17.863549+00:00] [TEST] ============================================================
+[2026-05-01T05:42:17.863568+00:00] [TEST] TEST 10: SILENT CUSTOMER CAMPAIGN (WITH EMAIL)
+[2026-05-01T05:42:17.863578+00:00] [INFO] Running silent customer campaign...
+[2026-05-01T05:42:17.863586+00:00] [INFO] This will generate outfit image and send email...
+[2026-05-01T05:42:17.995646+00:00] [INFO] Processed: 0
+[2026-05-01T05:42:17.995684+00:00] [INFO] Generated: 0
+[2026-05-01T05:42:17.995696+00:00] [INFO] Sent: 0
+[2026-05-01T05:42:17.995707+00:00] [INFO] Skipped: 0
+[2026-05-01T05:42:17.995718+00:00] [WARN] WARNING: No silent customer emails sent (may be OK if no silent customers)
+[2026-05-01T05:42:17.995735+00:00] [TEST] ============================================================
+[2026-05-01T05:42:17.995746+00:00] [TEST] TEST 11: SEASONAL LOOKBOOK CAMPAIGN (WITH EMAIL)
+[2026-05-01T05:42:17.995756+00:00] [INFO] Running seasonal lookbook campaign...
+[2026-05-01T05:42:17.995765+00:00] [INFO] This will generate outfit image and send email...
+[2026-05-01T05:43:39.153976+00:00] [INFO] Processed: 1
+[2026-05-01T05:43:39.154022+00:00] [INFO] Generated: 1
+[2026-05-01T05:43:39.154038+00:00] [INFO] Sent: 1
+[2026-05-01T05:43:39.154049+00:00] [INFO] Skipped: 0
+[2026-05-01T05:43:39.154060+00:00] [SUCCESS] PASS: Seasonal lookbook campaign sent email to adityapalghar@gmail.com
+[2026-05-01T05:43:39.154089+00:00] [REPORT] ============================================================
+[2026-05-01T05:43:39.154099+00:00] [REPORT] PIPELINE TEST SUMMARY

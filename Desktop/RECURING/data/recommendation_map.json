@@ -1,0 +1,4890 @@
+{
+  "blush-tailored-linen-shirt-001": {
+    "product_title": "Blush Tailored Linen Shirt",
+    "category": "shirts",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "ecru-office-ready-pleated-trouser-049",
+      "lilac-gift-ready-canvas-tote-150",
+      "lilac-washed-straight-jeans-044",
+      "sage-fluid-pleated-trouser-058",
+      "blush-rigid-wide-leg-jeans-047"
+    ],
+    "similar_products": [
+      "blush-relaxed-resort-shirt-011",
+      "mustard-soft-wash-resort-shirt-008",
+      "black-everyday-linen-shirt-003",
+      "lilac-everyday-linen-shirt-016",
+      "stone-soft-wash-resort-shirt-012"
+    ],
+    "upsell_products": [
+      "sage-fluid-pleated-trouser-058",
+      "lilac-tailored-cigarette-trouser-056",
+      "black-everyday-linen-shirt-003",
+      "navy-fluid-cigarette-trouser-054",
+      "ecru-office-ready-pleated-trouser-049"
+    ],
+    "seasonal_products": [
+      "lilac-textured-lounge-set-118",
+      "chocolate-textured-resort-set-120",
+      "olive-textured-resort-set-119",
+      "indigo-matching-co-ord-set-109",
+      "mustard-minimal-pleated-trouser-055"
+    ]
+  },
+  "lilac-relaxed-resort-shirt-002": {
+    "product_title": "Lilac Relaxed Resort Shirt",
+    "category": "shirts",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "lilac-tailored-cigarette-trouser-056",
+      "powder-blue-tailored-work-trouser-057",
+      "blush-rigid-slim-jeans-038",
+      "ecru-office-ready-pleated-trouser-049",
+      "mustard-rigid-barrel-jeans-042"
+    ],
+    "similar_products": [
+      "ivory-relaxed-resort-shirt-010",
+      "stone-relaxed-linen-shirt-006",
+      "powder-blue-relaxed-poplin-shirt-015",
+      "indigo-everyday-poplin-shirt-013"
+    ],
+    "upsell_products": [
+      "sage-festive-palazzo-set-128",
+      "powder-blue-hand-block-kurta-set-129",
+      "navy-festive-palazzo-set-134",
+      "maroon-hand-block-festive-jacket-136",
+      "navy-soft-tailored-lounge-set-111"
+    ],
+    "seasonal_products": [
+      "lilac-tailored-cigarette-trouser-056",
+      "powder-blue-matching-lounge-set-116",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "mustard-minimal-pleated-trouser-055",
+      "chocolate-minimal-pleated-trouser-052"
+    ]
+  },
+  "black-everyday-linen-shirt-003": {
+    "product_title": "Black Everyday Linen Shirt",
+    "category": "shirts",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "white-washed-straight-jeans-039",
+      "blush-rigid-slim-jeans-038",
+      "stone-statement-leather-belt-147",
+      "indigo-soft-stretch-straight-jeans-040",
+      "powder-blue-soft-stretch-slim-jeans-036"
+    ],
+    "similar_products": [
+      "blush-relaxed-resort-shirt-011",
+      "mustard-soft-wash-resort-shirt-008",
+      "lilac-everyday-linen-shirt-016",
+      "stone-soft-wash-resort-shirt-012",
+      "blush-tailored-linen-shirt-001"
+    ],
+    "upsell_products": [
+      "lilac-tailored-cigarette-trouser-056",
+      "sage-fluid-pleated-trouser-058",
+      "navy-fluid-cigarette-trouser-054",
+      "ecru-office-ready-pleated-trouser-049"
+    ],
+    "seasonal_products": [
+      "indigo-tailored-cigarette-trouser-060",
+      "lilac-tailored-cigarette-trouser-056",
+      "lilac-soft-tailored-resort-set-113",
+      "mustard-minimal-pleated-trouser-055",
+      "sage-fluid-pleated-trouser-058"
+    ]
+  },
+  "ecru-soft-wash-poplin-shirt-004": {
+    "product_title": "Ecru Soft-Wash Poplin Shirt",
+    "category": "shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "white-gift-ready-canvas-tote-146",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "navy-fluid-cigarette-trouser-054",
+      "lilac-gift-ready-canvas-tote-150",
+      "mustard-gift-ready-leather-belt-141"
+    ],
+    "similar_products": [
+      "lilac-soft-wash-oxford-shirt-007",
+      "indigo-relaxed-oxford-shirt-014",
+      "olive-relaxed-oxford-shirt-009",
+      "sage-tailored-poplin-shirt-005"
+    ],
+    "upsell_products": [
+      "lilac-washed-barrel-jeans-037",
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "olive-relaxed-oxford-shirt-009",
+      "mustard-minimal-pleated-trouser-059",
+      "lilac-soft-wash-oxford-shirt-007"
+    ],
+    "seasonal_products": [
+      "indigo-tailored-cigarette-trouser-060",
+      "navy-fluid-cigarette-trouser-054",
+      "white-office-ready-pleated-trouser-053",
+      "navy-soft-tailored-lounge-set-111",
+      "lilac-soft-tailored-resort-set-113"
+    ]
+  },
+  "sage-tailored-poplin-shirt-005": {
+    "product_title": "Sage Tailored Poplin Shirt",
+    "category": "shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "black-statement-minimal-cap-139",
+      "sage-fluid-pleated-trouser-058",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "sage-office-ready-cigarette-trouser-051",
+      "white-office-ready-pleated-trouser-053"
+    ],
+    "similar_products": [
+      "lilac-soft-wash-oxford-shirt-007",
+      "ecru-soft-wash-poplin-shirt-004",
+      "olive-relaxed-oxford-shirt-009",
+      "indigo-relaxed-oxford-shirt-014"
+    ],
+    "upsell_products": [
+      "mustard-minimal-pleated-trouser-055",
+      "indigo-relaxed-oxford-shirt-014",
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "indigo-tailored-cigarette-trouser-060",
+      "olive-relaxed-oxford-shirt-009"
+    ],
+    "seasonal_products": [
+      "chocolate-textured-resort-set-120",
+      "indigo-matching-co-ord-set-109",
+      "ivory-matching-lounge-set-117",
+      "olive-fluid-pleated-trouser-050",
+      "chocolate-minimal-pleated-trouser-052"
+    ]
+  },
+  "stone-relaxed-linen-shirt-006": {
+    "product_title": "Stone Relaxed Linen Shirt",
+    "category": "shirts",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "olive-fluid-pleated-trouser-050",
+      "chocolate-minimal-pleated-trouser-052",
+      "mustard-minimal-pleated-trouser-055"
+    ],
+    "similar_products": [
+      "powder-blue-relaxed-poplin-shirt-015",
+      "indigo-everyday-poplin-shirt-013",
+      "ivory-relaxed-resort-shirt-010",
+      "lilac-relaxed-resort-shirt-002"
+    ],
+    "upsell_products": [
+      "lilac-relaxed-resort-shirt-002",
+      "white-draped-shirt-dress-073",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "indigo-everyday-poplin-shirt-013",
+      "stone-satin-wrap-dress-071"
+    ],
+    "seasonal_products": [
+      "olive-textured-resort-set-119",
+      "olive-fluid-pleated-trouser-050",
+      "lilac-tailored-cigarette-trouser-056",
+      "navy-soft-tailored-lounge-set-111",
+      "indigo-tailored-cigarette-trouser-060"
+    ]
+  },
+  "lilac-soft-wash-oxford-shirt-007": {
+    "product_title": "Lilac Soft-Wash Oxford Shirt",
+    "category": "shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "mustard-rigid-barrel-jeans-042",
+      "mustard-minimal-pleated-trouser-059",
+      "white-office-ready-pleated-trouser-053",
+      "lilac-washed-barrel-jeans-037",
+      "chocolate-minimal-pleated-trouser-052"
+    ],
+    "similar_products": [
+      "indigo-relaxed-oxford-shirt-014",
+      "olive-relaxed-oxford-shirt-009",
+      "ecru-soft-wash-poplin-shirt-004",
+      "sage-tailored-poplin-shirt-005"
+    ],
+    "upsell_products": [
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "lilac-washed-barrel-jeans-037",
+      "mustard-rigid-barrel-jeans-042",
+      "indigo-relaxed-oxford-shirt-014",
+      "white-premium-denim-jacket-104"
+    ],
+    "seasonal_products": [
+      "indigo-tailored-cigarette-trouser-060",
+      "chocolate-matching-lounge-set-112",
+      "lilac-textured-lounge-set-118",
+      "ivory-matching-lounge-set-117",
+      "chocolate-minimal-pleated-trouser-052"
+    ]
+  },
+  "mustard-soft-wash-resort-shirt-008": {
+    "product_title": "Mustard Soft-Wash Resort Shirt",
+    "category": "shirts",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "indigo-tailored-cigarette-trouser-060",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "ecru-everyday-silk-scarf-144",
+      "lilac-washed-barrel-jeans-037",
+      "sage-office-ready-cigarette-trouser-051"
+    ],
+    "similar_products": [
+      "lilac-everyday-linen-shirt-016",
+      "blush-tailored-linen-shirt-001",
+      "stone-soft-wash-resort-shirt-012",
+      "black-everyday-linen-shirt-003",
+      "blush-relaxed-resort-shirt-011"
+    ],
+    "upsell_products": [
+      "lilac-tailored-cigarette-trouser-056",
+      "black-everyday-linen-shirt-003",
+      "navy-fluid-cigarette-trouser-054",
+      "blush-tailored-linen-shirt-001",
+      "ecru-office-ready-pleated-trouser-049"
+    ],
+    "seasonal_products": [
+      "chocolate-matching-lounge-set-112",
+      "mustard-minimal-pleated-trouser-059",
+      "ecru-office-ready-pleated-trouser-049",
+      "powder-blue-matching-lounge-set-116",
+      "navy-fluid-cigarette-trouser-054"
+    ]
+  },
+  "olive-relaxed-oxford-shirt-009": {
+    "product_title": "Olive Relaxed Oxford Shirt",
+    "category": "shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "powder-blue-premium-canvas-tote-148",
+      "maroon-statement-leather-belt-140",
+      "mustard-gift-ready-leather-belt-141",
+      "blush-rigid-wide-leg-jeans-047",
+      "maroon-premium-canvas-tote-149"
+    ],
+    "similar_products": [
+      "sage-tailored-poplin-shirt-005",
+      "lilac-soft-wash-oxford-shirt-007",
+      "ecru-soft-wash-poplin-shirt-004",
+      "indigo-relaxed-oxford-shirt-014"
+    ],
+    "upsell_products": [
+      "indigo-tailored-cigarette-trouser-060",
+      "mustard-rigid-barrel-jeans-042",
+      "mustard-minimal-pleated-trouser-059",
+      "lilac-soft-wash-oxford-shirt-007",
+      "powder-blue-clean-fit-wide-leg-jeans-048"
+    ],
+    "seasonal_products": [
+      "lilac-tailored-cigarette-trouser-056",
+      "mustard-minimal-pleated-trouser-055",
+      "sage-fluid-pleated-trouser-058",
+      "chocolate-matching-lounge-set-112",
+      "charcoal-soft-tailored-co-ord-set-114"
+    ]
+  },
+  "ivory-relaxed-resort-shirt-010": {
+    "product_title": "Ivory Relaxed Resort Shirt",
+    "category": "shirts",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "white-washed-straight-jeans-039",
+      "sage-office-ready-cigarette-trouser-051",
+      "indigo-soft-stretch-straight-jeans-040",
+      "maroon-washed-straight-jeans-043",
+      "maroon-statement-leather-belt-140"
+    ],
+    "similar_products": [
+      "stone-relaxed-linen-shirt-006",
+      "lilac-relaxed-resort-shirt-002",
+      "indigo-everyday-poplin-shirt-013",
+      "powder-blue-relaxed-poplin-shirt-015"
+    ],
+    "upsell_products": [
+      "lilac-relaxed-resort-shirt-002",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "navy-festive-palazzo-set-134",
+      "lilac-soft-tailored-co-ord-set-110",
+      "maroon-hand-block-festive-jacket-136"
+    ],
+    "seasonal_products": [
+      "ivory-matching-lounge-set-117",
+      "lilac-soft-tailored-co-ord-set-110",
+      "powder-blue-tailored-work-trouser-057",
+      "chocolate-textured-resort-set-120",
+      "indigo-matching-co-ord-set-109"
+    ]
+  },
+  "blush-relaxed-resort-shirt-011": {
+    "product_title": "Blush Relaxed Resort Shirt",
+    "category": "shirts",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "ivory-everyday-minimal-cap-145",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "mustard-gift-ready-leather-belt-141",
+      "ecru-office-ready-pleated-trouser-049",
+      "powder-blue-premium-canvas-tote-148"
+    ],
+    "similar_products": [
+      "blush-tailored-linen-shirt-001",
+      "black-everyday-linen-shirt-003",
+      "mustard-soft-wash-resort-shirt-008",
+      "lilac-everyday-linen-shirt-016",
+      "stone-soft-wash-resort-shirt-012"
+    ],
+    "upsell_products": [
+      "ecru-office-ready-pleated-trouser-049",
+      "lilac-everyday-linen-shirt-016",
+      "mustard-soft-wash-resort-shirt-008",
+      "navy-fluid-cigarette-trouser-054",
+      "black-everyday-linen-shirt-003"
+    ],
+    "seasonal_products": [
+      "navy-fluid-cigarette-trouser-054",
+      "olive-textured-resort-set-119",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "lilac-soft-tailored-resort-set-113",
+      "lilac-soft-tailored-co-ord-set-110"
+    ]
+  },
+  "stone-soft-wash-resort-shirt-012": {
+    "product_title": "Stone Soft-Wash Resort Shirt",
+    "category": "shirts",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "olive-fluid-pleated-trouser-050",
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "navy-fluid-cigarette-trouser-054",
+      "white-office-ready-pleated-trouser-053",
+      "mustard-minimal-pleated-trouser-055"
+    ],
+    "similar_products": [
+      "lilac-everyday-linen-shirt-016",
+      "mustard-soft-wash-resort-shirt-008",
+      "blush-tailored-linen-shirt-001",
+      "black-everyday-linen-shirt-003",
+      "blush-relaxed-resort-shirt-011"
+    ],
+    "upsell_products": [
+      "ecru-office-ready-pleated-trouser-049",
+      "lilac-everyday-linen-shirt-016",
+      "sage-fluid-pleated-trouser-058",
+      "black-everyday-linen-shirt-003",
+      "blush-tailored-linen-shirt-001"
+    ],
+    "seasonal_products": [
+      "powder-blue-tailored-work-trouser-057",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "white-soft-tailored-resort-set-115",
+      "lilac-textured-lounge-set-118",
+      "white-office-ready-pleated-trouser-053"
+    ]
+  },
+  "indigo-everyday-poplin-shirt-013": {
+    "product_title": "Indigo Everyday Poplin Shirt",
+    "category": "shirts",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "maroon-washed-straight-jeans-043",
+      "black-statement-minimal-cap-139",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "stone-statement-leather-belt-147",
+      "ecru-everyday-silk-scarf-144"
+    ],
+    "similar_products": [
+      "stone-relaxed-linen-shirt-006",
+      "ivory-relaxed-resort-shirt-010",
+      "powder-blue-relaxed-poplin-shirt-015",
+      "lilac-relaxed-resort-shirt-002"
+    ],
+    "upsell_products": [
+      "powder-blue-hand-block-kurta-set-129",
+      "lilac-textured-lounge-set-118",
+      "stone-satin-wrap-dress-071",
+      "navy-festive-palazzo-set-134",
+      "lilac-relaxed-resort-shirt-002"
+    ],
+    "seasonal_products": [
+      "olive-textured-resort-set-119",
+      "chocolate-minimal-pleated-trouser-052",
+      "chocolate-matching-lounge-set-112",
+      "white-office-ready-pleated-trouser-053",
+      "powder-blue-matching-lounge-set-116"
+    ]
+  },
+  "indigo-relaxed-oxford-shirt-014": {
+    "product_title": "Indigo Relaxed Oxford Shirt",
+    "category": "shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "ecru-office-ready-pleated-trouser-049",
+      "maroon-premium-canvas-tote-149",
+      "lilac-tailored-cigarette-trouser-056",
+      "navy-rigid-barrel-jeans-045",
+      "sage-office-ready-cigarette-trouser-051"
+    ],
+    "similar_products": [
+      "lilac-soft-wash-oxford-shirt-007",
+      "ecru-soft-wash-poplin-shirt-004",
+      "sage-tailored-poplin-shirt-005",
+      "olive-relaxed-oxford-shirt-009"
+    ],
+    "upsell_products": [
+      "powder-blue-layered-shacket-106",
+      "indigo-premium-quilted-jacket-108",
+      "lilac-washed-barrel-jeans-037",
+      "white-premium-denim-jacket-104"
+    ],
+    "seasonal_products": [
+      "chocolate-minimal-pleated-trouser-052",
+      "chocolate-matching-lounge-set-112",
+      "powder-blue-tailored-work-trouser-057",
+      "lilac-textured-lounge-set-118",
+      "ecru-office-ready-pleated-trouser-049"
+    ]
+  },
+  "powder-blue-relaxed-poplin-shirt-015": {
+    "product_title": "Powder Blue Relaxed Poplin Shirt",
+    "category": "shirts",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "mustard-minimal-pleated-trouser-055",
+      "blush-rigid-slim-jeans-038",
+      "olive-rigid-slim-jeans-046",
+      "ecru-office-ready-pleated-trouser-049",
+      "black-statement-minimal-cap-139"
+    ],
+    "similar_products": [
+      "lilac-relaxed-resort-shirt-002",
+      "indigo-everyday-poplin-shirt-013",
+      "stone-relaxed-linen-shirt-006",
+      "ivory-relaxed-resort-shirt-010"
+    ],
+    "upsell_products": [
+      "blush-silk-blend-festive-jacket-138",
+      "chocolate-textured-resort-set-120",
+      "lilac-textured-lounge-set-118",
+      "charcoal-embroidered-a-line-kurta-121",
+      "maroon-hand-block-festive-jacket-136"
+    ],
+    "seasonal_products": [
+      "indigo-tailored-cigarette-trouser-060",
+      "lilac-textured-lounge-set-118",
+      "indigo-matching-co-ord-set-109",
+      "lilac-soft-tailored-resort-set-113",
+      "navy-fluid-cigarette-trouser-054"
+    ]
+  },
+  "lilac-everyday-linen-shirt-016": {
+    "product_title": "Lilac Everyday Linen Shirt",
+    "category": "shirts",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "sage-office-ready-cigarette-trouser-051",
+      "powder-blue-tailored-work-trouser-057",
+      "white-gift-ready-canvas-tote-146",
+      "black-statement-minimal-cap-139",
+      "powder-blue-premium-canvas-tote-148"
+    ],
+    "similar_products": [
+      "stone-soft-wash-resort-shirt-012",
+      "blush-tailored-linen-shirt-001",
+      "black-everyday-linen-shirt-003",
+      "blush-relaxed-resort-shirt-011",
+      "mustard-soft-wash-resort-shirt-008"
+    ],
+    "upsell_products": [
+      "ecru-office-ready-pleated-trouser-049",
+      "black-everyday-linen-shirt-003",
+      "blush-tailored-linen-shirt-001",
+      "lilac-tailored-cigarette-trouser-056",
+      "sage-fluid-pleated-trouser-058"
+    ],
+    "seasonal_products": [
+      "lilac-soft-tailored-resort-set-113",
+      "white-soft-tailored-resort-set-115",
+      "lilac-soft-tailored-co-ord-set-110",
+      "indigo-matching-co-ord-set-109",
+      "lilac-textured-lounge-set-118"
+    ]
+  },
+  "indigo-boxy-graphic-tee-017": {
+    "product_title": "Indigo Boxy Graphic Tee",
+    "category": "t-shirts",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "ecru-ripstop-parachute-cargo-065",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "lilac-utility-utility-jogger-064",
+      "white-washed-straight-jeans-039",
+      "lilac-utility-cargo-pant-069"
+    ],
+    "similar_products": [
+      "maroon-heavyweight-crew-tee-026",
+      "blush-air-knit-crew-tee-027",
+      "white-air-knit-rib-tee-029",
+      "black-air-knit-oversized-tee-021"
+    ],
+    "upsell_products": [
+      "charcoal-campus-zip-hoodie-094",
+      "lilac-utility-utility-jogger-064",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "chocolate-premium-quilted-jacket-105",
+      "blush-air-knit-crew-tee-027"
+    ],
+    "seasonal_products": [
+      "lilac-utility-utility-jogger-064",
+      "ecru-everyday-silk-scarf-144",
+      "navy-ripstop-parachute-cargo-066",
+      "maroon-statement-leather-belt-140",
+      "ivory-street-utility-jogger-067"
+    ]
+  },
+  "powder-blue-air-knit-crew-tee-018": {
+    "product_title": "Powder Blue Air-Knit Crew Tee",
+    "category": "t-shirts",
+    "style_cluster": "discount_only_buyer",
+    "complementary_products": [
+      "ivory-street-utility-jogger-067",
+      "maroon-boxy-quilted-jacket-107",
+      "mustard-rigid-barrel-jeans-042",
+      "lilac-street-cargo-pant-061",
+      "maroon-washed-straight-jeans-043"
+    ],
+    "similar_products": [
+      "mustard-heavyweight-oversized-tee-031",
+      "lilac-heavyweight-graphic-tee-030",
+      "olive-vintage-wash-graphic-tee-032",
+      "white-heavyweight-crew-tee-019",
+      "ecru-vintage-wash-rib-tee-034"
+    ],
+    "upsell_products": [
+      "mustard-heavyweight-oversized-tee-031",
+      "lilac-heavyweight-graphic-tee-030",
+      "olive-vintage-wash-graphic-tee-032",
+      "white-heavyweight-crew-tee-019"
+    ],
+    "seasonal_products": [
+      "lilac-oversized-parachute-cargo-062",
+      "lilac-street-cargo-pant-061",
+      "ivory-street-utility-jogger-067",
+      "powder-blue-ripstop-cargo-pant-063",
+      "indigo-everyday-leather-belt-142"
+    ]
+  },
+  "white-heavyweight-crew-tee-019": {
+    "product_title": "White Heavyweight Crew Tee",
+    "category": "t-shirts",
+    "style_cluster": "discount_only_buyer",
+    "complementary_products": [
+      "charcoal-rigid-slim-jeans-041",
+      "blush-rigid-wide-leg-jeans-047",
+      "navy-rigid-barrel-jeans-045",
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "blush-rigid-slim-jeans-038"
+    ],
+    "similar_products": [
+      "olive-vintage-wash-graphic-tee-032",
+      "powder-blue-air-knit-crew-tee-018",
+      "mustard-heavyweight-oversized-tee-031",
+      "lilac-heavyweight-graphic-tee-030",
+      "ecru-vintage-wash-rib-tee-034"
+    ],
+    "upsell_products": [
+      "lilac-festive-kurta-set-130",
+      "olive-textured-resort-set-119",
+      "olive-vintage-wash-graphic-tee-032",
+      "olive-festive-a-line-kurta-127",
+      "navy-festive-palazzo-set-134"
+    ],
+    "seasonal_products": [
+      "chocolate-ripstop-cargo-pant-068",
+      "navy-ripstop-parachute-cargo-066",
+      "ecru-ripstop-parachute-cargo-065",
+      "mustard-gift-ready-leather-belt-141",
+      "white-gift-ready-canvas-tote-146"
+    ]
+  },
+  "indigo-air-knit-rib-tee-020": {
+    "product_title": "Indigo Air-Knit Rib Tee",
+    "category": "t-shirts",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "ecru-ripstop-parachute-cargo-065",
+      "navy-boxy-quilted-jacket-101",
+      "lilac-washed-barrel-jeans-037",
+      "charcoal-premium-denim-jacket-102",
+      "powder-blue-ripstop-cargo-pant-063"
+    ],
+    "similar_products": [
+      "ivory-boxy-oversized-tee-033",
+      "maroon-heavyweight-crew-tee-026",
+      "ecru-vintage-wash-rib-tee-034",
+      "mustard-heavyweight-oversized-tee-031",
+      "blush-air-knit-crew-tee-028"
+    ],
+    "upsell_products": [
+      "black-campus-fleece-hoodie-095",
+      "powder-blue-ripstop-cargo-pant-063",
+      "ecru-ripstop-parachute-cargo-065",
+      "ivory-boxy-oversized-tee-033",
+      "blush-air-knit-crew-tee-028"
+    ],
+    "seasonal_products": [
+      "stone-statement-leather-belt-147",
+      "olive-utility-cargo-pant-070",
+      "indigo-everyday-leather-belt-142",
+      "lilac-utility-utility-jogger-064",
+      "mustard-gift-ready-leather-belt-141"
+    ]
+  },
+  "black-air-knit-oversized-tee-021": {
+    "product_title": "Black Air-Knit Oversized Tee",
+    "category": "t-shirts",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "lilac-washed-straight-jeans-044",
+      "indigo-premium-quilted-jacket-108",
+      "lilac-utility-cargo-pant-069",
+      "chocolate-ripstop-cargo-pant-068"
+    ],
+    "similar_products": [
+      "white-air-knit-rib-tee-029",
+      "maroon-heavyweight-crew-tee-026",
+      "indigo-boxy-graphic-tee-017",
+      "blush-air-knit-crew-tee-027"
+    ],
+    "upsell_products": [
+      "blush-rigid-wide-leg-jeans-047",
+      "olive-utility-cargo-pant-070",
+      "chocolate-ripstop-cargo-pant-068",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "ecru-campus-pullover-hoodie-097"
+    ],
+    "seasonal_products": [
+      "black-statement-minimal-cap-139",
+      "indigo-everyday-leather-belt-142",
+      "mustard-gift-ready-leather-belt-141",
+      "lilac-gift-ready-canvas-tote-150",
+      "ecru-ripstop-parachute-cargo-065"
+    ]
+  },
+  "ivory-boxy-oversized-tee-022": {
+    "product_title": "Ivory Boxy Oversized Tee",
+    "category": "t-shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "olive-utility-cargo-pant-070",
+      "indigo-layered-shacket-100",
+      "lilac-washed-straight-jeans-044",
+      "navy-boxy-quilted-jacket-101",
+      "blush-rigid-slim-jeans-038"
+    ],
+    "similar_products": [
+      "olive-vintage-wash-graphic-tee-032",
+      "ecru-heavyweight-rib-tee-025",
+      "mustard-heavyweight-oversized-tee-031",
+      "powder-blue-air-knit-crew-tee-018",
+      "ecru-vintage-wash-rib-tee-034"
+    ],
+    "upsell_products": [
+      "mustard-minimal-pleated-trouser-055",
+      "mustard-rigid-barrel-jeans-042",
+      "indigo-premium-quilted-jacket-108",
+      "lilac-washed-barrel-jeans-037",
+      "indigo-tailored-cigarette-trouser-060"
+    ],
+    "seasonal_products": [
+      "olive-utility-cargo-pant-070",
+      "maroon-premium-canvas-tote-149",
+      "lilac-utility-utility-jogger-064",
+      "stone-statement-leather-belt-147",
+      "white-gift-ready-canvas-tote-146"
+    ]
+  },
+  "blush-boxy-oversized-tee-023": {
+    "product_title": "Blush Boxy Oversized Tee",
+    "category": "t-shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "maroon-boxy-quilted-jacket-107",
+      "white-washed-straight-jeans-039",
+      "navy-ripstop-parachute-cargo-066",
+      "charcoal-premium-denim-jacket-102"
+    ],
+    "similar_products": [
+      "navy-heavyweight-crew-tee-024",
+      "mustard-heavyweight-oversized-tee-031",
+      "ecru-heavyweight-rib-tee-025",
+      "ivory-boxy-oversized-tee-033",
+      "black-air-knit-oversized-tee-021"
+    ],
+    "upsell_products": [
+      "olive-relaxed-oxford-shirt-009",
+      "mustard-minimal-pleated-trouser-059",
+      "sage-tailored-poplin-shirt-005",
+      "indigo-premium-quilted-jacket-108",
+      "mustard-rigid-barrel-jeans-042"
+    ],
+    "seasonal_products": [
+      "powder-blue-ripstop-cargo-pant-063",
+      "navy-ripstop-parachute-cargo-066",
+      "maroon-premium-canvas-tote-149",
+      "lilac-street-cargo-pant-061",
+      "lilac-oversized-parachute-cargo-062"
+    ]
+  },
+  "navy-heavyweight-crew-tee-024": {
+    "product_title": "Navy Heavyweight Crew Tee",
+    "category": "t-shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "indigo-soft-stretch-straight-jeans-040",
+      "blush-premium-shacket-103",
+      "navy-rigid-barrel-jeans-045",
+      "white-washed-straight-jeans-039",
+      "white-premium-denim-jacket-104"
+    ],
+    "similar_products": [
+      "ecru-vintage-wash-rib-tee-034",
+      "black-air-knit-oversized-tee-021",
+      "white-heavyweight-crew-tee-019",
+      "indigo-boxy-graphic-tee-017",
+      "ivory-boxy-oversized-tee-022"
+    ],
+    "upsell_products": [
+      "indigo-relaxed-oxford-shirt-014",
+      "lilac-washed-barrel-jeans-037",
+      "mustard-minimal-pleated-trouser-059",
+      "indigo-tailored-cigarette-trouser-060",
+      "mustard-minimal-pleated-trouser-055"
+    ],
+    "seasonal_products": [
+      "lilac-gift-ready-canvas-tote-150",
+      "ivory-everyday-minimal-cap-145",
+      "lilac-oversized-parachute-cargo-062",
+      "navy-ripstop-parachute-cargo-066",
+      "indigo-everyday-leather-belt-142"
+    ]
+  },
+  "ecru-heavyweight-rib-tee-025": {
+    "product_title": "Ecru Heavyweight Rib Tee",
+    "category": "t-shirts",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "ivory-street-utility-jogger-067",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "mustard-rigid-barrel-jeans-042",
+      "indigo-soft-stretch-straight-jeans-040",
+      "ecru-ripstop-parachute-cargo-065"
+    ],
+    "similar_products": [
+      "powder-blue-air-knit-crew-tee-018",
+      "ecru-vintage-wash-rib-tee-034",
+      "black-air-knit-oversized-tee-021",
+      "white-heavyweight-crew-tee-019",
+      "mustard-heavyweight-oversized-tee-031"
+    ],
+    "upsell_products": [
+      "white-premium-denim-jacket-104",
+      "mustard-rigid-barrel-jeans-042",
+      "lilac-washed-barrel-jeans-037",
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "powder-blue-layered-shacket-106"
+    ],
+    "seasonal_products": [
+      "maroon-statement-leather-belt-140",
+      "ivory-everyday-minimal-cap-145",
+      "ivory-street-utility-jogger-067",
+      "mustard-statement-canvas-tote-143",
+      "lilac-utility-utility-jogger-064"
+    ]
+  },
+  "maroon-heavyweight-crew-tee-026": {
+    "product_title": "Maroon Heavyweight Crew Tee",
+    "category": "t-shirts",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "chocolate-ripstop-cargo-pant-068",
+      "indigo-premium-quilted-jacket-108",
+      "maroon-boxy-quilted-jacket-107",
+      "lilac-washed-barrel-jeans-037",
+      "powder-blue-soft-stretch-slim-jeans-036"
+    ],
+    "similar_products": [
+      "indigo-boxy-graphic-tee-017",
+      "blush-air-knit-crew-tee-027",
+      "black-air-knit-oversized-tee-021",
+      "white-air-knit-rib-tee-029"
+    ],
+    "upsell_products": [
+      "chocolate-ripstop-cargo-pant-068",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "chocolate-premium-quilted-jacket-105",
+      "sage-heavyweight-fleece-hoodie-092",
+      "olive-rigid-slim-jeans-046"
+    ],
+    "seasonal_products": [
+      "mustard-statement-canvas-tote-143",
+      "olive-utility-cargo-pant-070",
+      "lilac-oversized-parachute-cargo-062",
+      "stone-statement-leather-belt-147",
+      "maroon-premium-canvas-tote-149"
+    ]
+  },
+  "blush-air-knit-crew-tee-027": {
+    "product_title": "Blush Air-Knit Crew Tee",
+    "category": "t-shirts",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "ecru-ripstop-parachute-cargo-065",
+      "indigo-layered-shacket-100",
+      "chocolate-ripstop-cargo-pant-068",
+      "lilac-street-cargo-pant-061",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "indigo-boxy-graphic-tee-017",
+      "white-air-knit-rib-tee-029",
+      "maroon-heavyweight-crew-tee-026",
+      "black-air-knit-oversized-tee-021"
+    ],
+    "upsell_products": [
+      "lilac-utility-utility-jogger-064",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "chocolate-premium-quilted-jacket-105",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "lilac-street-cargo-pant-061"
+    ],
+    "seasonal_products": [
+      "mustard-statement-canvas-tote-143",
+      "lilac-utility-cargo-pant-069",
+      "white-gift-ready-canvas-tote-146",
+      "lilac-utility-utility-jogger-064",
+      "chocolate-ripstop-cargo-pant-068"
+    ]
+  },
+  "blush-air-knit-crew-tee-028": {
+    "product_title": "Blush Air-Knit Crew Tee",
+    "category": "t-shirts",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "lilac-utility-utility-jogger-064",
+      "white-washed-straight-jeans-039",
+      "ivory-street-utility-jogger-067",
+      "lilac-utility-cargo-pant-069",
+      "chocolate-ripstop-cargo-pant-068"
+    ],
+    "similar_products": [
+      "ivory-boxy-oversized-tee-022",
+      "indigo-air-knit-rib-tee-020",
+      "mustard-heavyweight-oversized-tee-031",
+      "indigo-boxy-graphic-tee-017",
+      "ivory-boxy-oversized-tee-033"
+    ],
+    "upsell_products": [
+      "lilac-utility-cargo-pant-069",
+      "powder-blue-ripstop-cargo-pant-063",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "ecru-ripstop-parachute-cargo-065",
+      "ivory-street-utility-jogger-067"
+    ],
+    "seasonal_products": [
+      "lilac-street-cargo-pant-061",
+      "mustard-gift-ready-leather-belt-141",
+      "ivory-everyday-minimal-cap-145",
+      "powder-blue-premium-canvas-tote-148",
+      "black-statement-minimal-cap-139"
+    ]
+  },
+  "white-air-knit-rib-tee-029": {
+    "product_title": "White Air-Knit Rib Tee",
+    "category": "t-shirts",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "chocolate-ripstop-cargo-pant-068",
+      "ecru-ripstop-parachute-cargo-065",
+      "olive-utility-cargo-pant-070",
+      "blush-rigid-slim-jeans-038",
+      "chocolate-premium-quilted-jacket-105"
+    ],
+    "similar_products": [
+      "blush-air-knit-crew-tee-027",
+      "indigo-boxy-graphic-tee-017",
+      "black-air-knit-oversized-tee-021",
+      "maroon-heavyweight-crew-tee-026"
+    ],
+    "upsell_products": [
+      "chocolate-premium-quilted-jacket-105",
+      "lilac-street-cargo-pant-061",
+      "olive-oversized-zip-hoodie-088",
+      "charcoal-rigid-slim-jeans-041",
+      "lilac-utility-utility-jogger-064"
+    ],
+    "seasonal_products": [
+      "olive-utility-cargo-pant-070",
+      "ecru-everyday-silk-scarf-144",
+      "lilac-street-cargo-pant-061",
+      "stone-statement-leather-belt-147",
+      "white-gift-ready-canvas-tote-146"
+    ]
+  },
+  "lilac-heavyweight-graphic-tee-030": {
+    "product_title": "Lilac Heavyweight Graphic Tee",
+    "category": "t-shirts",
+    "style_cluster": "discount_only_buyer",
+    "complementary_products": [
+      "maroon-washed-straight-jeans-043",
+      "blush-rigid-slim-jeans-038",
+      "indigo-premium-quilted-jacket-108",
+      "maroon-boxy-quilted-jacket-107",
+      "olive-utility-cargo-pant-070"
+    ],
+    "similar_products": [
+      "white-heavyweight-crew-tee-019",
+      "mustard-heavyweight-oversized-tee-031",
+      "olive-vintage-wash-graphic-tee-032",
+      "powder-blue-air-knit-crew-tee-018",
+      "ecru-vintage-wash-rib-tee-034"
+    ],
+    "upsell_products": [
+      "navy-silk-blend-a-line-kurta-122",
+      "white-heavyweight-crew-tee-019",
+      "indigo-layered-shacket-100",
+      "maroon-boxy-quilted-jacket-107",
+      "olive-vintage-wash-graphic-tee-032"
+    ],
+    "seasonal_products": [
+      "white-gift-ready-canvas-tote-146",
+      "maroon-premium-canvas-tote-149",
+      "stone-statement-leather-belt-147",
+      "lilac-utility-utility-jogger-064",
+      "ecru-everyday-silk-scarf-144"
+    ]
+  },
+  "mustard-heavyweight-oversized-tee-031": {
+    "product_title": "Mustard Heavyweight Oversized Tee",
+    "category": "t-shirts",
+    "style_cluster": "discount_only_buyer",
+    "complementary_products": [
+      "ecru-ripstop-parachute-cargo-065",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "blush-rigid-slim-jeans-038",
+      "indigo-layered-shacket-100",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "ecru-vintage-wash-rib-tee-034",
+      "powder-blue-air-knit-crew-tee-018",
+      "olive-vintage-wash-graphic-tee-032",
+      "white-heavyweight-crew-tee-019",
+      "lilac-heavyweight-graphic-tee-030"
+    ],
+    "upsell_products": [
+      "olive-vintage-wash-graphic-tee-032",
+      "navy-embroidered-palazzo-set-126",
+      "ivory-silk-blend-a-line-kurta-132",
+      "lilac-soft-tailored-resort-set-113",
+      "stone-embroidered-palazzo-set-137"
+    ],
+    "seasonal_products": [
+      "chocolate-ripstop-cargo-pant-068",
+      "lilac-utility-cargo-pant-069",
+      "powder-blue-ripstop-cargo-pant-063",
+      "ecru-everyday-silk-scarf-144",
+      "ivory-everyday-minimal-cap-145"
+    ]
+  },
+  "olive-vintage-wash-graphic-tee-032": {
+    "product_title": "Olive Vintage-Wash Graphic Tee",
+    "category": "t-shirts",
+    "style_cluster": "discount_only_buyer",
+    "complementary_products": [
+      "blush-rigid-slim-jeans-038",
+      "charcoal-premium-denim-jacket-102",
+      "lilac-washed-barrel-jeans-037",
+      "olive-rigid-slim-jeans-046",
+      "lilac-utility-utility-jogger-064"
+    ],
+    "similar_products": [
+      "mustard-heavyweight-oversized-tee-031",
+      "ecru-vintage-wash-rib-tee-034",
+      "powder-blue-air-knit-crew-tee-018",
+      "white-heavyweight-crew-tee-019",
+      "lilac-heavyweight-graphic-tee-030"
+    ],
+    "upsell_products": [
+      "olive-textured-resort-set-119",
+      "charcoal-embroidered-a-line-kurta-121",
+      "navy-boxy-quilted-jacket-101",
+      "powder-blue-matching-lounge-set-116",
+      "lilac-soft-tailored-resort-set-113"
+    ],
+    "seasonal_products": [
+      "maroon-premium-canvas-tote-149",
+      "black-statement-minimal-cap-139",
+      "mustard-statement-canvas-tote-143",
+      "lilac-utility-utility-jogger-064",
+      "indigo-everyday-leather-belt-142"
+    ]
+  },
+  "ivory-boxy-oversized-tee-033": {
+    "product_title": "Ivory Boxy Oversized Tee",
+    "category": "t-shirts",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "charcoal-premium-denim-jacket-102",
+      "powder-blue-ripstop-cargo-pant-063",
+      "charcoal-rigid-slim-jeans-041",
+      "maroon-boxy-quilted-jacket-107",
+      "olive-rigid-slim-jeans-046"
+    ],
+    "similar_products": [
+      "powder-blue-air-knit-crew-tee-018",
+      "lilac-heavyweight-graphic-tee-030",
+      "white-heavyweight-crew-tee-019",
+      "indigo-boxy-graphic-tee-017",
+      "indigo-air-knit-rib-tee-020"
+    ],
+    "upsell_products": [
+      "ecru-ripstop-parachute-cargo-065",
+      "lilac-utility-cargo-pant-069",
+      "ivory-street-utility-jogger-067",
+      "navy-ripstop-parachute-cargo-066",
+      "powder-blue-campus-pullover-hoodie-087"
+    ],
+    "seasonal_products": [
+      "chocolate-ripstop-cargo-pant-068",
+      "stone-statement-leather-belt-147",
+      "lilac-oversized-parachute-cargo-062",
+      "maroon-premium-canvas-tote-149",
+      "maroon-statement-leather-belt-140"
+    ]
+  },
+  "ecru-vintage-wash-rib-tee-034": {
+    "product_title": "Ecru Vintage-Wash Rib Tee",
+    "category": "t-shirts",
+    "style_cluster": "discount_only_buyer",
+    "complementary_products": [
+      "blush-rigid-slim-jeans-038",
+      "lilac-street-cargo-pant-061",
+      "olive-rigid-slim-jeans-046",
+      "navy-boxy-quilted-jacket-101",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "mustard-heavyweight-oversized-tee-031",
+      "powder-blue-air-knit-crew-tee-018",
+      "white-heavyweight-crew-tee-019",
+      "olive-vintage-wash-graphic-tee-032",
+      "lilac-heavyweight-graphic-tee-030"
+    ],
+    "upsell_products": [
+      "mustard-heavyweight-oversized-tee-031",
+      "olive-vintage-wash-graphic-tee-032",
+      "lilac-heavyweight-graphic-tee-030",
+      "white-heavyweight-crew-tee-019",
+      "powder-blue-air-knit-crew-tee-018"
+    ],
+    "seasonal_products": [
+      "ivory-everyday-minimal-cap-145",
+      "powder-blue-ripstop-cargo-pant-063",
+      "ecru-everyday-silk-scarf-144",
+      "mustard-gift-ready-leather-belt-141",
+      "ivory-street-utility-jogger-067"
+    ]
+  },
+  "powder-blue-rigid-wide-leg-jeans-035": {
+    "product_title": "Powder Blue Rigid Wide-Leg Jeans",
+    "category": "jeans",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "blush-air-knit-crew-tee-027",
+      "lilac-soft-wash-oxford-shirt-007",
+      "powder-blue-campus-pullover-hoodie-087",
+      "mustard-heavyweight-oversized-tee-031",
+      "ecru-vintage-wash-rib-tee-034"
+    ],
+    "similar_products": [
+      "navy-rigid-barrel-jeans-045",
+      "white-washed-straight-jeans-039",
+      "charcoal-rigid-slim-jeans-041",
+      "maroon-washed-straight-jeans-043",
+      "blush-rigid-wide-leg-jeans-047"
+    ],
+    "upsell_products": [
+      "charcoal-premium-denim-jacket-102",
+      "maroon-boxy-quilted-jacket-107",
+      "chocolate-premium-quilted-jacket-105",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "blush-cloud-fleece-zip-hoodie-098"
+    ],
+    "seasonal_products": [
+      "powder-blue-oversized-pullover-hoodie-093",
+      "black-campus-fleece-hoodie-095",
+      "charcoal-campus-zip-hoodie-094",
+      "ivory-oversized-fleece-hoodie-089",
+      "powder-blue-layered-shacket-106"
+    ]
+  },
+  "powder-blue-soft-stretch-slim-jeans-036": {
+    "product_title": "Powder Blue Soft-Stretch Slim Jeans",
+    "category": "jeans",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "stone-relaxed-linen-shirt-006",
+      "powder-blue-campus-pullover-hoodie-087",
+      "white-air-knit-rib-tee-029",
+      "lilac-soft-wash-oxford-shirt-007",
+      "blush-cloud-fleece-zip-hoodie-098"
+    ],
+    "similar_products": [
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "olive-rigid-slim-jeans-046",
+      "lilac-washed-straight-jeans-044",
+      "blush-rigid-slim-jeans-038"
+    ],
+    "upsell_products": [
+      "olive-festive-a-line-kurta-127",
+      "olive-fluid-pleated-trouser-050",
+      "navy-boxy-quilted-jacket-101",
+      "indigo-satin-shirt-dress-086",
+      "blush-rigid-slim-jeans-038"
+    ],
+    "seasonal_products": [
+      "ivory-oversized-fleece-hoodie-089",
+      "indigo-premium-quilted-jacket-108",
+      "powder-blue-campus-pullover-hoodie-087",
+      "chocolate-premium-quilted-jacket-105",
+      "indigo-layered-shacket-100"
+    ]
+  },
+  "lilac-washed-barrel-jeans-037": {
+    "product_title": "Lilac Washed Barrel Jeans",
+    "category": "jeans",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "lilac-soft-wash-oxford-shirt-007",
+      "indigo-relaxed-oxford-shirt-014",
+      "ivory-boxy-oversized-tee-033",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "mustard-heavyweight-oversized-tee-031"
+    ],
+    "similar_products": [
+      "blush-rigid-slim-jeans-038",
+      "olive-rigid-slim-jeans-046",
+      "charcoal-rigid-slim-jeans-041",
+      "maroon-washed-straight-jeans-043",
+      "white-washed-straight-jeans-039"
+    ],
+    "upsell_products": [
+      "ivory-silk-blend-a-line-kurta-132",
+      "lilac-soft-tailored-resort-set-113",
+      "chocolate-premium-quilted-jacket-105",
+      "ecru-satin-wrap-dress-079",
+      "indigo-satin-shirt-dress-086"
+    ],
+    "seasonal_products": [
+      "indigo-layered-shacket-100",
+      "white-premium-denim-jacket-104",
+      "powder-blue-campus-pullover-hoodie-087",
+      "powder-blue-layered-shacket-106",
+      "lilac-cloud-fleece-zip-hoodie-091"
+    ]
+  },
+  "blush-rigid-slim-jeans-038": {
+    "product_title": "Blush Rigid Slim Jeans",
+    "category": "jeans",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "blush-boxy-oversized-tee-023",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "black-air-knit-oversized-tee-021",
+      "mustard-soft-wash-resort-shirt-008",
+      "ivory-relaxed-resort-shirt-010"
+    ],
+    "similar_products": [
+      "maroon-washed-straight-jeans-043",
+      "blush-rigid-wide-leg-jeans-047",
+      "indigo-soft-stretch-straight-jeans-040",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "charcoal-rigid-slim-jeans-041"
+    ],
+    "upsell_products": [
+      "ivory-silk-blend-a-line-kurta-132",
+      "lilac-soft-tailored-resort-set-113",
+      "charcoal-festive-a-line-kurta-123",
+      "indigo-soft-stretch-straight-jeans-040",
+      "chocolate-matching-lounge-set-112"
+    ],
+    "seasonal_products": [
+      "indigo-premium-quilted-jacket-108",
+      "maroon-boxy-quilted-jacket-107",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "sage-heavyweight-fleece-hoodie-092",
+      "charcoal-premium-denim-jacket-102"
+    ]
+  },
+  "white-washed-straight-jeans-039": {
+    "product_title": "White Washed Straight Jeans",
+    "category": "jeans",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "powder-blue-oversized-pullover-hoodie-093",
+      "black-air-knit-oversized-tee-021",
+      "indigo-boxy-graphic-tee-017",
+      "white-air-knit-rib-tee-029",
+      "ivory-relaxed-resort-shirt-010"
+    ],
+    "similar_products": [
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "maroon-washed-straight-jeans-043",
+      "blush-rigid-wide-leg-jeans-047",
+      "navy-rigid-barrel-jeans-045",
+      "olive-rigid-slim-jeans-046"
+    ],
+    "upsell_products": [
+      "blush-rigid-wide-leg-jeans-047",
+      "charcoal-premium-denim-jacket-102",
+      "maroon-boxy-quilted-jacket-107",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "chocolate-premium-quilted-jacket-105"
+    ],
+    "seasonal_products": [
+      "sage-heavyweight-fleece-hoodie-092",
+      "powder-blue-campus-pullover-hoodie-087",
+      "black-campus-fleece-hoodie-095",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "maroon-boxy-quilted-jacket-107"
+    ]
+  },
+  "indigo-soft-stretch-straight-jeans-040": {
+    "product_title": "Indigo Soft-Stretch Straight Jeans",
+    "category": "jeans",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "blush-boxy-oversized-tee-023",
+      "lilac-everyday-linen-shirt-016",
+      "powder-blue-relaxed-poplin-shirt-015",
+      "blush-air-knit-crew-tee-027",
+      "ecru-heavyweight-rib-tee-025"
+    ],
+    "similar_products": [
+      "white-washed-straight-jeans-039",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "blush-rigid-slim-jeans-038",
+      "navy-rigid-barrel-jeans-045",
+      "lilac-washed-barrel-jeans-037"
+    ],
+    "upsell_products": [
+      "navy-embroidered-palazzo-set-126",
+      "indigo-satin-shirt-dress-086",
+      "indigo-matching-co-ord-set-109",
+      "powder-blue-matching-lounge-set-116",
+      "stone-embroidered-palazzo-set-137"
+    ],
+    "seasonal_products": [
+      "black-campus-fleece-hoodie-095",
+      "white-premium-denim-jacket-104",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "charcoal-campus-zip-hoodie-094",
+      "powder-blue-oversized-pullover-hoodie-090"
+    ]
+  },
+  "charcoal-rigid-slim-jeans-041": {
+    "product_title": "Charcoal Rigid Slim Jeans",
+    "category": "jeans",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "black-air-knit-oversized-tee-021",
+      "lilac-heavyweight-graphic-tee-030",
+      "white-heavyweight-crew-tee-019",
+      "ivory-boxy-oversized-tee-022",
+      "maroon-heavyweight-crew-tee-026"
+    ],
+    "similar_products": [
+      "white-washed-straight-jeans-039",
+      "olive-rigid-slim-jeans-046",
+      "blush-rigid-wide-leg-jeans-047",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "navy-rigid-barrel-jeans-045"
+    ],
+    "upsell_products": [
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "navy-rigid-barrel-jeans-045",
+      "maroon-boxy-quilted-jacket-107",
+      "chocolate-premium-quilted-jacket-105",
+      "blush-rigid-wide-leg-jeans-047"
+    ],
+    "seasonal_products": [
+      "chocolate-premium-quilted-jacket-105",
+      "blush-premium-shacket-103",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "navy-boxy-quilted-jacket-101",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ]
+  },
+  "mustard-rigid-barrel-jeans-042": {
+    "product_title": "Mustard Rigid Barrel Jeans",
+    "category": "jeans",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "black-everyday-linen-shirt-003",
+      "olive-relaxed-oxford-shirt-009",
+      "stone-relaxed-linen-shirt-006",
+      "indigo-air-knit-rib-tee-020",
+      "sage-heavyweight-fleece-hoodie-092"
+    ],
+    "similar_products": [
+      "maroon-washed-straight-jeans-043",
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "navy-rigid-barrel-jeans-045",
+      "charcoal-rigid-slim-jeans-041",
+      "powder-blue-soft-stretch-slim-jeans-036"
+    ],
+    "upsell_products": [
+      "powder-blue-layered-shacket-106",
+      "lilac-washed-barrel-jeans-037",
+      "white-premium-denim-jacket-104",
+      "indigo-premium-quilted-jacket-108"
+    ],
+    "seasonal_products": [
+      "chocolate-premium-quilted-jacket-105",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "powder-blue-campus-pullover-hoodie-087",
+      "indigo-layered-shacket-100",
+      "powder-blue-oversized-pullover-hoodie-090"
+    ]
+  },
+  "maroon-washed-straight-jeans-043": {
+    "product_title": "Maroon Washed Straight Jeans",
+    "category": "jeans",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "mustard-soft-wash-resort-shirt-008",
+      "ivory-oversized-fleece-hoodie-089",
+      "olive-relaxed-oxford-shirt-009",
+      "olive-vintage-wash-graphic-tee-032",
+      "ivory-relaxed-resort-shirt-010"
+    ],
+    "similar_products": [
+      "charcoal-rigid-slim-jeans-041",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "olive-rigid-slim-jeans-046",
+      "blush-rigid-wide-leg-jeans-047",
+      "white-washed-straight-jeans-039"
+    ],
+    "upsell_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "chocolate-premium-quilted-jacket-105",
+      "olive-rigid-slim-jeans-046",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "navy-rigid-barrel-jeans-045"
+    ],
+    "seasonal_products": [
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "navy-boxy-quilted-jacket-101",
+      "maroon-boxy-quilted-jacket-107",
+      "olive-oversized-zip-hoodie-088",
+      "blush-premium-shacket-103"
+    ]
+  },
+  "lilac-washed-straight-jeans-044": {
+    "product_title": "Lilac Washed Straight Jeans",
+    "category": "jeans",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "powder-blue-relaxed-poplin-shirt-015",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "stone-soft-wash-resort-shirt-012",
+      "lilac-relaxed-resort-shirt-002",
+      "sage-heavyweight-fleece-hoodie-092"
+    ],
+    "similar_products": [
+      "maroon-washed-straight-jeans-043",
+      "indigo-soft-stretch-straight-jeans-040",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "blush-rigid-slim-jeans-038",
+      "powder-blue-rigid-wide-leg-jeans-035"
+    ],
+    "upsell_products": [
+      "olive-festive-a-line-kurta-127",
+      "lilac-soft-tailored-resort-set-113",
+      "navy-boxy-quilted-jacket-101",
+      "chocolate-matching-lounge-set-112",
+      "olive-textured-resort-set-119"
+    ],
+    "seasonal_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "blush-premium-shacket-103",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "charcoal-campus-zip-hoodie-094",
+      "black-campus-fleece-hoodie-095"
+    ]
+  },
+  "navy-rigid-barrel-jeans-045": {
+    "product_title": "Navy Rigid Barrel Jeans",
+    "category": "jeans",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "maroon-heavyweight-crew-tee-026",
+      "blush-tailored-linen-shirt-001",
+      "stone-soft-wash-resort-shirt-012",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "indigo-relaxed-oxford-shirt-014"
+    ],
+    "similar_products": [
+      "charcoal-rigid-slim-jeans-041",
+      "blush-rigid-wide-leg-jeans-047",
+      "maroon-washed-straight-jeans-043",
+      "white-washed-straight-jeans-039",
+      "powder-blue-rigid-wide-leg-jeans-035"
+    ],
+    "upsell_products": [
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "blush-rigid-wide-leg-jeans-047",
+      "charcoal-premium-denim-jacket-102",
+      "chocolate-premium-quilted-jacket-105"
+    ],
+    "seasonal_products": [
+      "ecru-campus-pullover-hoodie-097",
+      "navy-boxy-quilted-jacket-101",
+      "indigo-layered-shacket-100",
+      "chocolate-premium-quilted-jacket-105",
+      "indigo-premium-quilted-jacket-108"
+    ]
+  },
+  "olive-rigid-slim-jeans-046": {
+    "product_title": "Olive Rigid Slim Jeans",
+    "category": "jeans",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "sage-heavyweight-fleece-hoodie-092",
+      "blush-air-knit-crew-tee-028",
+      "mustard-soft-wash-resort-shirt-008",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "indigo-relaxed-oxford-shirt-014"
+    ],
+    "similar_products": [
+      "navy-rigid-barrel-jeans-045",
+      "charcoal-rigid-slim-jeans-041",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "blush-rigid-wide-leg-jeans-047",
+      "maroon-washed-straight-jeans-043"
+    ],
+    "upsell_products": [
+      "charcoal-weather-ready-quilted-jacket-099",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "white-washed-straight-jeans-039",
+      "chocolate-premium-quilted-jacket-105",
+      "charcoal-premium-denim-jacket-102"
+    ],
+    "seasonal_products": [
+      "sage-heavyweight-fleece-hoodie-092",
+      "indigo-layered-shacket-100",
+      "maroon-boxy-quilted-jacket-107",
+      "charcoal-premium-denim-jacket-102",
+      "white-premium-denim-jacket-104"
+    ]
+  },
+  "blush-rigid-wide-leg-jeans-047": {
+    "product_title": "Blush Rigid Wide-Leg Jeans",
+    "category": "jeans",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "maroon-heavyweight-crew-tee-026",
+      "ecru-heavyweight-rib-tee-025",
+      "lilac-relaxed-resort-shirt-002",
+      "olive-oversized-zip-hoodie-088",
+      "powder-blue-relaxed-poplin-shirt-015"
+    ],
+    "similar_products": [
+      "maroon-washed-straight-jeans-043",
+      "olive-rigid-slim-jeans-046",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "navy-rigid-barrel-jeans-045",
+      "white-washed-straight-jeans-039"
+    ],
+    "upsell_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "chocolate-premium-quilted-jacket-105",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "charcoal-premium-denim-jacket-102"
+    ],
+    "seasonal_products": [
+      "indigo-premium-quilted-jacket-108",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "chocolate-premium-quilted-jacket-105",
+      "powder-blue-campus-pullover-hoodie-087",
+      "navy-boxy-quilted-jacket-101"
+    ]
+  },
+  "powder-blue-clean-fit-wide-leg-jeans-048": {
+    "product_title": "Powder Blue Clean-Fit Wide-Leg Jeans",
+    "category": "jeans",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "olive-vintage-wash-graphic-tee-032",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "blush-air-knit-crew-tee-028",
+      "ivory-oversized-fleece-hoodie-089",
+      "lilac-everyday-linen-shirt-016"
+    ],
+    "similar_products": [
+      "navy-rigid-barrel-jeans-045",
+      "lilac-washed-straight-jeans-044",
+      "mustard-rigid-barrel-jeans-042",
+      "indigo-soft-stretch-straight-jeans-040",
+      "white-washed-straight-jeans-039"
+    ],
+    "upsell_products": [
+      "mustard-rigid-barrel-jeans-042",
+      "indigo-relaxed-oxford-shirt-014",
+      "white-premium-denim-jacket-104",
+      "powder-blue-layered-shacket-106",
+      "indigo-premium-quilted-jacket-108"
+    ],
+    "seasonal_products": [
+      "chocolate-premium-quilted-jacket-105",
+      "sage-heavyweight-fleece-hoodie-092",
+      "charcoal-campus-zip-hoodie-094",
+      "indigo-premium-quilted-jacket-108",
+      "maroon-boxy-quilted-jacket-107"
+    ]
+  },
+  "ecru-office-ready-pleated-trouser-049": {
+    "product_title": "Ecru Office-Ready Pleated Trouser",
+    "category": "trousers",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "black-statement-minimal-cap-139",
+      "stone-statement-leather-belt-147",
+      "indigo-relaxed-oxford-shirt-014",
+      "blush-tailored-linen-shirt-001",
+      "mustard-gift-ready-leather-belt-141"
+    ],
+    "similar_products": [
+      "sage-fluid-pleated-trouser-058",
+      "navy-fluid-cigarette-trouser-054",
+      "powder-blue-tailored-work-trouser-057",
+      "lilac-tailored-cigarette-trouser-056"
+    ],
+    "upsell_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "charcoal-embroidered-a-line-kurta-121",
+      "charcoal-festive-a-line-kurta-123",
+      "ecru-satin-wrap-dress-079",
+      "ivory-hand-block-palazzo-set-135"
+    ],
+    "seasonal_products": [
+      "ivory-relaxed-resort-shirt-010",
+      "olive-relaxed-oxford-shirt-009",
+      "indigo-everyday-poplin-shirt-013",
+      "indigo-relaxed-oxford-shirt-014",
+      "maroon-boxy-quilted-jacket-107"
+    ]
+  },
+  "olive-fluid-pleated-trouser-050": {
+    "product_title": "Olive Fluid Pleated Trouser",
+    "category": "trousers",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "ivory-relaxed-resort-shirt-010",
+      "mustard-statement-canvas-tote-143",
+      "maroon-boxy-quilted-jacket-107",
+      "chocolate-premium-quilted-jacket-105",
+      "black-everyday-linen-shirt-003"
+    ],
+    "similar_products": [
+      "navy-fluid-cigarette-trouser-054",
+      "powder-blue-tailored-work-trouser-057",
+      "indigo-tailored-cigarette-trouser-060",
+      "chocolate-minimal-pleated-trouser-052",
+      "lilac-tailored-cigarette-trouser-056"
+    ],
+    "upsell_products": [
+      "ivory-silk-blend-a-line-kurta-132",
+      "lilac-washed-straight-jeans-044",
+      "ivory-festive-a-line-kurta-124",
+      "ecru-satin-wrap-dress-079",
+      "indigo-satin-shirt-dress-086"
+    ],
+    "seasonal_products": [
+      "indigo-relaxed-oxford-shirt-014",
+      "lilac-soft-wash-oxford-shirt-007",
+      "lilac-everyday-linen-shirt-016",
+      "indigo-everyday-poplin-shirt-013",
+      "mustard-soft-wash-resort-shirt-008"
+    ]
+  },
+  "sage-office-ready-cigarette-trouser-051": {
+    "product_title": "Sage Office-Ready Cigarette Trouser",
+    "category": "trousers",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "sage-tailored-poplin-shirt-005",
+      "indigo-relaxed-oxford-shirt-014",
+      "black-statement-minimal-cap-139",
+      "indigo-everyday-poplin-shirt-013",
+      "olive-relaxed-oxford-shirt-009"
+    ],
+    "similar_products": [
+      "mustard-minimal-pleated-trouser-055",
+      "chocolate-minimal-pleated-trouser-052",
+      "sage-fluid-pleated-trouser-058",
+      "white-office-ready-pleated-trouser-053",
+      "navy-fluid-cigarette-trouser-054"
+    ],
+    "upsell_products": [
+      "charcoal-festive-a-line-kurta-123",
+      "mustard-gift-ready-leather-belt-141",
+      "chocolate-minimal-pleated-trouser-052",
+      "olive-festive-a-line-kurta-127",
+      "ivory-festive-a-line-kurta-124"
+    ],
+    "seasonal_products": [
+      "lilac-relaxed-resort-shirt-002",
+      "navy-boxy-quilted-jacket-101",
+      "lilac-soft-wash-oxford-shirt-007",
+      "charcoal-premium-denim-jacket-102",
+      "blush-tailored-linen-shirt-001"
+    ]
+  },
+  "chocolate-minimal-pleated-trouser-052": {
+    "product_title": "Chocolate Minimal Pleated Trouser",
+    "category": "trousers",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "chocolate-premium-quilted-jacket-105",
+      "black-everyday-linen-shirt-003",
+      "indigo-everyday-leather-belt-142",
+      "mustard-statement-canvas-tote-143",
+      "maroon-statement-leather-belt-140"
+    ],
+    "similar_products": [
+      "white-office-ready-pleated-trouser-053",
+      "olive-fluid-pleated-trouser-050",
+      "sage-office-ready-cigarette-trouser-051",
+      "lilac-tailored-cigarette-trouser-056",
+      "sage-fluid-pleated-trouser-058"
+    ],
+    "upsell_products": [
+      "ivory-silk-blend-a-line-kurta-132",
+      "indigo-layered-shacket-100",
+      "powder-blue-matching-lounge-set-116",
+      "indigo-soft-stretch-straight-jeans-040",
+      "charcoal-festive-a-line-kurta-123"
+    ],
+    "seasonal_products": [
+      "indigo-layered-shacket-100",
+      "blush-premium-shacket-103",
+      "ivory-relaxed-resort-shirt-010",
+      "chocolate-premium-quilted-jacket-105",
+      "ecru-soft-wash-poplin-shirt-004"
+    ]
+  },
+  "white-office-ready-pleated-trouser-053": {
+    "product_title": "White Office-Ready Pleated Trouser",
+    "category": "trousers",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "lilac-gift-ready-canvas-tote-150",
+      "stone-statement-leather-belt-147",
+      "indigo-layered-shacket-100",
+      "stone-soft-wash-resort-shirt-012",
+      "ivory-everyday-minimal-cap-145"
+    ],
+    "similar_products": [
+      "sage-fluid-pleated-trouser-058",
+      "sage-office-ready-cigarette-trouser-051",
+      "powder-blue-tailored-work-trouser-057",
+      "olive-fluid-pleated-trouser-050",
+      "navy-fluid-cigarette-trouser-054"
+    ],
+    "upsell_products": [
+      "chocolate-matching-lounge-set-112",
+      "indigo-satin-shirt-dress-086",
+      "ivory-silk-blend-a-line-kurta-132",
+      "mustard-gift-ready-leather-belt-141",
+      "charcoal-festive-a-line-kurta-123"
+    ],
+    "seasonal_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "indigo-layered-shacket-100",
+      "lilac-everyday-linen-shirt-016",
+      "blush-relaxed-resort-shirt-011",
+      "blush-premium-shacket-103"
+    ]
+  },
+  "navy-fluid-cigarette-trouser-054": {
+    "product_title": "Navy Fluid Cigarette Trouser",
+    "category": "trousers",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "indigo-layered-shacket-100",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "ecru-soft-wash-poplin-shirt-004",
+      "black-statement-minimal-cap-139",
+      "blush-premium-shacket-103"
+    ],
+    "similar_products": [
+      "sage-fluid-pleated-trouser-058",
+      "powder-blue-tailored-work-trouser-057",
+      "ecru-office-ready-pleated-trouser-049",
+      "lilac-tailored-cigarette-trouser-056"
+    ],
+    "upsell_products": [
+      "charcoal-festive-a-line-kurta-123",
+      "ivory-silk-blend-a-line-kurta-132",
+      "sage-fluid-pleated-trouser-058",
+      "navy-festive-palazzo-set-134",
+      "maroon-boxy-quilted-jacket-107"
+    ],
+    "seasonal_products": [
+      "stone-relaxed-linen-shirt-006",
+      "ecru-soft-wash-poplin-shirt-004",
+      "black-everyday-linen-shirt-003",
+      "olive-relaxed-oxford-shirt-009",
+      "lilac-soft-wash-oxford-shirt-007"
+    ]
+  },
+  "mustard-minimal-pleated-trouser-055": {
+    "product_title": "Mustard Minimal Pleated Trouser",
+    "category": "trousers",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "charcoal-weather-ready-quilted-jacket-099",
+      "navy-boxy-quilted-jacket-101",
+      "blush-relaxed-resort-shirt-011",
+      "ecru-soft-wash-poplin-shirt-004",
+      "powder-blue-layered-shacket-106"
+    ],
+    "similar_products": [
+      "indigo-tailored-cigarette-trouser-060",
+      "lilac-tailored-cigarette-trouser-056",
+      "sage-fluid-pleated-trouser-058",
+      "sage-office-ready-cigarette-trouser-051",
+      "olive-fluid-pleated-trouser-050"
+    ],
+    "upsell_products": [
+      "powder-blue-layered-shacket-106",
+      "indigo-relaxed-oxford-shirt-014",
+      "indigo-tailored-cigarette-trouser-060",
+      "lilac-soft-wash-oxford-shirt-007",
+      "mustard-rigid-barrel-jeans-042"
+    ],
+    "seasonal_products": [
+      "lilac-relaxed-resort-shirt-002",
+      "black-everyday-linen-shirt-003",
+      "olive-relaxed-oxford-shirt-009",
+      "indigo-relaxed-oxford-shirt-014",
+      "stone-soft-wash-resort-shirt-012"
+    ]
+  },
+  "lilac-tailored-cigarette-trouser-056": {
+    "product_title": "Lilac Tailored Cigarette Trouser",
+    "category": "trousers",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "indigo-relaxed-oxford-shirt-014",
+      "lilac-gift-ready-canvas-tote-150",
+      "white-premium-denim-jacket-104",
+      "indigo-premium-quilted-jacket-108",
+      "ivory-everyday-minimal-cap-145"
+    ],
+    "similar_products": [
+      "navy-fluid-cigarette-trouser-054",
+      "powder-blue-tailored-work-trouser-057",
+      "sage-fluid-pleated-trouser-058",
+      "ecru-office-ready-pleated-trouser-049"
+    ],
+    "upsell_products": [
+      "navy-festive-palazzo-set-134",
+      "ivory-festive-a-line-kurta-124",
+      "olive-festive-a-line-kurta-127",
+      "sage-festive-palazzo-set-128",
+      "ivory-hand-block-palazzo-set-135"
+    ],
+    "seasonal_products": [
+      "mustard-soft-wash-resort-shirt-008",
+      "blush-relaxed-resort-shirt-011",
+      "stone-relaxed-linen-shirt-006",
+      "maroon-boxy-quilted-jacket-107",
+      "blush-tailored-linen-shirt-001"
+    ]
+  },
+  "powder-blue-tailored-work-trouser-057": {
+    "product_title": "Powder Blue Tailored Work Trouser",
+    "category": "trousers",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "blush-relaxed-resort-shirt-011",
+      "mustard-gift-ready-leather-belt-141",
+      "indigo-premium-quilted-jacket-108",
+      "ecru-everyday-silk-scarf-144",
+      "maroon-statement-leather-belt-140"
+    ],
+    "similar_products": [
+      "ecru-office-ready-pleated-trouser-049",
+      "navy-fluid-cigarette-trouser-054",
+      "sage-fluid-pleated-trouser-058",
+      "lilac-tailored-cigarette-trouser-056"
+    ],
+    "upsell_products": [
+      "blush-relaxed-resort-shirt-011",
+      "navy-fluid-cigarette-trouser-054",
+      "stone-soft-wash-resort-shirt-012",
+      "ecru-office-ready-pleated-trouser-049",
+      "black-everyday-linen-shirt-003"
+    ],
+    "seasonal_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "black-everyday-linen-shirt-003",
+      "lilac-relaxed-resort-shirt-002",
+      "sage-tailored-poplin-shirt-005",
+      "powder-blue-layered-shacket-106"
+    ]
+  },
+  "sage-fluid-pleated-trouser-058": {
+    "product_title": "Sage Fluid Pleated Trouser",
+    "category": "trousers",
+    "style_cluster": "formal_wear_buyer",
+    "complementary_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "indigo-relaxed-oxford-shirt-014",
+      "white-premium-denim-jacket-104",
+      "ivory-everyday-minimal-cap-145",
+      "navy-boxy-quilted-jacket-101"
+    ],
+    "similar_products": [
+      "navy-fluid-cigarette-trouser-054",
+      "powder-blue-tailored-work-trouser-057",
+      "ecru-office-ready-pleated-trouser-049",
+      "lilac-tailored-cigarette-trouser-056"
+    ],
+    "upsell_products": [
+      "lilac-festive-kurta-set-130",
+      "maroon-hand-block-festive-jacket-136",
+      "navy-boxy-quilted-jacket-101",
+      "navy-silk-blend-a-line-kurta-122",
+      "ivory-silk-blend-a-line-kurta-132"
+    ],
+    "seasonal_products": [
+      "white-premium-denim-jacket-104",
+      "indigo-layered-shacket-100",
+      "lilac-relaxed-resort-shirt-002",
+      "powder-blue-layered-shacket-106",
+      "lilac-soft-wash-oxford-shirt-007"
+    ]
+  },
+  "mustard-minimal-pleated-trouser-059": {
+    "product_title": "Mustard Minimal Pleated Trouser",
+    "category": "trousers",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "indigo-everyday-poplin-shirt-013",
+      "powder-blue-layered-shacket-106",
+      "charcoal-premium-denim-jacket-102",
+      "ecru-soft-wash-poplin-shirt-004",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "indigo-tailored-cigarette-trouser-060",
+      "chocolate-minimal-pleated-trouser-052",
+      "lilac-tailored-cigarette-trouser-056",
+      "ecru-office-ready-pleated-trouser-049",
+      "olive-fluid-pleated-trouser-050"
+    ],
+    "upsell_products": [
+      "lilac-washed-barrel-jeans-037",
+      "indigo-premium-quilted-jacket-108",
+      "indigo-tailored-cigarette-trouser-060",
+      "mustard-minimal-pleated-trouser-055",
+      "lilac-soft-wash-oxford-shirt-007"
+    ],
+    "seasonal_products": [
+      "stone-soft-wash-resort-shirt-012",
+      "indigo-everyday-poplin-shirt-013",
+      "lilac-relaxed-resort-shirt-002",
+      "lilac-everyday-linen-shirt-016",
+      "mustard-soft-wash-resort-shirt-008"
+    ]
+  },
+  "indigo-tailored-cigarette-trouser-060": {
+    "product_title": "Indigo Tailored Cigarette Trouser",
+    "category": "trousers",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "maroon-statement-leather-belt-140",
+      "stone-statement-leather-belt-147",
+      "indigo-relaxed-oxford-shirt-014",
+      "powder-blue-layered-shacket-106",
+      "ecru-everyday-silk-scarf-144"
+    ],
+    "similar_products": [
+      "ecru-office-ready-pleated-trouser-049",
+      "mustard-minimal-pleated-trouser-055",
+      "olive-fluid-pleated-trouser-050",
+      "mustard-minimal-pleated-trouser-059",
+      "powder-blue-tailored-work-trouser-057"
+    ],
+    "upsell_products": [
+      "indigo-relaxed-oxford-shirt-014",
+      "mustard-rigid-barrel-jeans-042",
+      "lilac-washed-barrel-jeans-037",
+      "powder-blue-layered-shacket-106",
+      "white-premium-denim-jacket-104"
+    ],
+    "seasonal_products": [
+      "lilac-soft-wash-oxford-shirt-007",
+      "powder-blue-relaxed-poplin-shirt-015",
+      "ecru-soft-wash-poplin-shirt-004",
+      "blush-premium-shacket-103",
+      "indigo-layered-shacket-100"
+    ]
+  },
+  "lilac-street-cargo-pant-061": {
+    "product_title": "Lilac Street Cargo Pant",
+    "category": "cargos",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "charcoal-premium-denim-jacket-102",
+      "powder-blue-layered-shacket-106",
+      "chocolate-premium-quilted-jacket-105",
+      "indigo-premium-quilted-jacket-108",
+      "white-heavyweight-crew-tee-019"
+    ],
+    "similar_products": [
+      "lilac-oversized-parachute-cargo-062",
+      "powder-blue-ripstop-cargo-pant-063",
+      "chocolate-ripstop-cargo-pant-068",
+      "lilac-utility-cargo-pant-069",
+      "olive-utility-cargo-pant-070"
+    ],
+    "upsell_products": [
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "charcoal-premium-denim-jacket-102",
+      "sage-heavyweight-fleece-hoodie-092",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "white-washed-straight-jeans-039"
+    ],
+    "seasonal_products": [
+      "maroon-heavyweight-crew-tee-026",
+      "ecru-campus-pullover-hoodie-097",
+      "blush-air-knit-crew-tee-027",
+      "lilac-heavyweight-graphic-tee-030",
+      "indigo-air-knit-rib-tee-020"
+    ]
+  },
+  "lilac-oversized-parachute-cargo-062": {
+    "product_title": "Lilac Oversized Parachute Cargo",
+    "category": "cargos",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "chocolate-premium-quilted-jacket-105",
+      "blush-premium-shacket-103",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "white-heavyweight-crew-tee-019",
+      "maroon-boxy-quilted-jacket-107"
+    ],
+    "similar_products": [
+      "navy-ripstop-parachute-cargo-066",
+      "powder-blue-ripstop-cargo-pant-063",
+      "ivory-street-utility-jogger-067",
+      "ecru-ripstop-parachute-cargo-065",
+      "lilac-utility-cargo-pant-069"
+    ],
+    "upsell_products": [
+      "charcoal-embroidered-a-line-kurta-121",
+      "chocolate-premium-quilted-jacket-105",
+      "indigo-layered-shacket-100",
+      "indigo-matching-co-ord-set-109",
+      "navy-festive-palazzo-set-134"
+    ],
+    "seasonal_products": [
+      "mustard-heavyweight-oversized-tee-031",
+      "ivory-oversized-fleece-hoodie-089",
+      "black-air-knit-oversized-tee-021",
+      "white-air-knit-rib-tee-029",
+      "ivory-boxy-oversized-tee-033"
+    ]
+  },
+  "powder-blue-ripstop-cargo-pant-063": {
+    "product_title": "Powder Blue Ripstop Cargo Pant",
+    "category": "cargos",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "navy-boxy-quilted-jacket-101",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "ivory-oversized-fleece-hoodie-089",
+      "chocolate-premium-quilted-jacket-105",
+      "indigo-layered-shacket-100"
+    ],
+    "similar_products": [
+      "navy-ripstop-parachute-cargo-066",
+      "ivory-street-utility-jogger-067",
+      "lilac-utility-cargo-pant-069",
+      "ecru-ripstop-parachute-cargo-065",
+      "lilac-oversized-parachute-cargo-062"
+    ],
+    "upsell_products": [
+      "navy-ripstop-parachute-cargo-066",
+      "powder-blue-campus-pullover-hoodie-087",
+      "lilac-oversized-parachute-cargo-062",
+      "ecru-ripstop-parachute-cargo-065",
+      "powder-blue-oversized-pullover-hoodie-090"
+    ],
+    "seasonal_products": [
+      "white-heavyweight-crew-tee-019",
+      "ecru-vintage-wash-rib-tee-034",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "indigo-boxy-graphic-tee-017"
+    ]
+  },
+  "lilac-utility-utility-jogger-064": {
+    "product_title": "Lilac Utility Utility Jogger",
+    "category": "cargos",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "maroon-heavyweight-crew-tee-026",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "indigo-boxy-graphic-tee-017",
+      "olive-vintage-wash-graphic-tee-032",
+      "white-heavyweight-crew-tee-019"
+    ],
+    "similar_products": [
+      "lilac-street-cargo-pant-061",
+      "lilac-oversized-parachute-cargo-062",
+      "olive-utility-cargo-pant-070",
+      "chocolate-ripstop-cargo-pant-068",
+      "navy-ripstop-parachute-cargo-066"
+    ],
+    "upsell_products": [
+      "charcoal-premium-denim-jacket-102",
+      "ecru-campus-pullover-hoodie-097",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "white-washed-straight-jeans-039"
+    ],
+    "seasonal_products": [
+      "white-air-knit-rib-tee-029",
+      "olive-oversized-zip-hoodie-088",
+      "black-air-knit-oversized-tee-021",
+      "blush-air-knit-crew-tee-028",
+      "lilac-cloud-fleece-zip-hoodie-091"
+    ]
+  },
+  "ecru-ripstop-parachute-cargo-065": {
+    "product_title": "Ecru Ripstop Parachute Cargo",
+    "category": "cargos",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "blush-boxy-oversized-tee-023",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "powder-blue-air-knit-crew-tee-018",
+      "indigo-air-knit-rib-tee-020",
+      "powder-blue-campus-pullover-hoodie-087"
+    ],
+    "similar_products": [
+      "lilac-utility-cargo-pant-069",
+      "powder-blue-ripstop-cargo-pant-063",
+      "ivory-street-utility-jogger-067",
+      "lilac-oversized-parachute-cargo-062",
+      "navy-ripstop-parachute-cargo-066"
+    ],
+    "upsell_products": [
+      "navy-ripstop-parachute-cargo-066",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "lilac-oversized-parachute-cargo-062",
+      "powder-blue-campus-pullover-hoodie-087"
+    ],
+    "seasonal_products": [
+      "olive-oversized-zip-hoodie-088",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "blush-air-knit-crew-tee-028",
+      "white-heavyweight-crew-tee-019"
+    ]
+  },
+  "navy-ripstop-parachute-cargo-066": {
+    "product_title": "Navy Ripstop Parachute Cargo",
+    "category": "cargos",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "maroon-heavyweight-crew-tee-026",
+      "navy-boxy-quilted-jacket-101",
+      "blush-air-knit-crew-tee-028",
+      "chocolate-premium-quilted-jacket-105",
+      "olive-vintage-wash-graphic-tee-032"
+    ],
+    "similar_products": [
+      "lilac-utility-cargo-pant-069",
+      "powder-blue-ripstop-cargo-pant-063",
+      "ivory-street-utility-jogger-067",
+      "lilac-oversized-parachute-cargo-062",
+      "ecru-ripstop-parachute-cargo-065"
+    ],
+    "upsell_products": [
+      "navy-festive-palazzo-set-134",
+      "navy-boxy-quilted-jacket-101",
+      "indigo-matching-co-ord-set-109",
+      "chocolate-textured-resort-set-120",
+      "chocolate-premium-quilted-jacket-105"
+    ],
+    "seasonal_products": [
+      "blush-cloud-fleece-zip-hoodie-098",
+      "mustard-heavyweight-oversized-tee-031",
+      "lilac-heavyweight-graphic-tee-030",
+      "sage-heavyweight-fleece-hoodie-092",
+      "ivory-oversized-fleece-hoodie-089"
+    ]
+  },
+  "ivory-street-utility-jogger-067": {
+    "product_title": "Ivory Street Utility Jogger",
+    "category": "cargos",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "sage-heavyweight-fleece-hoodie-092",
+      "ecru-vintage-wash-rib-tee-034",
+      "navy-heavyweight-crew-tee-024",
+      "navy-boxy-quilted-jacket-101",
+      "lilac-cloud-fleece-zip-hoodie-091"
+    ],
+    "similar_products": [
+      "lilac-oversized-parachute-cargo-062",
+      "ecru-ripstop-parachute-cargo-065",
+      "lilac-utility-cargo-pant-069",
+      "powder-blue-ripstop-cargo-pant-063",
+      "navy-ripstop-parachute-cargo-066"
+    ],
+    "upsell_products": [
+      "ecru-ripstop-parachute-cargo-065",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "lilac-oversized-parachute-cargo-062",
+      "black-campus-fleece-hoodie-095",
+      "navy-ripstop-parachute-cargo-066"
+    ],
+    "seasonal_products": [
+      "ecru-campus-pullover-hoodie-097",
+      "charcoal-campus-zip-hoodie-094",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "indigo-air-knit-rib-tee-020",
+      "mustard-cloud-fleece-pullover-hoodie-096"
+    ]
+  },
+  "chocolate-ripstop-cargo-pant-068": {
+    "product_title": "Chocolate Ripstop Cargo Pant",
+    "category": "cargos",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "charcoal-premium-denim-jacket-102",
+      "blush-air-knit-crew-tee-028",
+      "indigo-premium-quilted-jacket-108",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "blush-boxy-oversized-tee-023"
+    ],
+    "similar_products": [
+      "olive-utility-cargo-pant-070",
+      "lilac-oversized-parachute-cargo-062",
+      "lilac-street-cargo-pant-061",
+      "powder-blue-ripstop-cargo-pant-063",
+      "ivory-street-utility-jogger-067"
+    ],
+    "upsell_products": [
+      "olive-rigid-slim-jeans-046",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "navy-rigid-barrel-jeans-045",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "powder-blue-rigid-wide-leg-jeans-035"
+    ],
+    "seasonal_products": [
+      "powder-blue-air-knit-crew-tee-018",
+      "sage-heavyweight-fleece-hoodie-092",
+      "powder-blue-campus-pullover-hoodie-087",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "ivory-boxy-oversized-tee-022"
+    ]
+  },
+  "lilac-utility-cargo-pant-069": {
+    "product_title": "Lilac Utility Cargo Pant",
+    "category": "cargos",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "powder-blue-layered-shacket-106",
+      "lilac-heavyweight-graphic-tee-030",
+      "olive-vintage-wash-graphic-tee-032",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "maroon-heavyweight-crew-tee-026"
+    ],
+    "similar_products": [
+      "navy-ripstop-parachute-cargo-066",
+      "lilac-oversized-parachute-cargo-062",
+      "ivory-street-utility-jogger-067",
+      "powder-blue-ripstop-cargo-pant-063",
+      "ecru-ripstop-parachute-cargo-065"
+    ],
+    "upsell_products": [
+      "powder-blue-oversized-pullover-hoodie-090",
+      "lilac-oversized-parachute-cargo-062",
+      "navy-ripstop-parachute-cargo-066",
+      "black-campus-fleece-hoodie-095",
+      "powder-blue-ripstop-cargo-pant-063"
+    ],
+    "seasonal_products": [
+      "ecru-campus-pullover-hoodie-097",
+      "black-air-knit-oversized-tee-021",
+      "maroon-heavyweight-crew-tee-026",
+      "sage-heavyweight-fleece-hoodie-092",
+      "powder-blue-air-knit-crew-tee-018"
+    ]
+  },
+  "olive-utility-cargo-pant-070": {
+    "product_title": "Olive Utility Cargo Pant",
+    "category": "cargos",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "powder-blue-oversized-pullover-hoodie-093",
+      "blush-boxy-oversized-tee-023",
+      "sage-heavyweight-fleece-hoodie-092",
+      "white-premium-denim-jacket-104",
+      "blush-cloud-fleece-zip-hoodie-098"
+    ],
+    "similar_products": [
+      "lilac-oversized-parachute-cargo-062",
+      "lilac-utility-cargo-pant-069",
+      "lilac-utility-utility-jogger-064",
+      "chocolate-ripstop-cargo-pant-068",
+      "powder-blue-ripstop-cargo-pant-063"
+    ],
+    "upsell_products": [
+      "charcoal-weather-ready-quilted-jacket-099",
+      "blush-rigid-wide-leg-jeans-047",
+      "charcoal-premium-denim-jacket-102",
+      "white-washed-straight-jeans-039",
+      "ecru-campus-pullover-hoodie-097"
+    ],
+    "seasonal_products": [
+      "charcoal-campus-zip-hoodie-094",
+      "ivory-boxy-oversized-tee-033",
+      "blush-air-knit-crew-tee-027",
+      "olive-oversized-zip-hoodie-088",
+      "ecru-vintage-wash-rib-tee-034"
+    ]
+  },
+  "stone-satin-wrap-dress-071": {
+    "product_title": "Stone Satin Wrap Dress",
+    "category": "dresses",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "indigo-premium-quilted-jacket-108",
+      "maroon-premium-canvas-tote-149",
+      "chocolate-premium-quilted-jacket-105",
+      "navy-boxy-quilted-jacket-101",
+      "ivory-everyday-minimal-cap-145"
+    ],
+    "similar_products": [
+      "ivory-floral-wrap-dress-084",
+      "chocolate-floral-midi-dress-078",
+      "indigo-satin-shirt-dress-076",
+      "white-draped-shirt-dress-073",
+      "olive-sunset-slip-dress-072"
+    ],
+    "upsell_products": [
+      "navy-silk-blend-a-line-kurta-122",
+      "charcoal-embroidered-a-line-kurta-121",
+      "lilac-soft-tailored-co-ord-set-110",
+      "chocolate-textured-resort-set-120",
+      "ivory-floral-wrap-dress-084"
+    ],
+    "seasonal_products": [
+      "powder-blue-layered-shacket-106",
+      "mustard-gift-ready-leather-belt-141",
+      "black-statement-minimal-cap-139",
+      "white-premium-denim-jacket-104",
+      "indigo-layered-shacket-100"
+    ]
+  },
+  "olive-sunset-slip-dress-072": {
+    "product_title": "Olive Sunset Slip Dress",
+    "category": "dresses",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "blush-premium-shacket-103",
+      "white-premium-denim-jacket-104",
+      "maroon-premium-canvas-tote-149",
+      "lilac-gift-ready-canvas-tote-150",
+      "powder-blue-layered-shacket-106"
+    ],
+    "similar_products": [
+      "stone-satin-wrap-dress-071",
+      "white-draped-shirt-dress-073",
+      "chocolate-floral-midi-dress-078",
+      "ivory-floral-wrap-dress-084",
+      "indigo-satin-shirt-dress-076"
+    ],
+    "upsell_products": [
+      "maroon-hand-block-festive-jacket-136",
+      "ivory-floral-wrap-dress-084",
+      "chocolate-floral-midi-dress-078",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "lilac-textured-lounge-set-118"
+    ],
+    "seasonal_products": [
+      "blush-premium-shacket-103",
+      "mustard-statement-canvas-tote-143",
+      "mustard-gift-ready-leather-belt-141",
+      "powder-blue-premium-canvas-tote-148",
+      "black-statement-minimal-cap-139"
+    ]
+  },
+  "white-draped-shirt-dress-073": {
+    "product_title": "White Draped Shirt Dress",
+    "category": "dresses",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "chocolate-premium-quilted-jacket-105",
+      "ivory-everyday-minimal-cap-145",
+      "black-statement-minimal-cap-139",
+      "blush-premium-shacket-103",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "chocolate-floral-midi-dress-078",
+      "stone-satin-wrap-dress-071",
+      "olive-sunset-slip-dress-072",
+      "ivory-floral-wrap-dress-084",
+      "indigo-satin-shirt-dress-076"
+    ],
+    "upsell_products": [
+      "navy-silk-blend-a-line-kurta-122",
+      "lilac-soft-tailored-co-ord-set-110",
+      "lilac-relaxed-resort-shirt-002",
+      "navy-festive-palazzo-set-134",
+      "stone-satin-wrap-dress-071"
+    ],
+    "seasonal_products": [
+      "powder-blue-premium-canvas-tote-148",
+      "indigo-everyday-leather-belt-142",
+      "chocolate-premium-quilted-jacket-105",
+      "black-statement-minimal-cap-139",
+      "lilac-gift-ready-canvas-tote-150"
+    ]
+  },
+  "maroon-sunset-slip-dress-074": {
+    "product_title": "Maroon Sunset Slip Dress",
+    "category": "dresses",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "blush-premium-shacket-103",
+      "indigo-everyday-leather-belt-142",
+      "white-premium-denim-jacket-104",
+      "maroon-boxy-quilted-jacket-107",
+      "lilac-gift-ready-canvas-tote-150"
+    ],
+    "similar_products": [
+      "maroon-satin-shirt-dress-083",
+      "charcoal-satin-wrap-dress-075",
+      "white-floral-midi-dress-082",
+      "olive-floral-slip-dress-080",
+      "stone-floral-midi-dress-085"
+    ],
+    "upsell_products": [
+      "white-floral-midi-dress-082",
+      "white-soft-tailored-resort-set-115",
+      "ivory-matching-lounge-set-117",
+      "sage-sunset-midi-dress-077"
+    ],
+    "seasonal_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "navy-boxy-quilted-jacket-101",
+      "black-statement-minimal-cap-139",
+      "indigo-everyday-leather-belt-142",
+      "maroon-premium-canvas-tote-149"
+    ]
+  },
+  "charcoal-satin-wrap-dress-075": {
+    "product_title": "Charcoal Satin Wrap Dress",
+    "category": "dresses",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "indigo-everyday-leather-belt-142",
+      "mustard-statement-canvas-tote-143",
+      "white-gift-ready-canvas-tote-146",
+      "black-statement-minimal-cap-139",
+      "indigo-premium-quilted-jacket-108"
+    ],
+    "similar_products": [
+      "olive-floral-slip-dress-080",
+      "sage-sunset-midi-dress-077",
+      "white-floral-midi-dress-082",
+      "maroon-sunset-slip-dress-074",
+      "maroon-satin-shirt-dress-083"
+    ],
+    "upsell_products": [
+      "maroon-satin-shirt-dress-083",
+      "sage-sunset-midi-dress-077",
+      "ivory-matching-lounge-set-117",
+      "maroon-sunset-slip-dress-074",
+      "white-soft-tailored-resort-set-115"
+    ],
+    "seasonal_products": [
+      "mustard-statement-canvas-tote-143",
+      "maroon-premium-canvas-tote-149",
+      "white-premium-denim-jacket-104",
+      "lilac-gift-ready-canvas-tote-150",
+      "stone-statement-leather-belt-147"
+    ]
+  },
+  "indigo-satin-shirt-dress-076": {
+    "product_title": "Indigo Satin Shirt Dress",
+    "category": "dresses",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "black-statement-minimal-cap-139",
+      "maroon-statement-leather-belt-140",
+      "powder-blue-layered-shacket-106",
+      "blush-premium-shacket-103",
+      "indigo-premium-quilted-jacket-108"
+    ],
+    "similar_products": [
+      "chocolate-floral-midi-dress-078",
+      "olive-sunset-slip-dress-072",
+      "ivory-floral-wrap-dress-084",
+      "stone-satin-wrap-dress-071",
+      "white-draped-shirt-dress-073"
+    ],
+    "upsell_products": [
+      "navy-festive-palazzo-set-134",
+      "blush-silk-blend-festive-jacket-138",
+      "navy-soft-tailored-lounge-set-111",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "chocolate-floral-midi-dress-078"
+    ],
+    "seasonal_products": [
+      "powder-blue-premium-canvas-tote-148",
+      "maroon-statement-leather-belt-140",
+      "white-premium-denim-jacket-104",
+      "maroon-premium-canvas-tote-149",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ]
+  },
+  "sage-sunset-midi-dress-077": {
+    "product_title": "Sage Sunset Midi Dress",
+    "category": "dresses",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "maroon-statement-leather-belt-140",
+      "powder-blue-premium-canvas-tote-148",
+      "blush-premium-shacket-103",
+      "indigo-premium-quilted-jacket-108",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "charcoal-satin-wrap-dress-075",
+      "maroon-satin-shirt-dress-083",
+      "olive-floral-slip-dress-080",
+      "stone-floral-midi-dress-085",
+      "maroon-sunset-slip-dress-074"
+    ],
+    "upsell_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "navy-silk-blend-a-line-kurta-122",
+      "navy-boxy-quilted-jacket-101",
+      "olive-textured-resort-set-119",
+      "lilac-soft-tailored-resort-set-113"
+    ],
+    "seasonal_products": [
+      "blush-premium-shacket-103",
+      "maroon-statement-leather-belt-140",
+      "navy-boxy-quilted-jacket-101",
+      "ivory-everyday-minimal-cap-145",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ]
+  },
+  "chocolate-floral-midi-dress-078": {
+    "product_title": "Chocolate Floral Midi Dress",
+    "category": "dresses",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "white-gift-ready-canvas-tote-146",
+      "indigo-everyday-leather-belt-142",
+      "charcoal-premium-denim-jacket-102",
+      "powder-blue-layered-shacket-106",
+      "maroon-statement-leather-belt-140"
+    ],
+    "similar_products": [
+      "stone-satin-wrap-dress-071",
+      "olive-sunset-slip-dress-072",
+      "white-draped-shirt-dress-073",
+      "indigo-satin-shirt-dress-076",
+      "ivory-floral-wrap-dress-084"
+    ],
+    "upsell_products": [
+      "navy-silk-blend-a-line-kurta-122",
+      "powder-blue-hand-block-kurta-set-129",
+      "chocolate-textured-resort-set-120",
+      "lilac-soft-tailored-co-ord-set-110",
+      "charcoal-embroidered-a-line-kurta-121"
+    ],
+    "seasonal_products": [
+      "lilac-gift-ready-canvas-tote-150",
+      "powder-blue-premium-canvas-tote-148",
+      "indigo-everyday-leather-belt-142",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "white-premium-denim-jacket-104"
+    ]
+  },
+  "ecru-satin-wrap-dress-079": {
+    "product_title": "Ecru Satin Wrap Dress",
+    "category": "dresses",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "black-statement-minimal-cap-139",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "mustard-statement-canvas-tote-143",
+      "ivory-everyday-minimal-cap-145",
+      "charcoal-premium-denim-jacket-102"
+    ],
+    "similar_products": [
+      "indigo-satin-shirt-dress-086",
+      "indigo-satin-shirt-dress-076",
+      "olive-sunset-slip-dress-072",
+      "white-draped-shirt-dress-073",
+      "stone-satin-wrap-dress-071"
+    ],
+    "upsell_products": [
+      "navy-embroidered-palazzo-set-126",
+      "olive-festive-a-line-kurta-127",
+      "charcoal-festive-a-line-kurta-123",
+      "navy-boxy-quilted-jacket-101",
+      "indigo-layered-shacket-100"
+    ],
+    "seasonal_products": [
+      "black-statement-minimal-cap-139",
+      "ecru-everyday-silk-scarf-144",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "blush-premium-shacket-103",
+      "lilac-gift-ready-canvas-tote-150"
+    ]
+  },
+  "olive-floral-slip-dress-080": {
+    "product_title": "Olive Floral Slip Dress",
+    "category": "dresses",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "white-gift-ready-canvas-tote-146",
+      "stone-statement-leather-belt-147",
+      "maroon-statement-leather-belt-140",
+      "maroon-premium-canvas-tote-149",
+      "indigo-premium-quilted-jacket-108"
+    ],
+    "similar_products": [
+      "charcoal-satin-wrap-dress-075",
+      "white-floral-midi-dress-082",
+      "stone-floral-midi-dress-085",
+      "maroon-sunset-slip-dress-074",
+      "sage-sunset-midi-dress-077"
+    ],
+    "upsell_products": [
+      "ivory-everyday-minimal-cap-145",
+      "maroon-sunset-slip-dress-074",
+      "white-soft-tailored-resort-set-115",
+      "sage-sunset-midi-dress-077",
+      "stone-floral-midi-dress-085"
+    ],
+    "seasonal_products": [
+      "ecru-everyday-silk-scarf-144",
+      "powder-blue-premium-canvas-tote-148",
+      "ivory-everyday-minimal-cap-145",
+      "indigo-premium-quilted-jacket-108",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ]
+  },
+  "maroon-draped-slip-dress-081": {
+    "product_title": "Maroon Draped Slip Dress",
+    "category": "dresses",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "navy-boxy-quilted-jacket-101",
+      "white-gift-ready-canvas-tote-146",
+      "mustard-gift-ready-leather-belt-141",
+      "mustard-statement-canvas-tote-143",
+      "maroon-boxy-quilted-jacket-107"
+    ],
+    "similar_products": [
+      "indigo-satin-shirt-dress-086",
+      "maroon-satin-shirt-dress-083",
+      "stone-floral-midi-dress-085",
+      "chocolate-floral-midi-dress-078",
+      "ecru-satin-wrap-dress-079"
+    ],
+    "upsell_products": [
+      "ecru-satin-wrap-dress-079",
+      "indigo-satin-shirt-dress-086",
+      "charcoal-festive-a-line-kurta-123",
+      "chocolate-matching-lounge-set-112",
+      "ivory-silk-blend-a-line-kurta-132"
+    ],
+    "seasonal_products": [
+      "mustard-gift-ready-leather-belt-141",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "maroon-statement-leather-belt-140",
+      "chocolate-premium-quilted-jacket-105",
+      "blush-premium-shacket-103"
+    ]
+  },
+  "white-floral-midi-dress-082": {
+    "product_title": "White Floral Midi Dress",
+    "category": "dresses",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "maroon-statement-leather-belt-140",
+      "indigo-premium-quilted-jacket-108",
+      "powder-blue-premium-canvas-tote-148",
+      "mustard-gift-ready-leather-belt-141",
+      "blush-premium-shacket-103"
+    ],
+    "similar_products": [
+      "charcoal-satin-wrap-dress-075",
+      "stone-floral-midi-dress-085",
+      "sage-sunset-midi-dress-077",
+      "maroon-sunset-slip-dress-074",
+      "olive-floral-slip-dress-080"
+    ],
+    "upsell_products": [
+      "maroon-hand-block-festive-jacket-136",
+      "sage-festive-palazzo-set-128",
+      "ecru-satin-wrap-dress-079",
+      "ivory-hand-block-palazzo-set-135",
+      "charcoal-festive-a-line-kurta-123"
+    ],
+    "seasonal_products": [
+      "maroon-statement-leather-belt-140",
+      "mustard-gift-ready-leather-belt-141",
+      "stone-statement-leather-belt-147",
+      "indigo-premium-quilted-jacket-108",
+      "indigo-layered-shacket-100"
+    ]
+  },
+  "maroon-satin-shirt-dress-083": {
+    "product_title": "Maroon Satin Shirt Dress",
+    "category": "dresses",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "indigo-premium-quilted-jacket-108",
+      "white-gift-ready-canvas-tote-146",
+      "black-statement-minimal-cap-139",
+      "mustard-gift-ready-leather-belt-141"
+    ],
+    "similar_products": [
+      "maroon-sunset-slip-dress-074",
+      "charcoal-satin-wrap-dress-075",
+      "white-floral-midi-dress-082",
+      "sage-sunset-midi-dress-077",
+      "olive-floral-slip-dress-080"
+    ],
+    "upsell_products": [
+      "stone-floral-midi-dress-085",
+      "maroon-sunset-slip-dress-074",
+      "white-floral-midi-dress-082",
+      "ivory-matching-lounge-set-117",
+      "sage-sunset-midi-dress-077"
+    ],
+    "seasonal_products": [
+      "white-premium-denim-jacket-104",
+      "chocolate-premium-quilted-jacket-105",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "white-gift-ready-canvas-tote-146",
+      "maroon-premium-canvas-tote-149"
+    ]
+  },
+  "ivory-floral-wrap-dress-084": {
+    "product_title": "Ivory Floral Wrap Dress",
+    "category": "dresses",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "charcoal-weather-ready-quilted-jacket-099",
+      "black-statement-minimal-cap-139",
+      "maroon-statement-leather-belt-140",
+      "powder-blue-premium-canvas-tote-148",
+      "powder-blue-layered-shacket-106"
+    ],
+    "similar_products": [
+      "olive-sunset-slip-dress-072",
+      "white-draped-shirt-dress-073",
+      "chocolate-floral-midi-dress-078",
+      "stone-satin-wrap-dress-071",
+      "indigo-satin-shirt-dress-076"
+    ],
+    "upsell_products": [
+      "maroon-hand-block-festive-jacket-136",
+      "navy-festive-palazzo-set-134",
+      "sage-festive-palazzo-set-128",
+      "navy-silk-blend-a-line-kurta-122",
+      "lilac-soft-tailored-co-ord-set-110"
+    ],
+    "seasonal_products": [
+      "powder-blue-layered-shacket-106",
+      "indigo-layered-shacket-100",
+      "navy-boxy-quilted-jacket-101",
+      "mustard-gift-ready-leather-belt-141",
+      "indigo-everyday-leather-belt-142"
+    ]
+  },
+  "stone-floral-midi-dress-085": {
+    "product_title": "Stone Floral Midi Dress",
+    "category": "dresses",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "white-premium-denim-jacket-104",
+      "mustard-statement-canvas-tote-143",
+      "blush-premium-shacket-103",
+      "black-statement-minimal-cap-139",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "maroon-satin-shirt-dress-083",
+      "white-floral-midi-dress-082",
+      "sage-sunset-midi-dress-077",
+      "maroon-sunset-slip-dress-074",
+      "charcoal-satin-wrap-dress-075"
+    ],
+    "upsell_products": [
+      "sage-sunset-midi-dress-077",
+      "white-soft-tailored-resort-set-115",
+      "ivory-matching-lounge-set-117",
+      "white-floral-midi-dress-082"
+    ],
+    "seasonal_products": [
+      "charcoal-weather-ready-quilted-jacket-099",
+      "white-gift-ready-canvas-tote-146",
+      "lilac-gift-ready-canvas-tote-150",
+      "blush-premium-shacket-103",
+      "indigo-layered-shacket-100"
+    ]
+  },
+  "indigo-satin-shirt-dress-086": {
+    "product_title": "Indigo Satin Shirt Dress",
+    "category": "dresses",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "stone-statement-leather-belt-147",
+      "maroon-statement-leather-belt-140",
+      "mustard-statement-canvas-tote-143",
+      "ecru-everyday-silk-scarf-144",
+      "indigo-layered-shacket-100"
+    ],
+    "similar_products": [
+      "white-draped-shirt-dress-073",
+      "chocolate-floral-midi-dress-078",
+      "white-floral-midi-dress-082",
+      "ivory-floral-wrap-dress-084",
+      "sage-sunset-midi-dress-077"
+    ],
+    "upsell_products": [
+      "stone-embroidered-palazzo-set-137",
+      "charcoal-festive-a-line-kurta-123",
+      "indigo-layered-shacket-100",
+      "lilac-soft-tailored-resort-set-113",
+      "navy-boxy-quilted-jacket-101"
+    ],
+    "seasonal_products": [
+      "indigo-layered-shacket-100",
+      "maroon-boxy-quilted-jacket-107",
+      "mustard-statement-canvas-tote-143",
+      "chocolate-premium-quilted-jacket-105",
+      "lilac-gift-ready-canvas-tote-150"
+    ]
+  },
+  "powder-blue-campus-pullover-hoodie-087": {
+    "product_title": "Powder Blue Campus Pullover Hoodie",
+    "category": "hoodies",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "olive-vintage-wash-graphic-tee-032",
+      "blush-rigid-slim-jeans-038",
+      "white-air-knit-rib-tee-029",
+      "mustard-heavyweight-oversized-tee-031",
+      "lilac-washed-straight-jeans-044"
+    ],
+    "similar_products": [
+      "ivory-oversized-fleece-hoodie-089",
+      "black-campus-fleece-hoodie-095",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "powder-blue-oversized-pullover-hoodie-093"
+    ],
+    "upsell_products": [
+      "ecru-satin-wrap-dress-079",
+      "charcoal-festive-a-line-kurta-123",
+      "navy-silk-blend-a-line-kurta-122",
+      "olive-festive-a-line-kurta-127",
+      "indigo-layered-shacket-100"
+    ],
+    "seasonal_products": [
+      "navy-boxy-quilted-jacket-101",
+      "blush-premium-shacket-103",
+      "chocolate-premium-quilted-jacket-105",
+      "white-premium-denim-jacket-104",
+      "olive-utility-cargo-pant-070"
+    ]
+  },
+  "olive-oversized-zip-hoodie-088": {
+    "product_title": "Olive Oversized Zip Hoodie",
+    "category": "hoodies",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "indigo-air-knit-rib-tee-020",
+      "maroon-washed-straight-jeans-043",
+      "powder-blue-ripstop-cargo-pant-063",
+      "lilac-washed-straight-jeans-044",
+      "ivory-street-utility-jogger-067"
+    ],
+    "similar_products": [
+      "ecru-campus-pullover-hoodie-097",
+      "charcoal-campus-zip-hoodie-094",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "lilac-cloud-fleece-zip-hoodie-091"
+    ],
+    "upsell_products": [
+      "navy-rigid-barrel-jeans-045",
+      "sage-heavyweight-fleece-hoodie-092",
+      "olive-rigid-slim-jeans-046",
+      "blush-rigid-wide-leg-jeans-047",
+      "lilac-cloud-fleece-zip-hoodie-091"
+    ],
+    "seasonal_products": [
+      "navy-boxy-quilted-jacket-101",
+      "charcoal-premium-denim-jacket-102",
+      "white-premium-denim-jacket-104",
+      "chocolate-premium-quilted-jacket-105",
+      "maroon-boxy-quilted-jacket-107"
+    ]
+  },
+  "ivory-oversized-fleece-hoodie-089": {
+    "product_title": "Ivory Oversized Fleece Hoodie",
+    "category": "hoodies",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "mustard-rigid-barrel-jeans-042",
+      "navy-ripstop-parachute-cargo-066",
+      "lilac-oversized-parachute-cargo-062",
+      "black-air-knit-oversized-tee-021",
+      "charcoal-rigid-slim-jeans-041"
+    ],
+    "similar_products": [
+      "black-campus-fleece-hoodie-095",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "powder-blue-campus-pullover-hoodie-087"
+    ],
+    "upsell_products": [
+      "powder-blue-ripstop-cargo-pant-063",
+      "ivory-boxy-oversized-tee-033",
+      "ecru-ripstop-parachute-cargo-065",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "powder-blue-oversized-pullover-hoodie-090"
+    ],
+    "seasonal_products": [
+      "lilac-street-cargo-pant-061",
+      "chocolate-ripstop-cargo-pant-068",
+      "ecru-ripstop-parachute-cargo-065",
+      "chocolate-premium-quilted-jacket-105",
+      "olive-utility-cargo-pant-070"
+    ]
+  },
+  "powder-blue-oversized-pullover-hoodie-090": {
+    "product_title": "Powder Blue Oversized Pullover Hoodie",
+    "category": "hoodies",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "lilac-utility-cargo-pant-069",
+      "olive-vintage-wash-graphic-tee-032",
+      "blush-rigid-wide-leg-jeans-047",
+      "ivory-boxy-oversized-tee-022",
+      "olive-rigid-slim-jeans-046"
+    ],
+    "similar_products": [
+      "black-campus-fleece-hoodie-095",
+      "powder-blue-campus-pullover-hoodie-087",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "ivory-oversized-fleece-hoodie-089"
+    ],
+    "upsell_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "charcoal-embroidered-a-line-kurta-121",
+      "charcoal-festive-a-line-kurta-123",
+      "navy-boxy-quilted-jacket-101",
+      "ecru-satin-wrap-dress-079"
+    ],
+    "seasonal_products": [
+      "lilac-street-cargo-pant-061",
+      "blush-premium-shacket-103",
+      "olive-utility-cargo-pant-070",
+      "maroon-boxy-quilted-jacket-107",
+      "ecru-ripstop-parachute-cargo-065"
+    ]
+  },
+  "lilac-cloud-fleece-zip-hoodie-091": {
+    "product_title": "Lilac Cloud-Fleece Zip Hoodie",
+    "category": "hoodies",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "blush-rigid-slim-jeans-038",
+      "navy-heavyweight-crew-tee-024",
+      "white-washed-straight-jeans-039",
+      "indigo-boxy-graphic-tee-017",
+      "powder-blue-rigid-wide-leg-jeans-035"
+    ],
+    "similar_products": [
+      "olive-oversized-zip-hoodie-088",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "charcoal-campus-zip-hoodie-094",
+      "sage-heavyweight-fleece-hoodie-092",
+      "ecru-campus-pullover-hoodie-097"
+    ],
+    "upsell_products": [
+      "charcoal-premium-denim-jacket-102",
+      "blush-rigid-wide-leg-jeans-047",
+      "chocolate-premium-quilted-jacket-105",
+      "sage-heavyweight-fleece-hoodie-092",
+      "maroon-washed-straight-jeans-043"
+    ],
+    "seasonal_products": [
+      "indigo-layered-shacket-100",
+      "lilac-oversized-parachute-cargo-062",
+      "indigo-premium-quilted-jacket-108",
+      "navy-boxy-quilted-jacket-101",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ]
+  },
+  "sage-heavyweight-fleece-hoodie-092": {
+    "product_title": "Sage Heavyweight Fleece Hoodie",
+    "category": "hoodies",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "indigo-air-knit-rib-tee-020",
+      "black-air-knit-oversized-tee-021",
+      "white-air-knit-rib-tee-029",
+      "blush-rigid-wide-leg-jeans-047",
+      "lilac-street-cargo-pant-061"
+    ],
+    "similar_products": [
+      "olive-oversized-zip-hoodie-088",
+      "charcoal-campus-zip-hoodie-094",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "ecru-campus-pullover-hoodie-097"
+    ],
+    "upsell_products": [
+      "blush-cloud-fleece-zip-hoodie-098",
+      "chocolate-premium-quilted-jacket-105",
+      "maroon-boxy-quilted-jacket-107",
+      "white-washed-straight-jeans-039",
+      "olive-rigid-slim-jeans-046"
+    ],
+    "seasonal_products": [
+      "indigo-premium-quilted-jacket-108",
+      "ecru-ripstop-parachute-cargo-065",
+      "blush-premium-shacket-103",
+      "powder-blue-layered-shacket-106",
+      "navy-ripstop-parachute-cargo-066"
+    ]
+  },
+  "powder-blue-oversized-pullover-hoodie-093": {
+    "product_title": "Powder Blue Oversized Pullover Hoodie",
+    "category": "hoodies",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "lilac-washed-barrel-jeans-037",
+      "lilac-oversized-parachute-cargo-062",
+      "maroon-heavyweight-crew-tee-026",
+      "navy-rigid-barrel-jeans-045",
+      "ivory-street-utility-jogger-067"
+    ],
+    "similar_products": [
+      "powder-blue-campus-pullover-hoodie-087",
+      "black-campus-fleece-hoodie-095",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "ivory-oversized-fleece-hoodie-089"
+    ],
+    "upsell_products": [
+      "ecru-ripstop-parachute-cargo-065",
+      "navy-ripstop-parachute-cargo-066",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "lilac-oversized-parachute-cargo-062",
+      "powder-blue-campus-pullover-hoodie-087"
+    ],
+    "seasonal_products": [
+      "indigo-layered-shacket-100",
+      "white-premium-denim-jacket-104",
+      "navy-ripstop-parachute-cargo-066",
+      "powder-blue-layered-shacket-106",
+      "chocolate-premium-quilted-jacket-105"
+    ]
+  },
+  "charcoal-campus-zip-hoodie-094": {
+    "product_title": "Charcoal Campus Zip Hoodie",
+    "category": "hoodies",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "navy-heavyweight-crew-tee-024",
+      "lilac-street-cargo-pant-061",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "blush-air-knit-crew-tee-028"
+    ],
+    "similar_products": [
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "olive-oversized-zip-hoodie-088",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "sage-heavyweight-fleece-hoodie-092",
+      "ecru-campus-pullover-hoodie-097"
+    ],
+    "upsell_products": [
+      "olive-utility-cargo-pant-070",
+      "maroon-boxy-quilted-jacket-107",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "powder-blue-rigid-wide-leg-jeans-035"
+    ],
+    "seasonal_products": [
+      "olive-utility-cargo-pant-070",
+      "indigo-premium-quilted-jacket-108",
+      "lilac-oversized-parachute-cargo-062",
+      "charcoal-premium-denim-jacket-102",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ]
+  },
+  "black-campus-fleece-hoodie-095": {
+    "product_title": "Black Campus Fleece Hoodie",
+    "category": "hoodies",
+    "style_cluster": "cargo_oversized_tee_buyer",
+    "complementary_products": [
+      "blush-air-knit-crew-tee-028",
+      "lilac-oversized-parachute-cargo-062",
+      "blush-rigid-wide-leg-jeans-047",
+      "white-air-knit-rib-tee-029",
+      "mustard-rigid-barrel-jeans-042"
+    ],
+    "similar_products": [
+      "powder-blue-campus-pullover-hoodie-087",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "ivory-oversized-fleece-hoodie-089"
+    ],
+    "upsell_products": [
+      "powder-blue-ripstop-cargo-pant-063",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "lilac-oversized-parachute-cargo-062",
+      "powder-blue-campus-pullover-hoodie-087"
+    ],
+    "seasonal_products": [
+      "lilac-utility-cargo-pant-069",
+      "ivory-street-utility-jogger-067",
+      "navy-ripstop-parachute-cargo-066",
+      "chocolate-premium-quilted-jacket-105",
+      "chocolate-ripstop-cargo-pant-068"
+    ]
+  },
+  "mustard-cloud-fleece-pullover-hoodie-096": {
+    "product_title": "Mustard Cloud-Fleece Pullover Hoodie",
+    "category": "hoodies",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "maroon-washed-straight-jeans-043",
+      "olive-utility-cargo-pant-070",
+      "lilac-street-cargo-pant-061",
+      "navy-heavyweight-crew-tee-024",
+      "mustard-rigid-barrel-jeans-042"
+    ],
+    "similar_products": [
+      "olive-oversized-zip-hoodie-088",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "sage-heavyweight-fleece-hoodie-092",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "charcoal-campus-zip-hoodie-094"
+    ],
+    "upsell_products": [
+      "charcoal-rigid-slim-jeans-041",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "maroon-washed-straight-jeans-043",
+      "blush-rigid-wide-leg-jeans-047",
+      "blush-cloud-fleece-zip-hoodie-098"
+    ],
+    "seasonal_products": [
+      "blush-premium-shacket-103",
+      "white-premium-denim-jacket-104",
+      "lilac-utility-utility-jogger-064",
+      "olive-utility-cargo-pant-070",
+      "maroon-boxy-quilted-jacket-107"
+    ]
+  },
+  "ecru-campus-pullover-hoodie-097": {
+    "product_title": "Ecru Campus Pullover Hoodie",
+    "category": "hoodies",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "ecru-heavyweight-rib-tee-025",
+      "charcoal-rigid-slim-jeans-041",
+      "powder-blue-air-knit-crew-tee-018",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "powder-blue-clean-fit-wide-leg-jeans-048"
+    ],
+    "similar_products": [
+      "charcoal-campus-zip-hoodie-094",
+      "olive-oversized-zip-hoodie-088",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "mustard-cloud-fleece-pullover-hoodie-096"
+    ],
+    "upsell_products": [
+      "charcoal-premium-denim-jacket-102",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "white-washed-straight-jeans-039"
+    ],
+    "seasonal_products": [
+      "powder-blue-ripstop-cargo-pant-063",
+      "powder-blue-layered-shacket-106",
+      "ivory-street-utility-jogger-067",
+      "lilac-street-cargo-pant-061",
+      "olive-utility-cargo-pant-070"
+    ]
+  },
+  "blush-cloud-fleece-zip-hoodie-098": {
+    "product_title": "Blush Cloud-Fleece Zip Hoodie",
+    "category": "hoodies",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "blush-rigid-slim-jeans-038",
+      "blush-boxy-oversized-tee-023",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "indigo-boxy-graphic-tee-017",
+      "powder-blue-ripstop-cargo-pant-063"
+    ],
+    "similar_products": [
+      "ecru-campus-pullover-hoodie-097",
+      "charcoal-campus-zip-hoodie-094",
+      "sage-heavyweight-fleece-hoodie-092",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "mustard-cloud-fleece-pullover-hoodie-096"
+    ],
+    "upsell_products": [
+      "blush-rigid-wide-leg-jeans-047",
+      "charcoal-premium-denim-jacket-102",
+      "maroon-boxy-quilted-jacket-107",
+      "chocolate-premium-quilted-jacket-105",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "seasonal_products": [
+      "charcoal-premium-denim-jacket-102",
+      "navy-ripstop-parachute-cargo-066",
+      "olive-utility-cargo-pant-070",
+      "navy-boxy-quilted-jacket-101",
+      "lilac-street-cargo-pant-061"
+    ]
+  },
+  "charcoal-weather-ready-quilted-jacket-099": {
+    "product_title": "Charcoal Weather-Ready Quilted Jacket",
+    "category": "jackets",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "blush-air-knit-crew-tee-028",
+      "mustard-soft-wash-resort-shirt-008",
+      "ivory-floral-wrap-dress-084",
+      "white-air-knit-rib-tee-029",
+      "ecru-vintage-wash-rib-tee-034"
+    ],
+    "similar_products": [
+      "white-premium-denim-jacket-104",
+      "charcoal-premium-denim-jacket-102",
+      "indigo-layered-shacket-100",
+      "chocolate-premium-quilted-jacket-105",
+      "indigo-premium-quilted-jacket-108"
+    ],
+    "upsell_products": [
+      "charcoal-festive-a-line-kurta-123",
+      "ecru-satin-wrap-dress-079",
+      "chocolate-premium-quilted-jacket-105",
+      "ivory-silk-blend-a-line-kurta-132",
+      "indigo-layered-shacket-100"
+    ],
+    "seasonal_products": [
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "maroon-washed-straight-jeans-043",
+      "mustard-rigid-barrel-jeans-042",
+      "lilac-washed-straight-jeans-044",
+      "blush-cloud-fleece-zip-hoodie-098"
+    ]
+  },
+  "indigo-layered-shacket-100": {
+    "product_title": "Indigo Layered Shacket",
+    "category": "jackets",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "stone-floral-midi-dress-085",
+      "ivory-boxy-oversized-tee-033",
+      "lilac-everyday-linen-shirt-016",
+      "blush-boxy-oversized-tee-023",
+      "indigo-air-knit-rib-tee-020"
+    ],
+    "similar_products": [
+      "blush-premium-shacket-103",
+      "maroon-boxy-quilted-jacket-107",
+      "powder-blue-layered-shacket-106",
+      "navy-boxy-quilted-jacket-101",
+      "chocolate-premium-quilted-jacket-105"
+    ],
+    "upsell_products": [
+      "sage-festive-palazzo-set-128",
+      "navy-embroidered-palazzo-set-126",
+      "maroon-hand-block-festive-jacket-136",
+      "charcoal-embroidered-a-line-kurta-121"
+    ],
+    "seasonal_products": [
+      "blush-cloud-fleece-zip-hoodie-098",
+      "indigo-soft-stretch-straight-jeans-040",
+      "lilac-washed-barrel-jeans-037",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "powder-blue-rigid-wide-leg-jeans-035"
+    ]
+  },
+  "navy-boxy-quilted-jacket-101": {
+    "product_title": "Navy Boxy Quilted Jacket",
+    "category": "jackets",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "indigo-satin-shirt-dress-076",
+      "mustard-heavyweight-oversized-tee-031",
+      "navy-heavyweight-crew-tee-024",
+      "blush-tailored-linen-shirt-001",
+      "indigo-satin-shirt-dress-086"
+    ],
+    "similar_products": [
+      "blush-premium-shacket-103",
+      "charcoal-premium-denim-jacket-102",
+      "chocolate-premium-quilted-jacket-105",
+      "powder-blue-layered-shacket-106",
+      "indigo-layered-shacket-100"
+    ],
+    "upsell_products": [
+      "charcoal-festive-a-line-kurta-123",
+      "navy-embroidered-palazzo-set-126",
+      "indigo-layered-shacket-100",
+      "stone-embroidered-palazzo-set-137",
+      "olive-textured-resort-set-119"
+    ],
+    "seasonal_products": [
+      "lilac-washed-barrel-jeans-037",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "blush-cloud-fleece-zip-hoodie-098",
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "indigo-soft-stretch-straight-jeans-040"
+    ]
+  },
+  "charcoal-premium-denim-jacket-102": {
+    "product_title": "Charcoal Premium Denim Jacket",
+    "category": "jackets",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "white-heavyweight-crew-tee-019",
+      "indigo-relaxed-oxford-shirt-014",
+      "indigo-satin-shirt-dress-076",
+      "blush-tailored-linen-shirt-001",
+      "ivory-boxy-oversized-tee-033"
+    ],
+    "similar_products": [
+      "charcoal-weather-ready-quilted-jacket-099",
+      "maroon-boxy-quilted-jacket-107",
+      "blush-premium-shacket-103",
+      "powder-blue-layered-shacket-106",
+      "chocolate-premium-quilted-jacket-105"
+    ],
+    "upsell_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "ivory-festive-a-line-kurta-124",
+      "navy-boxy-quilted-jacket-101",
+      "chocolate-premium-quilted-jacket-105",
+      "indigo-matching-co-ord-set-109"
+    ],
+    "seasonal_products": [
+      "maroon-washed-straight-jeans-043",
+      "charcoal-campus-zip-hoodie-094",
+      "mustard-rigid-barrel-jeans-042",
+      "sage-heavyweight-fleece-hoodie-092",
+      "powder-blue-campus-pullover-hoodie-087"
+    ]
+  },
+  "blush-premium-shacket-103": {
+    "product_title": "Blush Premium Shacket",
+    "category": "jackets",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "stone-floral-midi-dress-085",
+      "indigo-boxy-graphic-tee-017",
+      "indigo-relaxed-oxford-shirt-014",
+      "navy-heavyweight-crew-tee-024",
+      "powder-blue-air-knit-crew-tee-018"
+    ],
+    "similar_products": [
+      "charcoal-premium-denim-jacket-102",
+      "navy-boxy-quilted-jacket-101",
+      "indigo-layered-shacket-100",
+      "white-premium-denim-jacket-104",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "upsell_products": [
+      "olive-textured-resort-set-119",
+      "powder-blue-matching-lounge-set-116",
+      "ivory-silk-blend-a-line-kurta-132",
+      "chocolate-minimal-pleated-trouser-052",
+      "charcoal-festive-a-line-kurta-123"
+    ],
+    "seasonal_products": [
+      "indigo-soft-stretch-straight-jeans-040",
+      "ecru-campus-pullover-hoodie-097",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "blush-rigid-slim-jeans-038",
+      "sage-heavyweight-fleece-hoodie-092"
+    ]
+  },
+  "white-premium-denim-jacket-104": {
+    "product_title": "White Premium Denim Jacket",
+    "category": "jackets",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "white-floral-midi-dress-082",
+      "blush-tailored-linen-shirt-001",
+      "powder-blue-air-knit-crew-tee-018",
+      "indigo-relaxed-oxford-shirt-014",
+      "lilac-relaxed-resort-shirt-002"
+    ],
+    "similar_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "indigo-premium-quilted-jacket-108",
+      "powder-blue-layered-shacket-106",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "indigo-layered-shacket-100"
+    ],
+    "upsell_products": [
+      "olive-textured-resort-set-119",
+      "olive-festive-a-line-kurta-127",
+      "lilac-festive-kurta-set-130",
+      "powder-blue-matching-lounge-set-116",
+      "charcoal-embroidered-a-line-kurta-121"
+    ],
+    "seasonal_products": [
+      "sage-heavyweight-fleece-hoodie-092",
+      "lilac-cloud-fleece-zip-hoodie-091",
+      "indigo-soft-stretch-straight-jeans-040",
+      "mustard-rigid-barrel-jeans-042",
+      "charcoal-campus-zip-hoodie-094"
+    ]
+  },
+  "chocolate-premium-quilted-jacket-105": {
+    "product_title": "Chocolate Premium Quilted Jacket",
+    "category": "jackets",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "blush-air-knit-crew-tee-028",
+      "maroon-satin-shirt-dress-083",
+      "stone-satin-wrap-dress-071",
+      "blush-boxy-oversized-tee-023",
+      "powder-blue-air-knit-crew-tee-018"
+    ],
+    "similar_products": [
+      "blush-premium-shacket-103",
+      "charcoal-premium-denim-jacket-102",
+      "white-premium-denim-jacket-104",
+      "indigo-layered-shacket-100",
+      "indigo-premium-quilted-jacket-108"
+    ],
+    "upsell_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "stone-embroidered-palazzo-set-137",
+      "sage-festive-palazzo-set-128",
+      "charcoal-embroidered-a-line-kurta-121",
+      "navy-embroidered-palazzo-set-126"
+    ],
+    "seasonal_products": [
+      "charcoal-rigid-slim-jeans-041",
+      "lilac-washed-straight-jeans-044",
+      "ivory-oversized-fleece-hoodie-089",
+      "blush-rigid-wide-leg-jeans-047",
+      "olive-rigid-slim-jeans-046"
+    ]
+  },
+  "powder-blue-layered-shacket-106": {
+    "product_title": "Powder Blue Layered Shacket",
+    "category": "jackets",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "sage-sunset-midi-dress-077",
+      "stone-relaxed-linen-shirt-006",
+      "maroon-sunset-slip-dress-074",
+      "stone-satin-wrap-dress-071",
+      "charcoal-satin-wrap-dress-075"
+    ],
+    "similar_products": [
+      "navy-boxy-quilted-jacket-101",
+      "charcoal-premium-denim-jacket-102",
+      "white-premium-denim-jacket-104",
+      "indigo-premium-quilted-jacket-108",
+      "blush-premium-shacket-103"
+    ],
+    "upsell_products": [
+      "olive-festive-a-line-kurta-127",
+      "maroon-hand-block-festive-jacket-136",
+      "indigo-layered-shacket-100",
+      "lilac-festive-kurta-set-130",
+      "powder-blue-hand-block-kurta-set-129"
+    ],
+    "seasonal_products": [
+      "charcoal-rigid-slim-jeans-041",
+      "powder-blue-campus-pullover-hoodie-087",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "sage-heavyweight-fleece-hoodie-092",
+      "powder-blue-rigid-wide-leg-jeans-035"
+    ]
+  },
+  "maroon-boxy-quilted-jacket-107": {
+    "product_title": "Maroon Boxy Quilted Jacket",
+    "category": "jackets",
+    "style_cluster": "streetwear_buyer",
+    "complementary_products": [
+      "olive-vintage-wash-graphic-tee-032",
+      "ecru-vintage-wash-rib-tee-034",
+      "maroon-heavyweight-crew-tee-026",
+      "maroon-satin-shirt-dress-083",
+      "charcoal-satin-wrap-dress-075"
+    ],
+    "similar_products": [
+      "charcoal-premium-denim-jacket-102",
+      "white-premium-denim-jacket-104",
+      "blush-premium-shacket-103",
+      "indigo-layered-shacket-100",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "upsell_products": [
+      "maroon-hand-block-festive-jacket-136",
+      "stone-embroidered-palazzo-set-137",
+      "ivory-hand-block-palazzo-set-135",
+      "charcoal-embroidered-a-line-kurta-121",
+      "sage-festive-palazzo-set-128"
+    ],
+    "seasonal_products": [
+      "powder-blue-oversized-pullover-hoodie-093",
+      "powder-blue-oversized-pullover-hoodie-090",
+      "powder-blue-campus-pullover-hoodie-087",
+      "white-washed-straight-jeans-039",
+      "lilac-washed-barrel-jeans-037"
+    ]
+  },
+  "indigo-premium-quilted-jacket-108": {
+    "product_title": "Indigo Premium Quilted Jacket",
+    "category": "jackets",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "maroon-sunset-slip-dress-074",
+      "blush-relaxed-resort-shirt-011",
+      "white-floral-midi-dress-082",
+      "indigo-everyday-poplin-shirt-013",
+      "ivory-boxy-oversized-tee-033"
+    ],
+    "similar_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "powder-blue-layered-shacket-106",
+      "charcoal-premium-denim-jacket-102",
+      "navy-boxy-quilted-jacket-101",
+      "indigo-layered-shacket-100"
+    ],
+    "upsell_products": [
+      "indigo-layered-shacket-100",
+      "navy-silk-blend-a-line-kurta-122",
+      "charcoal-embroidered-a-line-kurta-121",
+      "ecru-satin-wrap-dress-079",
+      "navy-boxy-quilted-jacket-101"
+    ],
+    "seasonal_products": [
+      "mustard-cloud-fleece-pullover-hoodie-096",
+      "white-washed-straight-jeans-039",
+      "powder-blue-rigid-wide-leg-jeans-035",
+      "powder-blue-oversized-pullover-hoodie-093",
+      "olive-rigid-slim-jeans-046"
+    ]
+  },
+  "indigo-matching-co-ord-set-109": {
+    "product_title": "Indigo Matching Co-ord Set",
+    "category": "co-ord sets",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "indigo-layered-shacket-100",
+      "indigo-everyday-leather-belt-142",
+      "powder-blue-premium-canvas-tote-148",
+      "powder-blue-layered-shacket-106",
+      "charcoal-premium-denim-jacket-102"
+    ],
+    "similar_products": [
+      "chocolate-matching-lounge-set-112",
+      "olive-textured-resort-set-119",
+      "powder-blue-matching-lounge-set-116",
+      "lilac-soft-tailored-resort-set-113"
+    ],
+    "upsell_products": [
+      "stone-embroidered-palazzo-set-137",
+      "navy-boxy-quilted-jacket-101",
+      "olive-textured-resort-set-119",
+      "navy-embroidered-palazzo-set-126",
+      "indigo-layered-shacket-100"
+    ],
+    "seasonal_products": [
+      "maroon-statement-leather-belt-140",
+      "maroon-satin-shirt-dress-083",
+      "white-floral-midi-dress-082",
+      "ivory-floral-wrap-dress-084",
+      "ecru-satin-wrap-dress-079"
+    ]
+  },
+  "lilac-soft-tailored-co-ord-set-110": {
+    "product_title": "Lilac Soft-Tailored Co-ord Set",
+    "category": "co-ord sets",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "mustard-statement-canvas-tote-143",
+      "powder-blue-layered-shacket-106",
+      "charcoal-premium-denim-jacket-102",
+      "white-gift-ready-canvas-tote-146",
+      "indigo-layered-shacket-100"
+    ],
+    "similar_products": [
+      "charcoal-soft-tailored-co-ord-set-114",
+      "navy-soft-tailored-lounge-set-111",
+      "chocolate-textured-resort-set-120",
+      "lilac-textured-lounge-set-118"
+    ],
+    "upsell_products": [
+      "navy-festive-palazzo-set-134",
+      "charcoal-embroidered-a-line-kurta-121",
+      "chocolate-textured-resort-set-120",
+      "sage-festive-palazzo-set-128",
+      "powder-blue-hand-block-kurta-set-129"
+    ],
+    "seasonal_products": [
+      "charcoal-satin-wrap-dress-075",
+      "white-floral-midi-dress-082",
+      "chocolate-floral-midi-dress-078",
+      "indigo-satin-shirt-dress-076",
+      "powder-blue-premium-canvas-tote-148"
+    ]
+  },
+  "navy-soft-tailored-lounge-set-111": {
+    "product_title": "Navy Soft-Tailored Lounge Set",
+    "category": "co-ord sets",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "white-premium-denim-jacket-104",
+      "indigo-everyday-leather-belt-142",
+      "ivory-everyday-minimal-cap-145",
+      "mustard-statement-canvas-tote-143",
+      "chocolate-premium-quilted-jacket-105"
+    ],
+    "similar_products": [
+      "charcoal-soft-tailored-co-ord-set-114",
+      "lilac-soft-tailored-co-ord-set-110",
+      "chocolate-textured-resort-set-120",
+      "lilac-textured-lounge-set-118"
+    ],
+    "upsell_products": [
+      "ivory-floral-wrap-dress-084",
+      "powder-blue-hand-block-kurta-set-129",
+      "navy-festive-palazzo-set-134",
+      "navy-silk-blend-a-line-kurta-122",
+      "sage-festive-palazzo-set-128"
+    ],
+    "seasonal_products": [
+      "maroon-satin-shirt-dress-083",
+      "powder-blue-premium-canvas-tote-148",
+      "indigo-satin-shirt-dress-086",
+      "ecru-satin-wrap-dress-079",
+      "ecru-everyday-silk-scarf-144"
+    ]
+  },
+  "chocolate-matching-lounge-set-112": {
+    "product_title": "Chocolate Matching Lounge Set",
+    "category": "co-ord sets",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "blush-premium-shacket-103",
+      "maroon-premium-canvas-tote-149",
+      "indigo-premium-quilted-jacket-108",
+      "indigo-everyday-leather-belt-142",
+      "powder-blue-premium-canvas-tote-148"
+    ],
+    "similar_products": [
+      "powder-blue-matching-lounge-set-116",
+      "lilac-soft-tailored-resort-set-113",
+      "indigo-matching-co-ord-set-109",
+      "olive-textured-resort-set-119"
+    ],
+    "upsell_products": [
+      "powder-blue-matching-lounge-set-116",
+      "olive-textured-resort-set-119",
+      "ecru-satin-wrap-dress-079",
+      "navy-boxy-quilted-jacket-101",
+      "charcoal-festive-a-line-kurta-123"
+    ],
+    "seasonal_products": [
+      "black-statement-minimal-cap-139",
+      "white-gift-ready-canvas-tote-146",
+      "white-draped-shirt-dress-073",
+      "maroon-sunset-slip-dress-074",
+      "ecru-everyday-silk-scarf-144"
+    ]
+  },
+  "lilac-soft-tailored-resort-set-113": {
+    "product_title": "Lilac Soft-Tailored Resort Set",
+    "category": "co-ord sets",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "chocolate-premium-quilted-jacket-105",
+      "maroon-boxy-quilted-jacket-107",
+      "black-statement-minimal-cap-139",
+      "lilac-gift-ready-canvas-tote-150",
+      "mustard-statement-canvas-tote-143"
+    ],
+    "similar_products": [
+      "powder-blue-matching-lounge-set-116",
+      "chocolate-matching-lounge-set-112",
+      "indigo-matching-co-ord-set-109",
+      "olive-textured-resort-set-119"
+    ],
+    "upsell_products": [
+      "navy-embroidered-palazzo-set-126",
+      "indigo-layered-shacket-100",
+      "ivory-hand-block-palazzo-set-135",
+      "stone-embroidered-palazzo-set-137"
+    ],
+    "seasonal_products": [
+      "charcoal-satin-wrap-dress-075",
+      "stone-statement-leather-belt-147",
+      "ivory-floral-wrap-dress-084",
+      "sage-sunset-midi-dress-077",
+      "white-draped-shirt-dress-073"
+    ]
+  },
+  "charcoal-soft-tailored-co-ord-set-114": {
+    "product_title": "Charcoal Soft-Tailored Co-ord Set",
+    "category": "co-ord sets",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "indigo-everyday-leather-belt-142",
+      "mustard-statement-canvas-tote-143",
+      "indigo-premium-quilted-jacket-108",
+      "charcoal-premium-denim-jacket-102"
+    ],
+    "similar_products": [
+      "navy-soft-tailored-lounge-set-111",
+      "lilac-textured-lounge-set-118",
+      "lilac-soft-tailored-co-ord-set-110",
+      "chocolate-textured-resort-set-120"
+    ],
+    "upsell_products": [
+      "navy-soft-tailored-lounge-set-111",
+      "navy-festive-palazzo-set-134",
+      "ivory-floral-wrap-dress-084",
+      "sage-festive-palazzo-set-128",
+      "chocolate-textured-resort-set-120"
+    ],
+    "seasonal_products": [
+      "maroon-satin-shirt-dress-083",
+      "ecru-satin-wrap-dress-079",
+      "maroon-statement-leather-belt-140",
+      "ivory-everyday-minimal-cap-145",
+      "mustard-gift-ready-leather-belt-141"
+    ]
+  },
+  "white-soft-tailored-resort-set-115": {
+    "product_title": "White Soft-Tailored Resort Set",
+    "category": "co-ord sets",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "ecru-everyday-silk-scarf-144",
+      "mustard-gift-ready-leather-belt-141",
+      "ivory-everyday-minimal-cap-145",
+      "indigo-everyday-leather-belt-142",
+      "white-gift-ready-canvas-tote-146"
+    ],
+    "similar_products": [
+      "indigo-matching-co-ord-set-109",
+      "olive-textured-resort-set-119",
+      "lilac-soft-tailored-co-ord-set-110",
+      "ivory-matching-lounge-set-117",
+      "chocolate-textured-resort-set-120"
+    ],
+    "upsell_products": [
+      "charcoal-embroidered-a-line-kurta-121",
+      "navy-festive-palazzo-set-134",
+      "sage-sunset-midi-dress-077",
+      "olive-textured-resort-set-119",
+      "navy-embroidered-palazzo-set-126"
+    ],
+    "seasonal_products": [
+      "indigo-satin-shirt-dress-076",
+      "maroon-sunset-slip-dress-074",
+      "powder-blue-premium-canvas-tote-148",
+      "stone-floral-midi-dress-085",
+      "charcoal-satin-wrap-dress-075"
+    ]
+  },
+  "powder-blue-matching-lounge-set-116": {
+    "product_title": "Powder Blue Matching Lounge Set",
+    "category": "co-ord sets",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "indigo-everyday-leather-belt-142",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "charcoal-premium-denim-jacket-102",
+      "mustard-gift-ready-leather-belt-141",
+      "mustard-statement-canvas-tote-143"
+    ],
+    "similar_products": [
+      "chocolate-matching-lounge-set-112",
+      "lilac-soft-tailored-resort-set-113",
+      "olive-textured-resort-set-119",
+      "indigo-matching-co-ord-set-109"
+    ],
+    "upsell_products": [
+      "ivory-hand-block-palazzo-set-135",
+      "navy-embroidered-palazzo-set-126",
+      "stone-embroidered-palazzo-set-137",
+      "olive-textured-resort-set-119",
+      "indigo-layered-shacket-100"
+    ],
+    "seasonal_products": [
+      "ivory-everyday-minimal-cap-145",
+      "indigo-everyday-leather-belt-142",
+      "stone-floral-midi-dress-085",
+      "olive-sunset-slip-dress-072",
+      "ecru-satin-wrap-dress-079"
+    ]
+  },
+  "ivory-matching-lounge-set-117": {
+    "product_title": "Ivory Matching Lounge Set",
+    "category": "co-ord sets",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "powder-blue-premium-canvas-tote-148",
+      "black-statement-minimal-cap-139",
+      "ivory-everyday-minimal-cap-145",
+      "powder-blue-layered-shacket-106",
+      "indigo-layered-shacket-100"
+    ],
+    "similar_products": [
+      "lilac-textured-lounge-set-118",
+      "powder-blue-matching-lounge-set-116",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "white-soft-tailored-resort-set-115",
+      "navy-soft-tailored-lounge-set-111"
+    ],
+    "upsell_products": [
+      "chocolate-textured-resort-set-120",
+      "navy-festive-palazzo-set-134",
+      "indigo-satin-shirt-dress-086",
+      "powder-blue-silk-blend-a-line-kurta-131",
+      "indigo-layered-shacket-100"
+    ],
+    "seasonal_products": [
+      "mustard-gift-ready-leather-belt-141",
+      "ivory-everyday-minimal-cap-145",
+      "olive-sunset-slip-dress-072",
+      "olive-floral-slip-dress-080",
+      "maroon-draped-slip-dress-081"
+    ]
+  },
+  "lilac-textured-lounge-set-118": {
+    "product_title": "Lilac Textured Lounge Set",
+    "category": "co-ord sets",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "indigo-everyday-leather-belt-142",
+      "navy-boxy-quilted-jacket-101",
+      "stone-statement-leather-belt-147",
+      "indigo-layered-shacket-100",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "navy-soft-tailored-lounge-set-111",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "chocolate-textured-resort-set-120",
+      "lilac-soft-tailored-co-ord-set-110"
+    ],
+    "upsell_products": [
+      "sage-festive-palazzo-set-128",
+      "navy-silk-blend-a-line-kurta-122",
+      "lilac-soft-tailored-co-ord-set-110",
+      "blush-silk-blend-festive-jacket-138",
+      "ivory-floral-wrap-dress-084"
+    ],
+    "seasonal_products": [
+      "stone-statement-leather-belt-147",
+      "olive-floral-slip-dress-080",
+      "ecru-everyday-silk-scarf-144",
+      "powder-blue-premium-canvas-tote-148",
+      "charcoal-satin-wrap-dress-075"
+    ]
+  },
+  "olive-textured-resort-set-119": {
+    "product_title": "Olive Textured Resort Set",
+    "category": "co-ord sets",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "blush-premium-shacket-103",
+      "lilac-gift-ready-canvas-tote-150",
+      "maroon-boxy-quilted-jacket-107",
+      "indigo-layered-shacket-100",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ],
+    "similar_products": [
+      "powder-blue-matching-lounge-set-116",
+      "lilac-soft-tailored-resort-set-113",
+      "chocolate-matching-lounge-set-112",
+      "indigo-matching-co-ord-set-109"
+    ],
+    "upsell_products": [
+      "navy-embroidered-palazzo-set-126",
+      "stone-embroidered-palazzo-set-137",
+      "ivory-hand-block-palazzo-set-135",
+      "lilac-soft-tailored-resort-set-113",
+      "indigo-layered-shacket-100"
+    ],
+    "seasonal_products": [
+      "lilac-gift-ready-canvas-tote-150",
+      "charcoal-satin-wrap-dress-075",
+      "maroon-sunset-slip-dress-074",
+      "indigo-everyday-leather-belt-142",
+      "indigo-satin-shirt-dress-076"
+    ]
+  },
+  "chocolate-textured-resort-set-120": {
+    "product_title": "Chocolate Textured Resort Set",
+    "category": "co-ord sets",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "mustard-statement-canvas-tote-143",
+      "white-gift-ready-canvas-tote-146",
+      "indigo-layered-shacket-100",
+      "stone-statement-leather-belt-147",
+      "powder-blue-premium-canvas-tote-148"
+    ],
+    "similar_products": [
+      "lilac-textured-lounge-set-118",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "lilac-soft-tailored-co-ord-set-110",
+      "navy-soft-tailored-lounge-set-111"
+    ],
+    "upsell_products": [
+      "powder-blue-hand-block-kurta-set-129",
+      "charcoal-embroidered-a-line-kurta-121",
+      "sage-festive-palazzo-set-128",
+      "maroon-hand-block-festive-jacket-136"
+    ],
+    "seasonal_products": [
+      "white-floral-midi-dress-082",
+      "stone-floral-midi-dress-085",
+      "white-draped-shirt-dress-073",
+      "ecru-satin-wrap-dress-079",
+      "ecru-everyday-silk-scarf-144"
+    ]
+  },
+  "charcoal-embroidered-a-line-kurta-121": {
+    "product_title": "Charcoal Embroidered A-Line Kurta",
+    "category": "ethnic wear",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "navy-soft-tailored-lounge-set-111",
+      "lilac-textured-lounge-set-118",
+      "mustard-gift-ready-leather-belt-141",
+      "ivory-matching-lounge-set-117",
+      "maroon-statement-leather-belt-140"
+    ],
+    "similar_products": [
+      "sage-festive-palazzo-set-128",
+      "navy-festive-palazzo-set-134",
+      "blush-silk-blend-festive-jacket-138",
+      "ivory-hand-block-palazzo-set-125",
+      "powder-blue-hand-block-kurta-set-129"
+    ],
+    "upsell_products": [
+      "maroon-hand-block-festive-jacket-136"
+    ],
+    "seasonal_products": [
+      "charcoal-premium-denim-jacket-102",
+      "black-statement-minimal-cap-139",
+      "ecru-everyday-silk-scarf-144",
+      "stone-statement-leather-belt-147",
+      "maroon-statement-leather-belt-140"
+    ]
+  },
+  "navy-silk-blend-a-line-kurta-122": {
+    "product_title": "Navy Silk-Blend A-Line Kurta",
+    "category": "ethnic wear",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "indigo-matching-co-ord-set-109",
+      "ivory-everyday-minimal-cap-145",
+      "mustard-statement-canvas-tote-143",
+      "chocolate-textured-resort-set-120",
+      "black-statement-minimal-cap-139"
+    ],
+    "similar_products": [
+      "charcoal-embroidered-a-line-kurta-121",
+      "ivory-hand-block-palazzo-set-125",
+      "maroon-hand-block-festive-jacket-136",
+      "powder-blue-hand-block-kurta-set-129",
+      "sage-festive-palazzo-set-128"
+    ],
+    "upsell_products": [
+      "powder-blue-hand-block-kurta-set-129",
+      "sage-festive-palazzo-set-128",
+      "chocolate-textured-resort-set-120",
+      "charcoal-embroidered-a-line-kurta-121",
+      "maroon-hand-block-festive-jacket-136"
+    ],
+    "seasonal_products": [
+      "white-premium-denim-jacket-104",
+      "powder-blue-premium-canvas-tote-148",
+      "white-gift-ready-canvas-tote-146",
+      "mustard-statement-canvas-tote-143",
+      "mustard-gift-ready-leather-belt-141"
+    ]
+  },
+  "charcoal-festive-a-line-kurta-123": {
+    "product_title": "Charcoal Festive A-Line Kurta",
+    "category": "ethnic wear",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "ivory-matching-lounge-set-117",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "ivory-everyday-minimal-cap-145",
+      "ecru-everyday-silk-scarf-144",
+      "white-soft-tailored-resort-set-115"
+    ],
+    "similar_products": [
+      "olive-festive-a-line-kurta-127",
+      "ivory-hand-block-palazzo-set-135",
+      "stone-embroidered-palazzo-set-137",
+      "navy-embroidered-palazzo-set-126",
+      "chocolate-embroidered-a-line-kurta-133"
+    ],
+    "upsell_products": [
+      "lilac-soft-tailored-resort-set-113",
+      "navy-embroidered-palazzo-set-126",
+      "indigo-layered-shacket-100",
+      "olive-festive-a-line-kurta-127",
+      "powder-blue-matching-lounge-set-116"
+    ],
+    "seasonal_products": [
+      "navy-boxy-quilted-jacket-101",
+      "white-premium-denim-jacket-104",
+      "charcoal-premium-denim-jacket-102",
+      "mustard-gift-ready-leather-belt-141",
+      "maroon-premium-canvas-tote-149"
+    ]
+  },
+  "ivory-festive-a-line-kurta-124": {
+    "product_title": "Ivory Festive A-Line Kurta",
+    "category": "ethnic wear",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "lilac-gift-ready-canvas-tote-150",
+      "chocolate-matching-lounge-set-112",
+      "maroon-statement-leather-belt-140",
+      "black-statement-minimal-cap-139",
+      "powder-blue-premium-canvas-tote-148"
+    ],
+    "similar_products": [
+      "ivory-hand-block-palazzo-set-135",
+      "stone-embroidered-palazzo-set-137",
+      "charcoal-festive-a-line-kurta-123",
+      "chocolate-embroidered-a-line-kurta-133",
+      "ivory-silk-blend-a-line-kurta-132"
+    ],
+    "upsell_products": [
+      "powder-blue-matching-lounge-set-116",
+      "navy-boxy-quilted-jacket-101",
+      "indigo-matching-co-ord-set-109",
+      "indigo-layered-shacket-100",
+      "navy-embroidered-palazzo-set-126"
+    ],
+    "seasonal_products": [
+      "indigo-layered-shacket-100",
+      "maroon-statement-leather-belt-140",
+      "black-statement-minimal-cap-139",
+      "powder-blue-premium-canvas-tote-148",
+      "maroon-boxy-quilted-jacket-107"
+    ]
+  },
+  "ivory-hand-block-palazzo-set-125": {
+    "product_title": "Ivory Hand-Block Palazzo Set",
+    "category": "ethnic wear",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "maroon-premium-canvas-tote-149",
+      "lilac-textured-lounge-set-118",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "white-gift-ready-canvas-tote-146",
+      "ivory-everyday-minimal-cap-145"
+    ],
+    "similar_products": [
+      "charcoal-embroidered-a-line-kurta-121",
+      "navy-silk-blend-a-line-kurta-122",
+      "blush-silk-blend-festive-jacket-138",
+      "maroon-hand-block-festive-jacket-136",
+      "sage-festive-palazzo-set-128"
+    ],
+    "upsell_products": [
+      "navy-silk-blend-a-line-kurta-122",
+      "powder-blue-hand-block-kurta-set-129",
+      "chocolate-textured-resort-set-120",
+      "indigo-everyday-poplin-shirt-013",
+      "charcoal-soft-tailored-co-ord-set-114"
+    ],
+    "seasonal_products": [
+      "charcoal-weather-ready-quilted-jacket-099",
+      "stone-statement-leather-belt-147",
+      "powder-blue-layered-shacket-106",
+      "white-gift-ready-canvas-tote-146",
+      "chocolate-premium-quilted-jacket-105"
+    ]
+  },
+  "navy-embroidered-palazzo-set-126": {
+    "product_title": "Navy Embroidered Palazzo Set",
+    "category": "ethnic wear",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "stone-statement-leather-belt-147",
+      "white-gift-ready-canvas-tote-146",
+      "powder-blue-premium-canvas-tote-148",
+      "white-soft-tailored-resort-set-115",
+      "chocolate-textured-resort-set-120"
+    ],
+    "similar_products": [
+      "ivory-silk-blend-a-line-kurta-132",
+      "charcoal-festive-a-line-kurta-123",
+      "olive-festive-a-line-kurta-127",
+      "ivory-hand-block-palazzo-set-135",
+      "stone-embroidered-palazzo-set-137"
+    ],
+    "upsell_products": [
+      "charcoal-embroidered-a-line-kurta-121",
+      "maroon-hand-block-festive-jacket-136"
+    ],
+    "seasonal_products": [
+      "indigo-layered-shacket-100",
+      "white-premium-denim-jacket-104",
+      "white-gift-ready-canvas-tote-146",
+      "charcoal-premium-denim-jacket-102",
+      "navy-boxy-quilted-jacket-101"
+    ]
+  },
+  "olive-festive-a-line-kurta-127": {
+    "product_title": "Olive Festive A-Line Kurta",
+    "category": "ethnic wear",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "chocolate-matching-lounge-set-112",
+      "maroon-premium-canvas-tote-149",
+      "lilac-soft-tailored-resort-set-113",
+      "ecru-everyday-silk-scarf-144",
+      "ivory-matching-lounge-set-117"
+    ],
+    "similar_products": [
+      "chocolate-embroidered-a-line-kurta-133",
+      "ivory-hand-block-palazzo-set-135",
+      "stone-embroidered-palazzo-set-137",
+      "ivory-festive-a-line-kurta-124",
+      "charcoal-festive-a-line-kurta-123"
+    ],
+    "upsell_products": [
+      "powder-blue-matching-lounge-set-116",
+      "ivory-hand-block-palazzo-set-135",
+      "indigo-layered-shacket-100",
+      "navy-embroidered-palazzo-set-126",
+      "stone-embroidered-palazzo-set-137"
+    ],
+    "seasonal_products": [
+      "powder-blue-layered-shacket-106",
+      "ecru-everyday-silk-scarf-144",
+      "navy-boxy-quilted-jacket-101",
+      "maroon-statement-leather-belt-140",
+      "charcoal-premium-denim-jacket-102"
+    ]
+  },
+  "sage-festive-palazzo-set-128": {
+    "product_title": "Sage Festive Palazzo Set",
+    "category": "ethnic wear",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "indigo-matching-co-ord-set-109",
+      "lilac-textured-lounge-set-118",
+      "white-gift-ready-canvas-tote-146",
+      "maroon-statement-leather-belt-140",
+      "stone-statement-leather-belt-147"
+    ],
+    "similar_products": [
+      "navy-silk-blend-a-line-kurta-122",
+      "powder-blue-hand-block-kurta-set-129",
+      "charcoal-embroidered-a-line-kurta-121",
+      "navy-festive-palazzo-set-134",
+      "blush-silk-blend-festive-jacket-138"
+    ],
+    "upsell_products": [
+      "charcoal-embroidered-a-line-kurta-121",
+      "maroon-hand-block-festive-jacket-136"
+    ],
+    "seasonal_products": [
+      "white-gift-ready-canvas-tote-146",
+      "lilac-gift-ready-canvas-tote-150",
+      "indigo-everyday-leather-belt-142",
+      "blush-premium-shacket-103",
+      "powder-blue-premium-canvas-tote-148"
+    ]
+  },
+  "powder-blue-hand-block-kurta-set-129": {
+    "product_title": "Powder Blue Hand-Block Kurta Set",
+    "category": "ethnic wear",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "ivory-everyday-minimal-cap-145",
+      "lilac-soft-tailored-co-ord-set-110",
+      "mustard-gift-ready-leather-belt-141",
+      "ecru-everyday-silk-scarf-144",
+      "chocolate-textured-resort-set-120"
+    ],
+    "similar_products": [
+      "blush-silk-blend-festive-jacket-138",
+      "ivory-hand-block-palazzo-set-125",
+      "navy-silk-blend-a-line-kurta-122",
+      "sage-festive-palazzo-set-128",
+      "charcoal-embroidered-a-line-kurta-121"
+    ],
+    "upsell_products": [
+      "navy-embroidered-palazzo-set-126",
+      "lilac-soft-tailored-resort-set-113",
+      "ivory-hand-block-palazzo-set-135",
+      "charcoal-embroidered-a-line-kurta-121",
+      "sage-festive-palazzo-set-128"
+    ],
+    "seasonal_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "ivory-everyday-minimal-cap-145",
+      "maroon-statement-leather-belt-140",
+      "ecru-everyday-silk-scarf-144",
+      "mustard-gift-ready-leather-belt-141"
+    ]
+  },
+  "lilac-festive-kurta-set-130": {
+    "product_title": "Lilac Festive Kurta Set",
+    "category": "ethnic wear",
+    "style_cluster": "ethnic_wear_buyer",
+    "complementary_products": [
+      "powder-blue-premium-canvas-tote-148",
+      "indigo-everyday-leather-belt-142",
+      "mustard-statement-canvas-tote-143",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "lilac-gift-ready-canvas-tote-150"
+    ],
+    "similar_products": [
+      "powder-blue-silk-blend-a-line-kurta-131",
+      "chocolate-embroidered-a-line-kurta-133",
+      "ivory-hand-block-palazzo-set-135",
+      "ivory-festive-a-line-kurta-124",
+      "sage-festive-palazzo-set-128"
+    ],
+    "upsell_products": [
+      "stone-embroidered-palazzo-set-137",
+      "navy-festive-palazzo-set-134",
+      "indigo-matching-co-ord-set-109",
+      "ivory-festive-a-line-kurta-124",
+      "chocolate-textured-resort-set-120"
+    ],
+    "seasonal_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "lilac-gift-ready-canvas-tote-150",
+      "white-premium-denim-jacket-104",
+      "powder-blue-premium-canvas-tote-148",
+      "chocolate-premium-quilted-jacket-105"
+    ]
+  },
+  "powder-blue-silk-blend-a-line-kurta-131": {
+    "product_title": "Powder Blue Silk-Blend A-Line Kurta",
+    "category": "ethnic wear",
+    "style_cluster": "ethnic_wear_buyer",
+    "complementary_products": [
+      "lilac-textured-lounge-set-118",
+      "olive-textured-resort-set-119",
+      "stone-statement-leather-belt-147",
+      "mustard-gift-ready-leather-belt-141",
+      "powder-blue-premium-canvas-tote-148"
+    ],
+    "similar_products": [
+      "ivory-hand-block-palazzo-set-125",
+      "ivory-festive-a-line-kurta-124",
+      "charcoal-embroidered-a-line-kurta-121",
+      "stone-embroidered-palazzo-set-137",
+      "charcoal-festive-a-line-kurta-123"
+    ],
+    "upsell_products": [
+      "lilac-soft-tailored-resort-set-113",
+      "stone-embroidered-palazzo-set-137",
+      "powder-blue-hand-block-kurta-set-129",
+      "chocolate-premium-quilted-jacket-105",
+      "navy-silk-blend-a-line-kurta-122"
+    ],
+    "seasonal_products": [
+      "maroon-premium-canvas-tote-149",
+      "blush-premium-shacket-103",
+      "powder-blue-premium-canvas-tote-148",
+      "stone-statement-leather-belt-147",
+      "charcoal-weather-ready-quilted-jacket-099"
+    ]
+  },
+  "ivory-silk-blend-a-line-kurta-132": {
+    "product_title": "Ivory Silk-Blend A-Line Kurta",
+    "category": "ethnic wear",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "stone-statement-leather-belt-147",
+      "chocolate-textured-resort-set-120",
+      "white-gift-ready-canvas-tote-146",
+      "olive-textured-resort-set-119",
+      "charcoal-soft-tailored-co-ord-set-114"
+    ],
+    "similar_products": [
+      "ivory-festive-a-line-kurta-124",
+      "stone-embroidered-palazzo-set-137",
+      "charcoal-festive-a-line-kurta-123",
+      "navy-embroidered-palazzo-set-126",
+      "ivory-hand-block-palazzo-set-135"
+    ],
+    "upsell_products": [
+      "ivory-hand-block-palazzo-set-135",
+      "ecru-satin-wrap-dress-079",
+      "olive-festive-a-line-kurta-127",
+      "lilac-soft-tailored-resort-set-113",
+      "olive-textured-resort-set-119"
+    ],
+    "seasonal_products": [
+      "indigo-premium-quilted-jacket-108",
+      "stone-statement-leather-belt-147",
+      "maroon-premium-canvas-tote-149",
+      "chocolate-premium-quilted-jacket-105",
+      "indigo-everyday-leather-belt-142"
+    ]
+  },
+  "chocolate-embroidered-a-line-kurta-133": {
+    "product_title": "Chocolate Embroidered A-Line Kurta",
+    "category": "ethnic wear",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "lilac-soft-tailored-resort-set-113",
+      "chocolate-matching-lounge-set-112",
+      "olive-textured-resort-set-119",
+      "powder-blue-matching-lounge-set-116",
+      "mustard-statement-canvas-tote-143"
+    ],
+    "similar_products": [
+      "ivory-hand-block-palazzo-set-135",
+      "navy-embroidered-palazzo-set-126",
+      "olive-festive-a-line-kurta-127",
+      "charcoal-festive-a-line-kurta-123",
+      "ivory-festive-a-line-kurta-124"
+    ],
+    "upsell_products": [
+      "olive-festive-a-line-kurta-127",
+      "navy-embroidered-palazzo-set-126",
+      "powder-blue-matching-lounge-set-116",
+      "navy-boxy-quilted-jacket-101",
+      "chocolate-matching-lounge-set-112"
+    ],
+    "seasonal_products": [
+      "indigo-everyday-leather-belt-142",
+      "powder-blue-premium-canvas-tote-148",
+      "maroon-premium-canvas-tote-149",
+      "ivory-everyday-minimal-cap-145",
+      "stone-statement-leather-belt-147"
+    ]
+  },
+  "navy-festive-palazzo-set-134": {
+    "product_title": "Navy Festive Palazzo Set",
+    "category": "ethnic wear",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "lilac-soft-tailored-resort-set-113",
+      "powder-blue-matching-lounge-set-116",
+      "mustard-gift-ready-leather-belt-141",
+      "lilac-textured-lounge-set-118",
+      "lilac-gift-ready-canvas-tote-150"
+    ],
+    "similar_products": [
+      "powder-blue-hand-block-kurta-set-129",
+      "ivory-hand-block-palazzo-set-125",
+      "charcoal-embroidered-a-line-kurta-121",
+      "navy-silk-blend-a-line-kurta-122",
+      "sage-festive-palazzo-set-128"
+    ],
+    "upsell_products": [
+      "navy-silk-blend-a-line-kurta-122",
+      "sage-festive-palazzo-set-128",
+      "chocolate-textured-resort-set-120",
+      "maroon-hand-block-festive-jacket-136",
+      "powder-blue-hand-block-kurta-set-129"
+    ],
+    "seasonal_products": [
+      "mustard-statement-canvas-tote-143",
+      "maroon-boxy-quilted-jacket-107",
+      "ivory-everyday-minimal-cap-145",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "stone-statement-leather-belt-147"
+    ]
+  },
+  "ivory-hand-block-palazzo-set-135": {
+    "product_title": "Ivory Hand-Block Palazzo Set",
+    "category": "ethnic wear",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "black-statement-minimal-cap-139",
+      "mustard-gift-ready-leather-belt-141",
+      "indigo-matching-co-ord-set-109",
+      "white-soft-tailored-resort-set-115",
+      "lilac-textured-lounge-set-118"
+    ],
+    "similar_products": [
+      "navy-embroidered-palazzo-set-126",
+      "ivory-silk-blend-a-line-kurta-132",
+      "charcoal-festive-a-line-kurta-123",
+      "ivory-festive-a-line-kurta-124",
+      "chocolate-embroidered-a-line-kurta-133"
+    ],
+    "upsell_products": [
+      "stone-embroidered-palazzo-set-137",
+      "indigo-layered-shacket-100",
+      "navy-embroidered-palazzo-set-126",
+      "charcoal-embroidered-a-line-kurta-121",
+      "maroon-hand-block-festive-jacket-136"
+    ],
+    "seasonal_products": [
+      "blush-premium-shacket-103",
+      "charcoal-premium-denim-jacket-102",
+      "maroon-statement-leather-belt-140",
+      "white-premium-denim-jacket-104",
+      "maroon-boxy-quilted-jacket-107"
+    ]
+  },
+  "maroon-hand-block-festive-jacket-136": {
+    "product_title": "Maroon Hand-Block Festive Jacket",
+    "category": "ethnic wear",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "lilac-gift-ready-canvas-tote-150",
+      "ecru-everyday-silk-scarf-144",
+      "maroon-premium-canvas-tote-149",
+      "olive-textured-resort-set-119",
+      "ivory-everyday-minimal-cap-145"
+    ],
+    "similar_products": [
+      "ivory-hand-block-palazzo-set-125",
+      "powder-blue-hand-block-kurta-set-129",
+      "blush-silk-blend-festive-jacket-138",
+      "charcoal-embroidered-a-line-kurta-121",
+      "navy-festive-palazzo-set-134"
+    ],
+    "upsell_products": [],
+    "seasonal_products": [
+      "charcoal-premium-denim-jacket-102",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "ivory-everyday-minimal-cap-145",
+      "indigo-everyday-leather-belt-142",
+      "lilac-gift-ready-canvas-tote-150"
+    ]
+  },
+  "stone-embroidered-palazzo-set-137": {
+    "product_title": "Stone Embroidered Palazzo Set",
+    "category": "ethnic wear",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "powder-blue-matching-lounge-set-116",
+      "indigo-everyday-leather-belt-142",
+      "mustard-gift-ready-leather-belt-141",
+      "lilac-gift-ready-canvas-tote-150",
+      "olive-textured-resort-set-119"
+    ],
+    "similar_products": [
+      "ivory-hand-block-palazzo-set-135",
+      "olive-festive-a-line-kurta-127",
+      "ivory-silk-blend-a-line-kurta-132",
+      "ivory-festive-a-line-kurta-124",
+      "chocolate-embroidered-a-line-kurta-133"
+    ],
+    "upsell_products": [
+      "navy-embroidered-palazzo-set-126",
+      "charcoal-embroidered-a-line-kurta-121",
+      "sage-festive-palazzo-set-128",
+      "maroon-hand-block-festive-jacket-136",
+      "indigo-layered-shacket-100"
+    ],
+    "seasonal_products": [
+      "charcoal-premium-denim-jacket-102",
+      "mustard-statement-canvas-tote-143",
+      "charcoal-weather-ready-quilted-jacket-099",
+      "chocolate-premium-quilted-jacket-105",
+      "black-statement-minimal-cap-139"
+    ]
+  },
+  "blush-silk-blend-festive-jacket-138": {
+    "product_title": "Blush Silk-Blend Festive Jacket",
+    "category": "ethnic wear",
+    "style_cluster": "pastel_lover",
+    "complementary_products": [
+      "lilac-textured-lounge-set-118",
+      "powder-blue-matching-lounge-set-116",
+      "ivory-matching-lounge-set-117",
+      "white-gift-ready-canvas-tote-146",
+      "lilac-soft-tailored-co-ord-set-110"
+    ],
+    "similar_products": [
+      "maroon-hand-block-festive-jacket-136",
+      "powder-blue-hand-block-kurta-set-129",
+      "ivory-hand-block-palazzo-set-125",
+      "navy-silk-blend-a-line-kurta-122",
+      "charcoal-embroidered-a-line-kurta-121"
+    ],
+    "upsell_products": [
+      "powder-blue-hand-block-kurta-set-129",
+      "navy-silk-blend-a-line-kurta-122",
+      "sage-festive-palazzo-set-128",
+      "navy-soft-tailored-lounge-set-111",
+      "charcoal-embroidered-a-line-kurta-121"
+    ],
+    "seasonal_products": [
+      "maroon-boxy-quilted-jacket-107",
+      "powder-blue-premium-canvas-tote-148",
+      "mustard-gift-ready-leather-belt-141",
+      "ivory-everyday-minimal-cap-145",
+      "mustard-statement-canvas-tote-143"
+    ]
+  },
+  "black-statement-minimal-cap-139": {
+    "product_title": "Black Statement Minimal Cap",
+    "category": "accessories",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "powder-blue-relaxed-poplin-shirt-015",
+      "charcoal-festive-a-line-kurta-123",
+      "maroon-draped-slip-dress-081",
+      "olive-festive-a-line-kurta-127",
+      "maroon-sunset-slip-dress-074"
+    ],
+    "similar_products": [
+      "maroon-statement-leather-belt-140",
+      "ivory-everyday-minimal-cap-145",
+      "powder-blue-premium-canvas-tote-148",
+      "white-gift-ready-canvas-tote-146",
+      "maroon-premium-canvas-tote-149"
+    ],
+    "upsell_products": [
+      "sage-sunset-midi-dress-077",
+      "maroon-sunset-slip-dress-074",
+      "maroon-satin-shirt-dress-083",
+      "ivory-everyday-minimal-cap-145",
+      "stone-floral-midi-dress-085"
+    ],
+    "seasonal_products": [
+      "chocolate-textured-resort-set-120",
+      "ivory-silk-blend-a-line-kurta-132",
+      "chocolate-embroidered-a-line-kurta-133",
+      "ivory-hand-block-palazzo-set-135",
+      "lilac-festive-kurta-set-130"
+    ]
+  },
+  "maroon-statement-leather-belt-140": {
+    "product_title": "Maroon Statement Leather Belt",
+    "category": "accessories",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "olive-relaxed-oxford-shirt-009",
+      "charcoal-embroidered-a-line-kurta-121",
+      "chocolate-floral-midi-dress-078",
+      "chocolate-embroidered-a-line-kurta-133",
+      "maroon-sunset-slip-dress-074"
+    ],
+    "similar_products": [
+      "mustard-statement-canvas-tote-143",
+      "ivory-everyday-minimal-cap-145",
+      "lilac-gift-ready-canvas-tote-150",
+      "indigo-everyday-leather-belt-142",
+      "mustard-gift-ready-leather-belt-141"
+    ],
+    "upsell_products": [
+      "olive-floral-slip-dress-080",
+      "stone-floral-midi-dress-085",
+      "maroon-sunset-slip-dress-074",
+      "white-soft-tailored-resort-set-115",
+      "black-statement-minimal-cap-139"
+    ],
+    "seasonal_products": [
+      "white-soft-tailored-resort-set-115",
+      "olive-sunset-slip-dress-072",
+      "ivory-floral-wrap-dress-084",
+      "chocolate-textured-resort-set-120",
+      "maroon-satin-shirt-dress-083"
+    ]
+  },
+  "mustard-gift-ready-leather-belt-141": {
+    "product_title": "Mustard Gift-Ready Leather Belt",
+    "category": "accessories",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "stone-floral-midi-dress-085",
+      "indigo-satin-shirt-dress-086",
+      "ivory-festive-a-line-kurta-124",
+      "navy-festive-palazzo-set-134",
+      "powder-blue-relaxed-poplin-shirt-015"
+    ],
+    "similar_products": [
+      "indigo-everyday-leather-belt-142",
+      "white-gift-ready-canvas-tote-146",
+      "mustard-statement-canvas-tote-143",
+      "ecru-everyday-silk-scarf-144",
+      "lilac-gift-ready-canvas-tote-150"
+    ],
+    "upsell_products": [
+      "chocolate-matching-lounge-set-112",
+      "olive-textured-resort-set-119",
+      "olive-fluid-pleated-trouser-050",
+      "stone-embroidered-palazzo-set-137",
+      "ivory-hand-block-palazzo-set-135"
+    ],
+    "seasonal_products": [
+      "lilac-soft-tailored-resort-set-113",
+      "lilac-soft-tailored-co-ord-set-110",
+      "stone-embroidered-palazzo-set-137",
+      "maroon-hand-block-festive-jacket-136",
+      "ecru-satin-wrap-dress-079"
+    ]
+  },
+  "indigo-everyday-leather-belt-142": {
+    "product_title": "Indigo Everyday Leather Belt",
+    "category": "accessories",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "stone-floral-midi-dress-085",
+      "powder-blue-silk-blend-a-line-kurta-131",
+      "ivory-relaxed-resort-shirt-010",
+      "olive-festive-a-line-kurta-127",
+      "stone-relaxed-linen-shirt-006"
+    ],
+    "similar_products": [
+      "mustard-gift-ready-leather-belt-141",
+      "ecru-everyday-silk-scarf-144",
+      "mustard-statement-canvas-tote-143",
+      "white-gift-ready-canvas-tote-146",
+      "lilac-gift-ready-canvas-tote-150"
+    ],
+    "upsell_products": [
+      "olive-festive-a-line-kurta-127",
+      "olive-textured-resort-set-119",
+      "indigo-satin-shirt-dress-086",
+      "olive-fluid-pleated-trouser-050",
+      "powder-blue-soft-stretch-slim-jeans-036"
+    ],
+    "seasonal_products": [
+      "lilac-festive-kurta-set-130",
+      "stone-satin-wrap-dress-071",
+      "stone-embroidered-palazzo-set-137",
+      "navy-soft-tailored-lounge-set-111",
+      "ivory-matching-lounge-set-117"
+    ]
+  },
+  "mustard-statement-canvas-tote-143": {
+    "product_title": "Mustard Statement Canvas Tote",
+    "category": "accessories",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "sage-sunset-midi-dress-077",
+      "maroon-sunset-slip-dress-074",
+      "charcoal-embroidered-a-line-kurta-121",
+      "lilac-festive-kurta-set-130",
+      "ivory-floral-wrap-dress-084"
+    ],
+    "similar_products": [
+      "white-gift-ready-canvas-tote-146",
+      "ecru-everyday-silk-scarf-144",
+      "lilac-gift-ready-canvas-tote-150",
+      "mustard-gift-ready-leather-belt-141",
+      "indigo-everyday-leather-belt-142"
+    ],
+    "upsell_products": [
+      "blush-premium-shacket-103",
+      "ivory-silk-blend-a-line-kurta-132",
+      "blush-rigid-slim-jeans-038",
+      "powder-blue-matching-lounge-set-116",
+      "ivory-hand-block-palazzo-set-135"
+    ],
+    "seasonal_products": [
+      "lilac-soft-tailored-co-ord-set-110",
+      "lilac-festive-kurta-set-130",
+      "ivory-festive-a-line-kurta-124",
+      "ivory-floral-wrap-dress-084",
+      "white-floral-midi-dress-082"
+    ]
+  },
+  "ecru-everyday-silk-scarf-144": {
+    "product_title": "Ecru Everyday Silk Scarf",
+    "category": "accessories",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "maroon-satin-shirt-dress-083",
+      "stone-embroidered-palazzo-set-137",
+      "olive-relaxed-oxford-shirt-009",
+      "lilac-relaxed-resort-shirt-002",
+      "ivory-hand-block-palazzo-set-125"
+    ],
+    "similar_products": [
+      "mustard-statement-canvas-tote-143",
+      "mustard-gift-ready-leather-belt-141",
+      "white-gift-ready-canvas-tote-146",
+      "lilac-gift-ready-canvas-tote-150",
+      "indigo-everyday-leather-belt-142"
+    ],
+    "upsell_products": [
+      "ivory-hand-block-palazzo-set-135",
+      "lilac-soft-tailored-resort-set-113",
+      "white-office-ready-pleated-trouser-053",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "chocolate-matching-lounge-set-112"
+    ],
+    "seasonal_products": [
+      "chocolate-embroidered-a-line-kurta-133",
+      "blush-silk-blend-festive-jacket-138",
+      "charcoal-satin-wrap-dress-075",
+      "chocolate-matching-lounge-set-112",
+      "lilac-soft-tailored-resort-set-113"
+    ]
+  },
+  "ivory-everyday-minimal-cap-145": {
+    "product_title": "Ivory Everyday Minimal Cap",
+    "category": "accessories",
+    "style_cluster": "dress_buyer",
+    "complementary_products": [
+      "maroon-hand-block-festive-jacket-136",
+      "mustard-soft-wash-resort-shirt-008",
+      "stone-embroidered-palazzo-set-137",
+      "charcoal-satin-wrap-dress-075",
+      "charcoal-festive-a-line-kurta-123"
+    ],
+    "similar_products": [
+      "black-statement-minimal-cap-139",
+      "mustard-gift-ready-leather-belt-141",
+      "maroon-premium-canvas-tote-149",
+      "maroon-statement-leather-belt-140",
+      "stone-statement-leather-belt-147"
+    ],
+    "upsell_products": [
+      "white-soft-tailored-resort-set-115",
+      "maroon-sunset-slip-dress-074",
+      "white-floral-midi-dress-082",
+      "maroon-satin-shirt-dress-083",
+      "ivory-matching-lounge-set-117"
+    ],
+    "seasonal_products": [
+      "powder-blue-hand-block-kurta-set-129",
+      "ivory-matching-lounge-set-117",
+      "olive-sunset-slip-dress-072",
+      "charcoal-satin-wrap-dress-075",
+      "chocolate-matching-lounge-set-112"
+    ]
+  },
+  "white-gift-ready-canvas-tote-146": {
+    "product_title": "White Gift-Ready Canvas Tote",
+    "category": "accessories",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "black-everyday-linen-shirt-003",
+      "powder-blue-hand-block-kurta-set-129",
+      "ecru-satin-wrap-dress-079",
+      "navy-festive-palazzo-set-134",
+      "lilac-festive-kurta-set-130"
+    ],
+    "similar_products": [
+      "indigo-everyday-leather-belt-142",
+      "lilac-gift-ready-canvas-tote-150",
+      "mustard-statement-canvas-tote-143",
+      "ecru-everyday-silk-scarf-144",
+      "mustard-gift-ready-leather-belt-141"
+    ],
+    "upsell_products": [
+      "powder-blue-matching-lounge-set-116",
+      "powder-blue-soft-stretch-slim-jeans-036",
+      "mustard-statement-canvas-tote-143",
+      "indigo-satin-shirt-dress-086",
+      "lilac-soft-tailored-resort-set-113"
+    ],
+    "seasonal_products": [
+      "chocolate-embroidered-a-line-kurta-133",
+      "chocolate-floral-midi-dress-078",
+      "stone-satin-wrap-dress-071",
+      "white-draped-shirt-dress-073",
+      "lilac-festive-kurta-set-130"
+    ]
+  },
+  "stone-statement-leather-belt-147": {
+    "product_title": "Stone Statement Leather Belt",
+    "category": "accessories",
+    "style_cluster": "ethnic_wear_buyer",
+    "complementary_products": [
+      "indigo-satin-shirt-dress-086",
+      "ivory-floral-wrap-dress-084",
+      "indigo-satin-shirt-dress-076",
+      "blush-tailored-linen-shirt-001",
+      "ivory-silk-blend-a-line-kurta-132"
+    ],
+    "similar_products": [
+      "white-gift-ready-canvas-tote-146",
+      "mustard-statement-canvas-tote-143",
+      "maroon-premium-canvas-tote-149",
+      "powder-blue-premium-canvas-tote-148",
+      "ecru-everyday-silk-scarf-144"
+    ],
+    "upsell_products": [
+      "sage-festive-palazzo-set-128",
+      "navy-embroidered-palazzo-set-126",
+      "maroon-boxy-quilted-jacket-107",
+      "olive-festive-a-line-kurta-127",
+      "indigo-matching-co-ord-set-109"
+    ],
+    "seasonal_products": [
+      "lilac-soft-tailored-co-ord-set-110",
+      "navy-soft-tailored-lounge-set-111",
+      "stone-satin-wrap-dress-071",
+      "maroon-hand-block-festive-jacket-136",
+      "lilac-soft-tailored-resort-set-113"
+    ]
+  },
+  "powder-blue-premium-canvas-tote-148": {
+    "product_title": "Powder Blue Premium Canvas Tote",
+    "category": "accessories",
+    "style_cluster": "ethnic_wear_buyer",
+    "complementary_products": [
+      "maroon-hand-block-festive-jacket-136",
+      "ivory-floral-wrap-dress-084",
+      "olive-relaxed-oxford-shirt-009",
+      "navy-festive-palazzo-set-134",
+      "lilac-festive-kurta-set-130"
+    ],
+    "similar_products": [
+      "ivory-everyday-minimal-cap-145",
+      "black-statement-minimal-cap-139",
+      "ecru-everyday-silk-scarf-144",
+      "stone-statement-leather-belt-147",
+      "maroon-statement-leather-belt-140"
+    ],
+    "upsell_products": [
+      "navy-embroidered-palazzo-set-126",
+      "lilac-festive-kurta-set-130",
+      "lilac-soft-tailored-resort-set-113",
+      "indigo-satin-shirt-dress-086",
+      "chocolate-textured-resort-set-120"
+    ],
+    "seasonal_products": [
+      "white-soft-tailored-resort-set-115",
+      "navy-soft-tailored-lounge-set-111",
+      "maroon-hand-block-festive-jacket-136",
+      "blush-silk-blend-festive-jacket-138",
+      "stone-embroidered-palazzo-set-137"
+    ]
+  },
+  "maroon-premium-canvas-tote-149": {
+    "product_title": "Maroon Premium Canvas Tote",
+    "category": "accessories",
+    "style_cluster": "black_neutral_basics",
+    "complementary_products": [
+      "lilac-everyday-linen-shirt-016",
+      "ivory-floral-wrap-dress-084",
+      "sage-tailored-poplin-shirt-005",
+      "white-floral-midi-dress-082",
+      "indigo-satin-shirt-dress-086"
+    ],
+    "similar_products": [
+      "white-gift-ready-canvas-tote-146",
+      "black-statement-minimal-cap-139",
+      "stone-statement-leather-belt-147",
+      "indigo-everyday-leather-belt-142",
+      "mustard-statement-canvas-tote-143"
+    ],
+    "upsell_products": [
+      "powder-blue-clean-fit-wide-leg-jeans-048",
+      "powder-blue-layered-shacket-106",
+      "lilac-washed-barrel-jeans-037",
+      "ecru-soft-wash-poplin-shirt-004",
+      "olive-relaxed-oxford-shirt-009"
+    ],
+    "seasonal_products": [
+      "ivory-festive-a-line-kurta-124",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "white-floral-midi-dress-082",
+      "lilac-soft-tailored-co-ord-set-110",
+      "sage-festive-palazzo-set-128"
+    ]
+  },
+  "lilac-gift-ready-canvas-tote-150": {
+    "product_title": "Lilac Gift-Ready Canvas Tote",
+    "category": "accessories",
+    "style_cluster": "premium_buyer",
+    "complementary_products": [
+      "maroon-satin-shirt-dress-083",
+      "indigo-satin-shirt-dress-086",
+      "charcoal-satin-wrap-dress-075",
+      "ivory-hand-block-palazzo-set-125",
+      "stone-satin-wrap-dress-071"
+    ],
+    "similar_products": [
+      "white-gift-ready-canvas-tote-146",
+      "mustard-gift-ready-leather-belt-141",
+      "mustard-statement-canvas-tote-143",
+      "ecru-everyday-silk-scarf-144",
+      "indigo-everyday-leather-belt-142"
+    ],
+    "upsell_products": [
+      "chocolate-matching-lounge-set-112",
+      "indigo-matching-co-ord-set-109",
+      "lilac-soft-tailored-resort-set-113",
+      "olive-festive-a-line-kurta-127",
+      "olive-fluid-pleated-trouser-050"
+    ],
+    "seasonal_products": [
+      "navy-embroidered-palazzo-set-126",
+      "charcoal-soft-tailored-co-ord-set-114",
+      "white-draped-shirt-dress-073",
+      "lilac-festive-kurta-set-130",
+      "ivory-matching-lounge-set-117"
+    ]
+  }
+}

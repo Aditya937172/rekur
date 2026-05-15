@@ -1,0 +1,7 @@
+{
+  "provider_config_key": "shopify",
+  "scopes": "read_products,read_customers,read_orders,read_inventory",
+  "redirect_url": "http://localhost:3005/oauth/callback",
+  "nango_base_url": "http://localhost:3005",
+  "created_or_updated": true
+}
