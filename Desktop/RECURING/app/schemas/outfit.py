@@ -16,7 +16,7 @@ class GenerateOutfitImageRequest(BaseModel):
 
 class FirstOrderAnniversaryCampaignRequest(BaseModel):
     customer_id: int | None = None
-    days_window: int = Field(default=7, ge=0, le=30)
+    days_window: int = Field(default=7, ge=1, le=365)
     limit: int = Field(default=10, ge=1, le=100)
     send_email: bool = False
     recipient_email: str | None = Field(default=None, max_length=320)
