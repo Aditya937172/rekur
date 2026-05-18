@@ -692,7 +692,62 @@ def product_url(store: Store, product: Product) -> str:
 
 
 def image_references(product_context: list[dict[str, Any]]) -> list[str]:
-    return []
+    """
+    Extract product image URLs from context to use as visual
+    reference for GPT Image generation. Prioritizes purchased
+    products first, then recommended pairings.
+    Max 4 images to stay within API limits.
+    """
+    purchased_urls = [
+        item["image_url"]
+        for item in product_context
+        if item.get("role") == "purchased" and item.get("image_url")
+    ]
+
+    first_purchase_urls = [
+        item["image_url"]
+        for item in product_context
+        if item.get("role") == "first_purchase" and item.get("image_url")
+    ]
+
+    owned_urls = [
+        item["image_url"]
+        for item in product_context
+        if item.get("role") == "owned" and item.get("image_url")
+    ]
+
+    pairing_urls = [
+        item["image_url"]
+        for item in product_context
+        if item.get("role") == "recommended_pairing" and item.get("image_url")
+    ]
+
+    similar_urls = [
+        item["image_url"]
+        for item in product_context
+        if item.get("role") == "recommended_similar" and item.get("image_url")
+    ]
+
+    seasonal_gap_urls = [
+        item["image_url"]
+        for item in product_context
+        if item.get("role") == "seasonal_gap" and item.get("image_url")
+    ]
+
+    all_urls = (
+        purchased_urls
+        + first_purchase_urls
+        + owned_urls
+        + pairing_urls
+        + similar_urls
+        + seasonal_gap_urls
+    )
+
+    valid_urls = [
+        url for url in all_urls if url and url.startswith("http") and len(url) > 10
+    ]
+
+    return valid_urls[:4]
 
 
 def product_context_embedding(
@@ -740,6 +795,8 @@ def build_outfit_prompt(
     )
     if trigger_reason == "first_order_anniversary":
         return (
+            "Use the attached product reference images as visual anchors. "
+            "Match the exact colors, fabrics, and styles shown in those images. "
             "One fashion lookbook image, exactly 3 outfit ideas in a clean triptych. "
             f"First purchase anniversary anchor item: {purchased_title}. "
             f"Recommendation strategy: {strategy}. "
@@ -751,6 +808,8 @@ def build_outfit_prompt(
             f"Customer style memory: {compact(memory.memory_summary, 700)}"
         )
     return (
+        "Use the attached product reference images as visual anchors. "
+        "Match the exact colors, fabrics, and styles shown in those images. "
         "One fashion lookbook image, exactly 3 outfit ideas in a clean triptych. "
         f"Anchor item just delivered: {purchased_title}. "
         f"Recommendation strategy: {strategy}. "

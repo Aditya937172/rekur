@@ -1,0 +1,97 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgresql://rekur:rekur@postgres:5432/rekur
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  worker:
+    build: .
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgresql://rekur:rekur@postgres:5432/rekur
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    command: celery -A app.worker worker --loglevel=info --concurrency=4
+    volumes:
+      - .:/app
+
+  beat:
+    build: .
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgresql://rekur:rekur@postgres:5432/rekur
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+    depends_on:
+      - redis
+    command: celery -A app.worker beat --loglevel=info
+    volumes:
+      - .:/app
+
+  flower:
+    build: .
+    ports:
+      - "5555:5555"
+    env_file: .env
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/1
+    depends_on:
+      - redis
+    command: celery -A app.worker flower --port=5555
+    volumes:
+      - .:/app
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: rekur
+      POSTGRES_USER: rekur
+      POSTGRES_PASSWORD: rekur
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rekur -d rekur"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

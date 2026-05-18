@@ -470,6 +470,8 @@ def generate_seasonal_image_prompt(
     seasonal_keywords = get_seasonal_style_keywords(season)
 
     return (
+        f"Use the attached product reference images as visual anchors. "
+        f"Match the exact colors, fabrics, and styles shown in those images. "
         f"One seasonal fashion lookbook image, exactly 3 styling options in one cohesive triptych. "
         f"Use only these already-owned wardrobe pieces: {product_titles}. "
         f"Season: {season_name}. Style keywords: {', '.join(seasonal_keywords[:5])}. "

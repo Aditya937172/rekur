@@ -86,6 +86,9 @@ class AppSettings(BaseModel):
     sendgrid_base_url: str = Field(default="https://api.sendgrid.com/v3")
     sendgrid_timeout_seconds: int = Field(default=30)
     retention_sender_provider: str = Field(default="gmail")
+    shopify_webhook_secret: Optional[str] = Field(default=None)
+    redis_url: str = Field(default="redis://localhost:6379/0")
+    celery_result_backend: str = Field(default="redis://localhost:6379/1")
 
     @property
     def normalized_store_domain(self) -> str:
@@ -155,7 +158,9 @@ def load_settings(env_file: Optional[Path | str] = None) -> AppSettings:
         groq_model=os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"),
         groq_timeout_seconds=int(os.getenv("GROQ_TIMEOUT_SECONDS", "30")),
         groq_max_retries=int(os.getenv("GROQ_MAX_RETRIES", "2")),
-        google_client_id=os.getenv("GOOGLE_CLIENT_ID") or os.getenv("client_id") or None,
+        google_client_id=os.getenv("GOOGLE_CLIENT_ID")
+        or os.getenv("client_id")
+        or None,
         google_client_secret=(
             os.getenv("GOOGLE_CLIENT_SECRET") or os.getenv("client_secret") or None
         ),
@@ -202,7 +207,9 @@ def load_settings(env_file: Optional[Path | str] = None) -> AppSettings:
         image_resolution=os.getenv("IMAGE_RESOLUTION", "1K"),
         image_quality=os.getenv("IMAGE_QUALITY", "medium"),
         image_timeout_seconds=int(os.getenv("IMAGE_TIMEOUT_SECONDS", "90")),
-        image_poll_interval_seconds=float(os.getenv("IMAGE_POLL_INTERVAL_SECONDS", "5")),
+        image_poll_interval_seconds=float(
+            os.getenv("IMAGE_POLL_INTERVAL_SECONDS", "5")
+        ),
         image_max_wait_seconds=int(os.getenv("IMAGE_MAX_WAIT_SECONDS", "240")),
         image_provider=os.getenv("IMAGE_PROVIDER", "evolink"),
         vector_cache_threshold=float(os.getenv("VECTOR_CACHE_THRESHOLD", "0.92")),
@@ -227,4 +234,9 @@ def load_settings(env_file: Optional[Path | str] = None) -> AppSettings:
         ),
         sendgrid_timeout_seconds=int(os.getenv("SENDGRID_TIMEOUT_SECONDS", "30")),
         retention_sender_provider=os.getenv("RETENTION_SENDER_PROVIDER", "gmail"),
+        shopify_webhook_secret=os.getenv("SHOPIFY_WEBHOOK_SECRET") or None,
+        redis_url=os.getenv("REDIS_URL", "redis://localhost:6379/0"),
+        celery_result_backend=os.getenv(
+            "CELERY_RESULT_BACKEND", "redis://localhost:6379/1"
+        ),
     )

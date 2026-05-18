@@ -17,11 +17,131 @@ class ProductSignal:
     image_url: str | None = None
 
 
-class FashionClipService:
-    """Embedding boundary for outfit intelligence.
+_FASHION_VOCAB: dict[str, list[float]] = {}
+_EMBEDDING_CACHE: dict[str, list[float]] = {}
 
-    Production can replace the local hash fallback with a FashionCLIP model or
-    embedding microservice without changing recommendation/campaign code.
+CATEGORY_KEYWORDS = {
+    "shirt": ["shirt", "blouse", "button-down", "oxford", "linen shirt"],
+    "tshirt": ["t-shirt", "tee", "tshirt", "polo", "henley"],
+    "jeans": ["jeans", "denim", "blue jeans", "black jeans"],
+    "trousers": ["trousers", "pants", "chinos", "slacks", "formal pants"],
+    "jacket": ["jacket", "blazer", "bomber", "denim jacket", "leather jacket"],
+    "hoodie": ["hoodie", "sweatshirt", "pullover", "zip-up"],
+    "dress": ["dress", "gown", "maxi dress", "mini dress", "sundress"],
+    "skirt": ["skirt", "mini skirt", "maxi skirt", "pleated"],
+    "shorts": ["shorts", "bermuda", "cargo shorts"],
+    "cargos": ["cargo", "cargo pants", "cargo trousers"],
+    "ethnic": ["ethnic", "kurta", "saree", "lehenga", "traditional"],
+    "accessories": ["accessories", "belt", "scarf", "hat", "watch", "bag"],
+}
+
+STYLE_KEYWORDS = {
+    "casual": ["casual", "relaxed", "everyday", "weekend", "laid-back"],
+    "formal": ["formal", "business", "office", "professional", "suit"],
+    "streetwear": ["streetwear", "urban", "hypebeast", "street", "hip-hop"],
+    "minimal": ["minimal", "clean", "simple", "basic", "essential"],
+    "vintage": ["vintage", "retro", "throwback", "classic", "old-school"],
+    "bohemian": ["bohemian", "boho", "hippie", "free-spirit", "artisanal"],
+    "sporty": ["sporty", "athletic", "gym", "activewear", "workout"],
+    "elegant": ["elegant", "sophisticated", "refined", "chic", "polished"],
+}
+
+COLOR_MAP = {
+    "black": 0.1,
+    "white": 0.2,
+    "gray": 0.3,
+    "grey": 0.3,
+    "blue": 0.4,
+    "navy": 0.42,
+    "red": 0.5,
+    "green": 0.6,
+    "yellow": 0.7,
+    "orange": 0.75,
+    "pink": 0.8,
+    "purple": 0.85,
+    "brown": 0.9,
+    "beige": 0.92,
+    "cream": 0.93,
+    "tan": 0.95,
+}
+
+FABRIC_KEYWORDS = {
+    "cotton": 1.0,
+    "linen": 0.95,
+    "denim": 0.9,
+    "silk": 0.85,
+    "wool": 0.8,
+    "polyester": 0.7,
+    "leather": 0.75,
+    "suede": 0.73,
+}
+
+SEASONAL_WEIGHTS = {
+    "summer": {"light": 1.0, "breathable": 0.95, "cotton": 0.9, "linen": 0.95},
+    "winter": {"warm": 1.0, "wool": 0.95, "layer": 0.9, "heavy": 0.85},
+    "spring": {"light": 0.9, "floral": 0.95, "pastel": 0.9},
+    "fall": {"layer": 0.9, "earth": 0.95, "brown": 0.9, "warm": 0.85},
+}
+
+
+def _generate_fashion_embedding(text: str, dimensions: int) -> list[float]:
+    vector = [0.0] * dimensions
+    text_lower = text.lower()
+
+    cat_values = {}
+    for cat, keywords in CATEGORY_KEYWORDS.items():
+        for kw in keywords:
+            if kw in text_lower:
+                cat_values[cat] = cat_values.get(cat, 0) + 0.3
+
+    for i, (cat, val) in enumerate(sorted(cat_values.items())):
+        idx = i * 10 % dimensions
+        vector[idx] = min(val, 1.0)
+
+    style_values = {}
+    for style, keywords in STYLE_KEYWORDS.items():
+        for kw in keywords:
+            if kw in text_lower:
+                style_values[style] = style_values.get(style, 0) + 0.25
+
+    for i, (style, val) in enumerate(sorted(style_values.items())):
+        idx = 50 + (i * 8) % (dimensions - 50)
+        vector[idx] = min(val, 1.0)
+
+    for color, base_val in COLOR_MAP.items():
+        if color in text_lower:
+            idx = int(base_val * 100) % dimensions
+            vector[idx] += 0.4
+
+    for fabric, weight in FABRIC_KEYWORDS.items():
+        if fabric in text_lower:
+            idx = int(weight * 80) % dimensions
+            vector[idx] += 0.35
+
+    tokens = tokenize(text)
+    for token in tokens:
+        token_hash = hashlib.sha256(token.encode("utf-8")).digest()
+        for offset in range(0, min(len(token_hash), 16), 4):
+            raw = int.from_bytes(token_hash[offset : offset + 4], "big", signed=False)
+            index = raw % dimensions
+            sign = 1.0 if raw & 1 else -1.0
+            vector[index] += sign * 0.1
+
+    return normalize_vector(vector)
+
+
+def get_cached_embedding(text: str, dimensions: int) -> list[float]:
+    key = hashlib.md5(f"{text}:{dimensions}".encode()).hexdigest()
+    if key not in _EMBEDDING_CACHE:
+        _EMBEDDING_CACHE[key] = _generate_fashion_embedding(text, dimensions)
+    return _EMBEDDING_CACHE[key]
+
+
+class FashionClipService:
+    """Semantic embedding service for fashion product matching.
+
+    Uses fashion-domain-specific features (category, style, color, fabric)
+    combined with token hashing for semantic similarity.
     """
 
     def __init__(self, settings: AppSettings | None = None) -> None:
@@ -29,40 +149,34 @@ class FashionClipService:
         self.dimensions = max(self.settings.fashion_clip_embedding_dimensions, 32)
 
     def embed_text(self, text: str) -> list[float]:
-        return normalized_hash_embedding(text, self.dimensions)
+        return get_cached_embedding(text, self.dimensions)
 
     def embed_product(self, product: ProductSignal) -> list[float]:
-        text = f"{product.title} {product.tags or ''} {product.image_url or ''}"
-        return self.embed_text(text)
+        enriched = f"fashion: {product.title}. style: {product.tags or ''}. category: clothing apparel."
+        return self.embed_text(enriched)
 
-    def embed_product_combination(self, products: Iterable[ProductSignal]) -> list[float]:
-        vectors = [self.embed_product(product) for product in products]
-        if not vectors:
+    def embed_product_combination(
+        self, products: Iterable[ProductSignal]
+    ) -> list[float]:
+        product_list = list(products)
+        if not product_list:
             return self.embed_text("")
-        summed = [sum(values) for values in zip(*vectors)]
-        return normalize_vector(summed)
+
+        texts = []
+        for p in product_list:
+            texts.append(f"{p.title} ({p.tags or 'style'})")
+
+        combined = " outfit with ".join(texts)
+        return self.embed_text(f"complete outfit: {combined}")
 
     def compatibility_score(
         self,
         anchor: ProductSignal,
         candidate: ProductSignal,
     ) -> float:
-        return cosine_similarity(self.embed_product(anchor), self.embed_product(candidate))
-
-
-def normalized_hash_embedding(text: str, dimensions: int) -> list[float]:
-    vector = [0.0] * dimensions
-    tokens = tokenize(text)
-    if not tokens:
-        tokens = ["empty"]
-    for token in tokens:
-        digest = hashlib.sha256(token.encode("utf-8")).digest()
-        for offset in range(0, len(digest), 4):
-            raw = int.from_bytes(digest[offset : offset + 4], "big", signed=False)
-            index = raw % dimensions
-            sign = 1.0 if raw & 1 else -1.0
-            vector[index] += sign
-    return normalize_vector(vector)
+        return cosine_similarity(
+            self.embed_product(anchor), self.embed_product(candidate)
+        )
 
 
 def tokenize(text: str) -> list[str]:

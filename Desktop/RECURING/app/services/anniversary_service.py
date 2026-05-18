@@ -311,6 +311,8 @@ def anniversary_image_prompt(
     )
 
     return (
+        "Use the attached product reference images as visual anchors. "
+        "Match the exact colors, fabrics, and styles shown in those images. "
         "One single fashion lookbook image, exactly 3 styling options in one cohesive triptych. "
         "This is a one-year first purchase anniversary celebration. "
         f"Customer's original first purchase: {first_titles}. "
