@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from fastapi import APIRouter, BackgroundTasks, Header, HTTPException, Request
+from sqlalchemy import select, delete
 
 from app.core.config import load_settings
 from app.db.session import SessionLocal
@@ -42,16 +43,14 @@ def upsert_product_from_webhook(store_id: int, payload: dict[str, Any]) -> None:
             return
 
         product = db.scalar(
-            "SELECT * FROM product WHERE store_id = :store_id AND shopify_product_id = :pid",
-            {"store_id": store_id, "pid": shopify_product_id},
+            select(Product).where(
+                Product.store_id == store_id,
+                Product.shopify_product_id == shopify_product_id,
+            )
         )
 
         if not product:
-            from app.models import Product as ProductModel
-
-            product = ProductModel(
-                store_id=store_id, shopify_product_id=shopify_product_id
-            )
+            product = Product(store_id=store_id, shopify_product_id=shopify_product_id)
             db.add(product)
 
         product.title = payload.get("title", "") or product.title
@@ -87,14 +86,14 @@ def upsert_customer_from_webhook(store_id: int, payload: dict[str, Any]) -> None
             return
 
         customer = db.scalar(
-            "SELECT * FROM customer WHERE store_id = :store_id AND shopify_customer_id = :cid",
-            {"store_id": store_id, "cid": shopify_customer_id},
+            select(Customer).where(
+                Customer.store_id == store_id,
+                Customer.shopify_customer_id == shopify_customer_id,
+            )
         )
 
         if not customer:
-            from app.models import Customer as CustomerModel
-
-            customer = CustomerModel(
+            customer = Customer(
                 store_id=store_id, shopify_customer_id=shopify_customer_id
             )
             db.add(customer)
@@ -132,23 +131,25 @@ def get_customer_and_items(
         if not shopify_customer_id:
             return None, [], None
 
-        customer = db.execute(
-            "SELECT * FROM customer WHERE store_id = :store_id AND shopify_customer_id = :sid",
-            {"store_id": store_id, "sid": shopify_customer_id},
-        ).fetchone()
+        customer = db.scalar(
+            select(Customer).where(
+                Customer.store_id == store_id,
+                Customer.shopify_customer_id == shopify_customer_id,
+            )
+        )
 
         if not customer:
             return None, [], None
 
-        customer_obj = db.get(Customer, customer.id)
-
         items: list[DeliveredOrderItemCreate] = []
         for line_item in line_items:
             shopify_product_id = str(line_item.get("product_id", ""))
-            product = db.execute(
-                "SELECT id FROM product WHERE store_id = :store_id AND shopify_product_id = :pid",
-                {"store_id": store_id, "pid": shopify_product_id},
-            ).fetchone()
+            product = db.scalar(
+                select(Product).where(
+                    Product.store_id == store_id,
+                    Product.shopify_product_id == shopify_product_id,
+                )
+            )
             if product:
                 items.append(
                     DeliveredOrderItemCreate(
@@ -158,7 +159,7 @@ def get_customer_and_items(
                     )
                 )
 
-        return customer_obj, items, email
+        return customer, items, email
     finally:
         db.close()
 
@@ -333,11 +334,16 @@ async def shopify_products_delete(
     db = SessionLocal()
     try:
         db.execute(
-            "DELETE FROM product WHERE store_id = :store_id AND shopify_product_id = :pid",
-            {"store_id": store_id, "pid": shopify_product_id},
+            delete(Product).where(
+                Product.store_id == store_id,
+                Product.shopify_product_id == shopify_product_id,
+            )
         )
         db.commit()
         logger.info(f"Deleted product {shopify_product_id} from store {store_id}")
+    except Exception as e:
+        logger.error(f"Product delete failed: {e}", exc_info=True)
+        db.rollback()
     finally:
         db.close()
 
@@ -431,11 +437,16 @@ async def shopify_customers_delete(
     db = SessionLocal()
     try:
         db.execute(
-            "DELETE FROM customer WHERE store_id = :store_id AND shopify_customer_id = :cid",
-            {"store_id": store_id, "cid": shopify_customer_id},
+            delete(Customer).where(
+                Customer.store_id == store_id,
+                Customer.shopify_customer_id == shopify_customer_id,
+            )
         )
         db.commit()
         logger.info(f"Deleted customer {shopify_customer_id} from store {store_id}")
+    except Exception as e:
+        logger.error(f"Customer delete failed: {e}", exc_info=True)
+        db.rollback()
     finally:
         db.close()
 

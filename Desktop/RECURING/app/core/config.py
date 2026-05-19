@@ -89,6 +89,7 @@ class AppSettings(BaseModel):
     shopify_webhook_secret: Optional[str] = Field(default=None)
     redis_url: str = Field(default="redis://localhost:6379/0")
     celery_result_backend: str = Field(default="redis://localhost:6379/1")
+    gemini_api_key: Optional[str] = Field(default=None)
 
     @property
     def normalized_store_domain(self) -> str:
@@ -239,4 +240,7 @@ def load_settings(env_file: Optional[Path | str] = None) -> AppSettings:
         celery_result_backend=os.getenv(
             "CELERY_RESULT_BACKEND", "redis://localhost:6379/1"
         ),
+        gemini_api_key=os.getenv("GEMINI_API_KEY")
+        or os.getenv("gemini_api_key")
+        or None,
     )

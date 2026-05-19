@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import hashlib
+import logging
 import math
 import re
 from dataclasses import dataclass
 from typing import Iterable
 
 from app.core.config import AppSettings, load_settings
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -76,13 +79,6 @@ FABRIC_KEYWORDS = {
     "suede": 0.73,
 }
 
-SEASONAL_WEIGHTS = {
-    "summer": {"light": 1.0, "breathable": 0.95, "cotton": 0.9, "linen": 0.95},
-    "winter": {"warm": 1.0, "wool": 0.95, "layer": 0.9, "heavy": 0.85},
-    "spring": {"light": 0.9, "floral": 0.95, "pastel": 0.9},
-    "fall": {"layer": 0.9, "earth": 0.95, "brown": 0.9, "warm": 0.85},
-}
-
 
 def _generate_fashion_embedding(text: str, dimensions: int) -> list[float]:
     vector = [0.0] * dimensions
@@ -130,26 +126,100 @@ def _generate_fashion_embedding(text: str, dimensions: int) -> list[float]:
     return normalize_vector(vector)
 
 
-def get_cached_embedding(text: str, dimensions: int) -> list[float]:
-    key = hashlib.md5(f"{text}:{dimensions}".encode()).hexdigest()
-    if key not in _EMBEDDING_CACHE:
-        _EMBEDDING_CACHE[key] = _generate_fashion_embedding(text, dimensions)
-    return _EMBEDDING_CACHE[key]
+def _get_gemini_embedding(text: str, settings: AppSettings) -> list[float]:
+    try:
+        import google.generativeai as genai
+
+        genai.configure(api_key=settings.gemini_api_key)
+
+        result = genai.embed_content(
+            model="models/gemini-embedding-001",
+            content=text,
+            task_type="retrieval_document",
+        )
+
+        if "embedding" in result:
+            return result["embedding"]
+
+    except ImportError:
+        logger.warning(
+            "google-generativeai not installed, falling back to hash embeddings"
+        )
+    except Exception as e:
+        logger.warning(f"Gemini embedding failed: {e}, falling back to hash")
+
+    return None
+
+
+def get_cached_embedding(
+    text: str, dimensions: int, settings: AppSettings = None
+) -> list[float]:
+    use_gemini = (
+        settings
+        and settings.gemini_api_key
+        and settings.fashion_clip_provider == "gemini_embedding"
+    )
+
+    cache_key = f"gemini:{text}" if use_gemini else f"hash:{text}:{dimensions}"
+    key_hash = hashlib.md5(cache_key.encode()).hexdigest()
+
+    if key_hash in _EMBEDDING_CACHE:
+        return _EMBEDDING_CACHE[key_hash]
+
+    if use_gemini:
+        embedding = _get_gemini_embedding(text, settings)
+        if embedding:
+            if len(embedding) != dimensions:
+                embedding = _resize_embedding(embedding, dimensions)
+            _EMBEDDING_CACHE[key_hash] = embedding
+            return embedding
+
+    embedding = _generate_fashion_embedding(text, dimensions)
+    _EMBEDDING_CACHE[key_hash] = embedding
+    return embedding
+
+
+def _resize_embedding(embedding: list[float], target_dim: int) -> list[float]:
+    if len(embedding) == target_dim:
+        return embedding
+    if len(embedding) > target_dim:
+        return embedding[:target_dim]
+    padding = [0.0] * (target_dim - len(embedding))
+    return embedding + padding
 
 
 class FashionClipService:
     """Semantic embedding service for fashion product matching.
 
-    Uses fashion-domain-specific features (category, style, color, fabric)
-    combined with token hashing for semantic similarity.
+    Supports:
+    - Gemini text-embedding-004 (real semantic embeddings)
+    - Fashion-aware hash fallback (no API required)
+
+    Set FASHIONCLIP_PROVIDER=gemini_embedding and GEMINI_API_KEY in .env
     """
 
     def __init__(self, settings: AppSettings | None = None) -> None:
         self.settings = settings or load_settings()
         self.dimensions = max(self.settings.fashion_clip_embedding_dimensions, 32)
+        self._client = None
+
+        if (
+            self.settings.fashion_clip_provider == "gemini_embedding"
+            and self.settings.gemini_api_key
+        ):
+            try:
+                import google.generativeai as genai
+
+                genai.configure(api_key=self.settings.gemini_api_key)
+                self._client = genai
+                logger.info("FashionClipService initialized with Gemini embeddings")
+            except ImportError:
+                logger.warning("google-generativeai not installed, using hash fallback")
+            except Exception as e:
+                logger.warning(f"Gemini init failed: {e}, using hash fallback")
 
     def embed_text(self, text: str) -> list[float]:
-        return get_cached_embedding(text, self.dimensions)
+        return get_cached_embedding(text, self.dimensions, self.settings)
 
     def embed_product(self, product: ProductSignal) -> list[float]:
         enriched = f"fashion: {product.title}. style: {product.tags or ''}. category: clothing apparel."
@@ -170,9 +240,7 @@ class FashionClipService:
         return self.embed_text(f"complete outfit: {combined}")
 
     def compatibility_score(
-        self,
-        anchor: ProductSignal,
-        candidate: ProductSignal,
+        self, anchor: ProductSignal, candidate: ProductSignal
     ) -> float:
         return cosine_similarity(
             self.embed_product(anchor), self.embed_product(candidate)
