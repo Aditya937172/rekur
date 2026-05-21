@@ -6,6 +6,8 @@ from typing import Any
 import requests
 
 from app.core.config import AppSettings, load_settings
+from app.core.observability import log_pipeline_event
+from app.core.retry import ExternalAPIRetryError, requests_request_with_retries
 
 
 class SendGridServiceError(RuntimeError):
@@ -51,25 +53,39 @@ def send_sendgrid_email(
     if sendgrid_attachments:
         payload["attachments"] = sendgrid_attachments
 
-    response = requests.post(
-        f"{settings.sendgrid_base_url}/mail/send",
-        headers={
-            "Authorization": f"Bearer {settings.sendgrid_api_key}",
-            "Content-Type": "application/json",
-        },
-        json=payload,
-        timeout=settings.sendgrid_timeout_seconds,
-    )
+    try:
+        response = requests_request_with_retries(
+            "POST",
+            f"{settings.sendgrid_base_url}/mail/send",
+            provider="sendgrid",
+            operation="send_email",
+            settings=settings,
+            headers={
+                "Authorization": f"Bearer {settings.sendgrid_api_key}",
+                "Content-Type": "application/json",
+            },
+            json=payload,
+            timeout=settings.sendgrid_timeout_seconds,
+        )
+    except ExternalAPIRetryError as exc:
+        raise SendGridServiceError(str(exc), status_code=502) from exc
     if response.status_code >= 400:
         raise SendGridServiceError(
             f"SendGrid send failed with HTTP {response.status_code}: {response.text[:500]}",
             status_code=502,
         )
-    return {
+    result = {
         "id": response.headers.get("X-Message-Id"),
         "status_code": response.status_code,
         "provider": "sendgrid",
     }
+    log_pipeline_event(
+        "email_sent",
+        provider="sendgrid",
+        provider_message_id=result["id"],
+        recipient_email=recipient_email,
+    )
+    return result
 
 
 def email_content(body_text: str, body_html: str | None) -> list[dict[str, str]]:
@@ -120,6 +136,6 @@ def attachment_to_sendgrid(
 def ensure_sendgrid_configured(settings: AppSettings) -> None:
     if not settings.sendgrid_api_key or not settings.sendgrid_from_email:
         raise SendGridServiceError(
-            "SENDGRID_API_KEY and SENDGRID_FROM_EMAIL are required for SendGrid delivery.",
+            "SENDGRID_API_KEY and SENDGRID_FROM_EMAIL are required only when RETENTION_SENDER_PROVIDER=sendgrid.",
             status_code=400,
         )

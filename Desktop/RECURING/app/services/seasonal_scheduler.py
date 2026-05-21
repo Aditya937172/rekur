@@ -10,7 +10,8 @@ import logging
 from sqlalchemy import select, and_
 from sqlalchemy.orm import Session
 
-from app.models import BuyerMemory, Customer, GeneratedOutfitImage, Store
+from app.models import BuyerMemory, Customer, Store
+from app.services.send_policy_service import already_sent_seasonal
 from app.utils.season_utils import (
     Hemisphere,
     Season,
@@ -35,6 +36,7 @@ def get_eligible_customers_for_seasonal_lookbook(
     *,
     min_orders: int = 3,
     hemisphere: Optional[Hemisphere] = None,
+    season: Optional[Season] = None,
     limit: Optional[int] = None,
 ) -> list[Customer]:
     """
@@ -46,7 +48,9 @@ def get_eligible_customers_for_seasonal_lookbook(
     - Hasn't received this season's lookbook yet
     - Optionally filtered by hemisphere
     """
-    current_season = get_current_season(hemisphere=hemisphere or Hemisphere.NORTHERN)
+    current_season = season or get_current_season(
+        hemisphere=hemisphere or Hemisphere.NORTHERN
+    )
     current_year = date.today().year
 
     query = (
@@ -91,23 +95,14 @@ def already_received_this_season(
     season: Season,
     year: int,
 ) -> bool:
-    """Check if customer already received this season's lookbook."""
-    from app.models import GeneratedOutfitImage
-
-    trigger = f"seasonal_lookbook_{season.value}"
-
-    existing = db.scalar(
-        select(GeneratedOutfitImage.id)
-        .where(
-            GeneratedOutfitImage.store_id == store_id,
-            GeneratedOutfitImage.customer_id == customer_id,
-            GeneratedOutfitImage.trigger_reason == trigger,
-            GeneratedOutfitImage.status.in_(["generated", "sent"]),
-        )
-        .limit(1)
+    """Check RetentionSendLog for this season's sent lookbook."""
+    return already_sent_seasonal(
+        db,
+        store_id=store_id,
+        customer_id=customer_id,
+        season_key=season.value,
+        year=year,
     )
-
-    return existing is not None
 
 
 def get_campaign_schedule_for_year(
@@ -225,6 +220,7 @@ async def run_quarterly_seasonal_campaign(
     store_id: int,
     *,
     hemisphere: Optional[Hemisphere] = None,
+    season: Optional[Season] = None,
     dry_run: bool = False,
     limit: Optional[int] = None,
 ) -> dict:
@@ -246,7 +242,9 @@ async def run_quarterly_seasonal_campaign(
         generate_seasonal_lookbook_for_customer,
     )
 
-    if hemisphere:
+    if season:
+        current_season = season
+    elif hemisphere:
         current_season = get_current_season(hemisphere=hemisphere)
     else:
         should_run, current_season = should_run_campaign_today()
@@ -263,6 +261,7 @@ async def run_quarterly_seasonal_campaign(
         store_id,
         min_orders=3,
         hemisphere=hemisphere,
+        season=current_season,
         limit=limit,
     )
 
@@ -284,7 +283,7 @@ async def run_quarterly_seasonal_campaign(
         results["processed"] += 1
 
         customer_hemisphere = get_hemisphere(customer.country)
-        customer_season = get_current_season(hemisphere=customer_hemisphere)
+        customer_season = current_season
 
         try:
             if dry_run:

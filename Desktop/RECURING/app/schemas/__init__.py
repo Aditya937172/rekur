@@ -1,3 +1,12 @@
+from app.schemas.auth import (
+    AppUserRead,
+    DevTokenRequest,
+    DevTokenResponse,
+    ShopifyConnectCallbackRequest,
+    ShopifyConnectCallbackResponse,
+    ShopifyConnectStartRequest,
+    ShopifyConnectStartResponse,
+)
 from app.schemas.buyer_memory import BuyerMemoryRebuildResponse, BuyerMemoryResponse
 from app.schemas.events import EventAck, EventCreate, EventSummary, SessionRead
 from app.schemas.gmail import (
@@ -41,6 +50,8 @@ from app.schemas.retention import (
     EmailEngagementResponse,
     ReturnRefundCreate,
     ReturnRefundResponse,
+    SilentCustomerEngagementSeedRequest,
+    SilentCustomerEngagementSeedResponse,
     SilentCustomerResponse,
 )
 from app.schemas.store import (
@@ -54,6 +65,7 @@ from app.schemas.sync import SyncResult, SyncRunRead
 __all__ = [
     "BuyerMemoryRebuildResponse",
     "BuyerMemoryResponse",
+    "AppUserRead",
     "CampaignRunRequest",
     "CampaignRunResponse",
     "ChurnRiskResponse",
@@ -75,6 +87,8 @@ __all__ = [
     "DeliveredOrderCreateRequest",
     "DeliveredOrderItemCreate",
     "DeliveredOrderPipelineResponse",
+    "DevTokenRequest",
+    "DevTokenResponse",
     "FirstOrderAnniversaryCampaignRequest",
     "FirstOrderAnniversaryCampaignResponse",
     "GenerateOutfitImageRequest",
@@ -99,4 +113,10 @@ __all__ = [
     "SyncRunRead",
     "TrackingInstallResult",
     "SilentCustomerResponse",
+    "ShopifyConnectCallbackRequest",
+    "ShopifyConnectCallbackResponse",
+    "ShopifyConnectStartRequest",
+    "ShopifyConnectStartResponse",
+    "SilentCustomerEngagementSeedRequest",
+    "SilentCustomerEngagementSeedResponse",
 ]

@@ -35,8 +35,9 @@ SessionLocal = sessionmaker(
 def init_db() -> None:
     from app import models  # noqa: F401
 
-    Base.metadata.create_all(bind=engine)
-    run_sqlite_compat_migrations()
+    if settings.database_url.startswith("sqlite"):
+        Base.metadata.create_all(bind=engine)
+        run_sqlite_compat_migrations()
 
 
 def run_sqlite_compat_migrations() -> None:
@@ -156,6 +157,55 @@ def run_sqlite_compat_migrations() -> None:
                     text(
                         "ALTER TABLE generated_outfit_images "
                         "ADD COLUMN task_progress INTEGER"
+                    )
+                )
+            if "credits_reserved" not in outfit_columns:
+                connection.execute(
+                    text(
+                        "ALTER TABLE generated_outfit_images "
+                        "ADD COLUMN credits_reserved FLOAT"
+                    )
+                )
+            if "credits_used" not in outfit_columns:
+                connection.execute(
+                    text(
+                        "ALTER TABLE generated_outfit_images "
+                        "ADD COLUMN credits_used FLOAT"
+                    )
+                )
+            if "image_input_tokens" not in outfit_columns:
+                connection.execute(
+                    text(
+                        "ALTER TABLE generated_outfit_images "
+                        "ADD COLUMN image_input_tokens INTEGER"
+                    )
+                )
+            if "image_output_tokens" not in outfit_columns:
+                connection.execute(
+                    text(
+                        "ALTER TABLE generated_outfit_images "
+                        "ADD COLUMN image_output_tokens INTEGER"
+                    )
+                )
+            if "text_input_tokens" not in outfit_columns:
+                connection.execute(
+                    text(
+                        "ALTER TABLE generated_outfit_images "
+                        "ADD COLUMN text_input_tokens INTEGER"
+                    )
+                )
+            if "total_tokens" not in outfit_columns:
+                connection.execute(
+                    text(
+                        "ALTER TABLE generated_outfit_images "
+                        "ADD COLUMN total_tokens INTEGER"
+                    )
+                )
+            if "image_generation_usage_json" not in outfit_columns:
+                connection.execute(
+                    text(
+                        "ALTER TABLE generated_outfit_images "
+                        "ADD COLUMN image_generation_usage_json JSON"
                     )
                 )
             connection.execute(

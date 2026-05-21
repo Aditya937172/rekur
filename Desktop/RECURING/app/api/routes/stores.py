@@ -5,8 +5,17 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.core.auth import add_store_owner, get_current_user, require_store_access
 from app.db.session import get_db
-from app.models import Customer, Order, Product, Store, SyncRun
+from app.models import (
+    AppUser,
+    Customer,
+    Order,
+    Product,
+    Store,
+    StoreOwnership,
+    SyncRun,
+)
 from app.schemas import (
     StoreCreate,
     StoreDashboard,
@@ -22,8 +31,27 @@ from app.services.sync_service import SyncServiceError, sync_store
 router = APIRouter(prefix="/stores", tags=["stores"])
 
 
+@router.get("", response_model=list[StoreRead])
+def list_my_stores(
+    current_user: AppUser = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> list[Store]:
+    return list(
+        db.scalars(
+            select(Store)
+            .join(StoreOwnership, StoreOwnership.store_id == Store.id)
+            .where(StoreOwnership.user_id == current_user.id)
+            .order_by(Store.created_at.desc())
+        )
+    )
+
+
 @router.post("", response_model=StoreRead, status_code=status.HTTP_201_CREATED)
-def create_store(payload: StoreCreate, db: Session = Depends(get_db)) -> Store:
+def create_store(
+    payload: StoreCreate,
+    current_user: AppUser = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> Store:
     store = Store(
         name=payload.name,
         nango_connection_id=payload.nango_connection_id,
@@ -31,6 +59,8 @@ def create_store(payload: StoreCreate, db: Session = Depends(get_db)) -> Store:
     )
     db.add(store)
     try:
+        db.flush()
+        add_store_owner(db, user_id=current_user.id, store_id=store.id)
         db.commit()
     except IntegrityError as exc:
         db.rollback()
@@ -43,7 +73,11 @@ def create_store(payload: StoreCreate, db: Session = Depends(get_db)) -> Store:
 
 
 @router.post("/{store_id}/sync", response_model=SyncResult)
-def sync_store_endpoint(store_id: int, db: Session = Depends(get_db)) -> SyncResult:
+def sync_store_endpoint(
+    store_id: int,
+    _store: Store = Depends(require_store_access),
+    db: Session = Depends(get_db),
+) -> SyncResult:
     try:
         summary = sync_store(db, store_id)
     except SyncServiceError as exc:
@@ -62,6 +96,7 @@ def sync_store_endpoint(store_id: int, db: Session = Depends(get_db)) -> SyncRes
 @router.post("/{store_id}/install-tracking", response_model=TrackingInstallResult)
 def install_tracking_endpoint(
     store_id: int,
+    _store: Store = Depends(require_store_access),
     db: Session = Depends(get_db),
 ) -> TrackingInstallResult:
     try:
@@ -84,6 +119,7 @@ def install_tracking_endpoint(
 @router.get("/{store_id}/dashboard", response_model=StoreDashboard)
 def get_store_dashboard(
     store_id: int,
+    _store: Store = Depends(require_store_access),
     db: Session = Depends(get_db),
 ) -> StoreDashboard:
     ensure_store_exists(db, store_id)
@@ -109,7 +145,11 @@ def get_store_dashboard(
 
 
 @router.get("/{store_id}/sync/status", response_model=SyncRunRead)
-def get_sync_status(store_id: int, db: Session = Depends(get_db)) -> SyncRun:
+def get_sync_status(
+    store_id: int,
+    _store: Store = Depends(require_store_access),
+    db: Session = Depends(get_db),
+) -> SyncRun:
     ensure_store_exists(db, store_id)
     sync_run = db.scalar(
         select(SyncRun)

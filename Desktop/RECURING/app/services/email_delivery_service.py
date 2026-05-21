@@ -39,6 +39,12 @@ def send_retention_email(
         except SendGridServiceError as exc:
             raise EmailDeliveryError(str(exc), status_code=exc.status_code) from exc
 
+    if provider not in {"gmail", "google", "google_gmail"}:
+        raise EmailDeliveryError(
+            "Unsupported RETENTION_SENDER_PROVIDER. Use 'gmail' for local testing or 'sendgrid' when SendGrid is configured.",
+            status_code=400,
+        )
+
     try:
         response = send_gmail_message(
             recipient_email=recipient_email,

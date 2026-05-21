@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.concurrency import run_in_threadpool
 from sqlalchemy.orm import Session
 
+from app.core.auth import require_outfit_access, require_store_access
 from app.db.session import get_db
 from app.schemas import (
     FirstOrderAnniversaryCampaignRequest,
@@ -26,7 +27,10 @@ from app.services.outfit_service import (
 
 
 router = APIRouter(tags=["outfits"])
-store_router = APIRouter(prefix="/stores/{store_id}/outfits")
+store_router = APIRouter(
+    prefix="/stores/{store_id}/outfits",
+    dependencies=[Depends(require_store_access)],
+)
 outfit_router = APIRouter(prefix="/outfits")
 
 
@@ -83,6 +87,7 @@ async def list_store_outfits(
 async def send_outfit_followup_email(
     outfit_id: int,
     request: SendOutfitEmailRequest | None = None,
+    _outfit=Depends(require_outfit_access),
     db: Session = Depends(get_db),
 ) -> OutfitEmailSendResponse:
     try:

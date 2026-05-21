@@ -18,6 +18,17 @@ def parse_bool(value: Optional[str], default: bool = False) -> bool:
 
 
 class AppSettings(BaseModel):
+    environment: str = Field(default="development")
+    app_auth_secret_key: str = Field(
+        default="dev-insecure-retention-auth-secret-change-me"
+    )
+    app_auth_token_ttl_minutes: int = Field(default=1440)
+    internal_admin_token: str | None = Field(default=None)
+    external_retry_max_attempts: int = Field(default=3)
+    external_retry_base_delay_seconds: float = Field(default=0.75)
+    public_rate_limit_enabled: bool = Field(default=True)
+    public_rate_limit_per_minute: int = Field(default=120)
+    dead_letter_dir: Path = Field(default=PROJECT_ROOT / "data" / "dead_letters")
     shopify_store_domain: str = Field(default="your-store.myshopify.com")
     shopify_api_key: Optional[str] = Field(default=None)
     shopify_api_secret: Optional[str] = Field(default=None)
@@ -55,7 +66,12 @@ class AppSettings(BaseModel):
     )
     gmail_auth_uri: str = Field(default="https://accounts.google.com/o/oauth2/v2/auth")
     gmail_token_uri: str = Field(default="https://oauth2.googleapis.com/token")
-    gmail_send_scope: str = Field(default="https://www.googleapis.com/auth/gmail.send")
+    gmail_send_scope: str = Field(
+        default=(
+            "https://www.googleapis.com/auth/gmail.send "
+            "https://www.googleapis.com/auth/gmail.modify"
+        )
+    )
     gmail_api_base_url: str = Field(default="https://gmail.googleapis.com/gmail/v1")
     gmail_timeout_seconds: int = Field(default=30)
     image_api_key: Optional[str] = Field(default=None)
@@ -70,6 +86,8 @@ class AppSettings(BaseModel):
     image_timeout_seconds: int = Field(default=90)
     image_poll_interval_seconds: float = Field(default=5.0)
     image_max_wait_seconds: int = Field(default=240)
+    image_max_credits_per_task: float = Field(default=1.2)
+    image_max_reference_urls: int = Field(default=0)
     image_provider: str = Field(default="evolink")
     vector_cache_threshold: float = Field(default=0.92)
     fashion_clip_provider: str = Field(default="local_hash")
@@ -128,6 +146,25 @@ def load_settings(env_file: Optional[Path | str] = None) -> AppSettings:
     load_dotenv(dotenv_path=env_file or PROJECT_ROOT / ".env", override=True)
 
     return AppSettings(
+        environment=os.getenv("ENVIRONMENT", "development"),
+        app_auth_secret_key=os.getenv(
+            "APP_AUTH_SECRET_KEY",
+            "dev-insecure-retention-auth-secret-change-me",
+        ),
+        app_auth_token_ttl_minutes=int(os.getenv("APP_AUTH_TOKEN_TTL_MINUTES", "1440")),
+        internal_admin_token=os.getenv("INTERNAL_ADMIN_TOKEN") or None,
+        external_retry_max_attempts=int(os.getenv("EXTERNAL_RETRY_MAX_ATTEMPTS", "3")),
+        external_retry_base_delay_seconds=float(
+            os.getenv("EXTERNAL_RETRY_BASE_DELAY_SECONDS", "0.75")
+        ),
+        public_rate_limit_enabled=parse_bool(os.getenv("PUBLIC_RATE_LIMIT_ENABLED"), True),
+        public_rate_limit_per_minute=int(os.getenv("PUBLIC_RATE_LIMIT_PER_MINUTE", "120")),
+        dead_letter_dir=Path(
+            os.getenv(
+                "DEAD_LETTER_DIR",
+                str(PROJECT_ROOT / "data" / "dead_letters"),
+            )
+        ),
         shopify_store_domain=os.getenv(
             "SHOPIFY_STORE_DOMAIN", "your-store.myshopify.com"
         ),
@@ -181,7 +218,7 @@ def load_settings(env_file: Optional[Path | str] = None) -> AppSettings:
         ),
         gmail_send_scope=os.getenv(
             "GMAIL_SEND_SCOPE",
-            "https://www.googleapis.com/auth/gmail.send",
+            "https://www.googleapis.com/auth/gmail.send https://www.googleapis.com/auth/gmail.modify",
         ),
         gmail_api_base_url=os.getenv(
             "GMAIL_API_BASE_URL",
@@ -212,6 +249,10 @@ def load_settings(env_file: Optional[Path | str] = None) -> AppSettings:
             os.getenv("IMAGE_POLL_INTERVAL_SECONDS", "5")
         ),
         image_max_wait_seconds=int(os.getenv("IMAGE_MAX_WAIT_SECONDS", "240")),
+        image_max_credits_per_task=float(
+            os.getenv("IMAGE_MAX_CREDITS_PER_TASK", "1.2")
+        ),
+        image_max_reference_urls=int(os.getenv("IMAGE_MAX_REFERENCE_URLS", "0")),
         image_provider=os.getenv("IMAGE_PROVIDER", "evolink"),
         vector_cache_threshold=float(os.getenv("VECTOR_CACHE_THRESHOLD", "0.92")),
         fashion_clip_provider=os.getenv("FASHIONCLIP_PROVIDER", "local_hash"),

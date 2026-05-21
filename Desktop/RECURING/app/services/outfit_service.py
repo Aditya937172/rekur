@@ -11,6 +11,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from app.core.config import AppSettings, PROJECT_ROOT, load_settings
+from app.core.observability import log_pipeline_event
 from app.models import (
     BuyerMemory,
     Customer,
@@ -50,7 +51,10 @@ from app.services.vector_cache_service import (
     search_outfit_image_cache,
     store_outfit_image_cache,
 )
-from app.services.gender_service import get_customer_gender
+from app.services.gender_service import (
+    infer_wearer_gender_from_context,
+    resolve_wearer_gender,
+)
 
 
 class OutfitServiceError(RuntimeError):
@@ -73,8 +77,23 @@ def generate_outfit_for_customer(
     settings = settings or load_settings()
     store = ensure_store(db, store_id)
     customer = ensure_customer(db, store_id, request.customer_id)
+    log_pipeline_event(
+        "customer_resolved",
+        pipeline="outfit_generation",
+        store_id=store_id,
+        customer_id=customer.id,
+        trigger_reason=request.trigger_reason,
+    )
     memory = update_buyer_memory_for_customer(db, store_id, customer.id)
     order = resolve_order(db, store_id, customer.id, request.order_id, memory)
+    log_pipeline_event(
+        "order_resolved",
+        pipeline="outfit_generation",
+        store_id=store_id,
+        customer_id=customer.id,
+        order_id=order.id if order else None,
+        trigger_reason=request.trigger_reason,
+    )
     purchased_products = products_from_order(order)
     recommended_products = select_pairing_products(
         db,
@@ -132,6 +151,16 @@ def generate_outfit_for_customer(
 
     try:
         if cache_lookup.cache:
+            log_pipeline_event(
+                "image_cache_hit",
+                pipeline="outfit_generation",
+                store_id=store_id,
+                customer_id=customer.id,
+                order_id=order.id if order else None,
+                outfit_id=outfit.id,
+                cache_similarity=cache_lookup.similarity,
+                trigger_reason=request.trigger_reason,
+            )
             outfit.provider = f"{cache_lookup.cache.provider or 'image'}_cache"
             outfit.model_name = cache_lookup.cache.model_name
             outfit.task_status = "cache_hit"
@@ -140,6 +169,16 @@ def generate_outfit_for_customer(
             outfit.image_url = cache_lookup.cache.image_url
             outfit.status = "generated"
         else:
+            log_pipeline_event(
+                "image_cache_miss",
+                pipeline="outfit_generation",
+                store_id=store_id,
+                customer_id=customer.id,
+                order_id=order.id if order else None,
+                outfit_id=outfit.id,
+                cache_similarity=cache_lookup.similarity,
+                trigger_reason=request.trigger_reason,
+            )
             generate_single_outfit_image(
                 outfit=outfit,
                 prompt=prompt,
@@ -164,6 +203,18 @@ def generate_outfit_for_customer(
                     "task_status": outfit.task_status,
                     "cache_similarity": cache_lookup.similarity,
                 },
+            )
+            log_pipeline_event(
+                "image_generated",
+                pipeline="outfit_generation",
+                provider=outfit.provider,
+                model_name=outfit.model_name,
+                task_id=outfit.task_id,
+                store_id=store_id,
+                customer_id=customer.id,
+                order_id=order.id if order else None,
+                outfit_id=outfit.id,
+                trigger_reason=request.trigger_reason,
             )
         outfit.status = "generated"
         outfit.updated_at = utc_now()
@@ -226,6 +277,19 @@ def generate_custom_outfit_for_customer(
     settings = settings or load_settings()
     ensure_store(db, store_id)
     customer = ensure_customer(db, store_id, customer_id)
+    prompt = prompt_with_visual_model_instruction(
+        prompt,
+        customer=customer,
+        product_context=product_context,
+    )
+    log_pipeline_event(
+        "customer_resolved",
+        pipeline="custom_outfit_generation",
+        store_id=store_id,
+        customer_id=customer.id,
+        order_id=order_id,
+        trigger_reason=trigger_reason,
+    )
     memory = update_buyer_memory_for_customer(db, store_id, customer.id)
     reference_urls = image_references(product_context)
     embedding = product_context_embedding(product_context, settings)
@@ -256,6 +320,16 @@ def generate_custom_outfit_for_customer(
 
     try:
         if cache_lookup.cache:
+            log_pipeline_event(
+                "image_cache_hit",
+                pipeline="custom_outfit_generation",
+                store_id=store_id,
+                customer_id=customer.id,
+                order_id=order_id,
+                outfit_id=outfit.id,
+                cache_similarity=cache_lookup.similarity,
+                trigger_reason=trigger_reason,
+            )
             outfit.provider = f"{cache_lookup.cache.provider or 'image'}_cache"
             outfit.model_name = cache_lookup.cache.model_name
             outfit.task_status = "cache_hit"
@@ -263,6 +337,16 @@ def generate_custom_outfit_for_customer(
             outfit.image_base64 = cache_lookup.cache.image_base64
             outfit.image_url = cache_lookup.cache.image_url
         else:
+            log_pipeline_event(
+                "image_cache_miss",
+                pipeline="custom_outfit_generation",
+                store_id=store_id,
+                customer_id=customer.id,
+                order_id=order_id,
+                outfit_id=outfit.id,
+                cache_similarity=cache_lookup.similarity,
+                trigger_reason=trigger_reason,
+            )
             generate_single_outfit_image(
                 outfit=outfit,
                 prompt=prompt,
@@ -290,6 +374,18 @@ def generate_custom_outfit_for_customer(
                     "task_status": outfit.task_status,
                     "cache_similarity": cache_lookup.similarity,
                 },
+            )
+            log_pipeline_event(
+                "image_generated",
+                pipeline="custom_outfit_generation",
+                provider=outfit.provider,
+                model_name=outfit.model_name,
+                task_id=outfit.task_id,
+                store_id=store_id,
+                customer_id=customer.id,
+                order_id=order_id,
+                outfit_id=outfit.id,
+                trigger_reason=trigger_reason,
             )
         outfit.status = "generated"
         outfit.updated_at = utc_now()
@@ -349,6 +445,7 @@ def send_outfit_email(
             store_id=outfit.store_id,
             customer_id=outfit.customer_id,
             campaign_type=campaign_type,
+            trigger_reason=outfit.trigger_reason,
             force=bool(request.recipient_email),
         )
     except SendPolicyError as exc:
@@ -389,6 +486,17 @@ def send_outfit_email(
         outfit_image_id=outfit.id,
         metadata={"recipient_email": recipient_email},
     )
+    log_pipeline_event(
+        "email_sent",
+        pipeline="outfit_email",
+        provider=email_response.get("provider"),
+        provider_message_id=email_response.get("id"),
+        store_id=outfit.store_id,
+        customer_id=outfit.customer_id,
+        outfit_id=outfit.id,
+        campaign_type=campaign_type,
+        trigger_reason=outfit.trigger_reason,
+    )
     db.commit()
     return OutfitEmailSendResponse(
         outfit_id=outfit.id,
@@ -402,7 +510,7 @@ def send_outfit_email(
 def campaign_type_for_trigger(trigger_reason: str | None) -> str:
     if trigger_reason == "first_order_anniversary":
         return "purchase_anniversary"
-    if trigger_reason == "seasonal_lookbook":
+    if trigger_reason and trigger_reason.startswith("seasonal_lookbook"):
         return "seasonal_lookbook"
     if trigger_reason == "pre_churn_stage_1":
         return "pre_churn"
@@ -428,7 +536,7 @@ def generate_single_outfit_image(
         outfit.task_progress = 100
         outfit.image_base64 = result.image_base64
         outfit.image_url = result.image_url
-    else:
+    elif provider in {"evolink", "gpt-image", "gpt_image", "gpt-image-2"}:
         result = generate_outfit_image(
             prompt=prompt,
             image_urls=reference_urls,
@@ -441,8 +549,28 @@ def generate_single_outfit_image(
         outfit.task_progress = result.task_progress
         outfit.image_base64 = result.image_base64
         outfit.image_url = result.image_url
+        apply_image_generation_usage(outfit, result.credits_reserved, result.usage)
+    else:
+        raise ImageGenerationServiceError(
+            "Unsupported IMAGE_PROVIDER. Use 'evolink' for local GPT Image testing or 'runpod_seedream' when RunPod is configured.",
+            status_code=400,
+        )
     if outfit.image_base64 and not outfit.image_url:
         outfit.image_url = save_base64_image(outfit.id, outfit.image_base64)
+
+
+def apply_image_generation_usage(
+    outfit: GeneratedOutfitImage,
+    credits_reserved: float | None,
+    usage: dict[str, Any],
+) -> None:
+    outfit.credits_reserved = credits_reserved
+    outfit.credits_used = safe_float(usage.get("credits_used"))
+    outfit.image_input_tokens = safe_int(usage.get("image_input_tokens"))
+    outfit.image_output_tokens = safe_int(usage.get("image_output_tokens"))
+    outfit.text_input_tokens = safe_int(usage.get("text_input_tokens"))
+    outfit.total_tokens = safe_int(usage.get("total_tokens"))
+    outfit.image_generation_usage_json = usage or None
 
 
 def ensure_store(db: Session, store_id: int) -> Store:
@@ -509,9 +637,7 @@ def select_pairing_products(
     }
     wanted = pairing_categories(categories)
 
-    customer_gender = None
-    if customer:
-        customer_gender = get_customer_gender(db, customer)
+    wearer_gender = resolve_wearer_gender(customer, purchased_products)
 
     all_products_query = select(Product).where(
         Product.store_id == store.id, Product.id.not_in(purchased_ids or {-1})
@@ -520,8 +646,8 @@ def select_pairing_products(
         all_products_query.order_by(Product.updated_at.desc())
     ).all()
 
-    if customer_gender and customer_gender != "unisex":
-        gender_tag = f"gender_{customer_gender}"
+    if wearer_gender and wearer_gender not in {"unisex", "mixed"}:
+        gender_tag = f"gender_{wearer_gender}"
         gender_products = [
             p for p in all_products if p.tags and gender_tag in p.tags.lower()
         ]
@@ -793,6 +919,11 @@ def build_outfit_prompt(
         if has_complementary
         else "same-vibe supplementary styling options from the brand"
     )
+    visual_gender = visual_model_instruction(
+        customer=customer,
+        product_context=product_context,
+    )
+    occasion = occasion_instruction(product_context)
     if trigger_reason == "first_order_anniversary":
         return (
             "Use the attached product reference images as visual anchors. "
@@ -803,7 +934,7 @@ def build_outfit_prompt(
             f"Style that first-order item with these 3 current store products: {pairing_title}. "
             "Mood: warm throwback, modern refresh, casual friend recommendation. "
             "Vibes: coffee daytime, dinner evening, weekend outing. "
-            "Realistic attractive models, premium D2C clothing campaign, natural poses. "
+            f"{visual_gender} {occasion} Premium D2C clothing campaign, natural poses. "
             "No text, no logos, no labels, no watermarks, no distorted hands/faces. "
             f"Customer style memory: {compact(memory.memory_summary, 700)}"
         )
@@ -815,7 +946,7 @@ def build_outfit_prompt(
         f"Recommendation strategy: {strategy}. "
         f"Style it with these 3 store products: {pairing_title}. "
         "Vibes: city daytime, dinner evening, weekend travel. "
-        "Realistic attractive models, premium D2C clothing campaign, natural poses. "
+        f"{visual_gender} {occasion} Premium D2C clothing campaign, natural poses. "
         "No text, no logos, no labels, no watermarks, no distorted hands/faces. "
         f"Customer style memory: {compact(memory.memory_summary, 700)}"
     )
@@ -850,7 +981,7 @@ def default_outfit_email_body(
     if trigger_reason == "first_order_anniversary":
         first_item = product_titles(purchased) or "your first pick"
         lines = [
-            f"Hey {name},",
+            f"{name},",
             "",
             anniversary_memory_line(memory, first_item),
             "I made one fresh outfit idea around that first buy, with a few pieces from the store that still fit your vibe.",
@@ -863,10 +994,11 @@ def default_outfit_email_body(
         return "\n".join(lines)
 
     lines = [
-        f"Hey {name},",
+        f"{name},",
         "",
-        "your order should be with you now, so I put together one quick styling idea for it.",
-        "I attached one image with three different ways you can wear it, using a few pieces that pair well with what you picked.",
+        purchase_compliment_line(purchased, memory),
+        pairing_compliment_line(purchased, recommended),
+        "I attached one image with three ways to wear it, all built around pieces from the store.",
     ]
     if recommended:
         lines.append("")
@@ -874,6 +1006,162 @@ def default_outfit_email_body(
         for item in recommended[:3]:
             lines.append(f"- {item['title']}: {item['product_url']}")
     return "\n".join(lines)
+
+
+def visual_model_instruction(
+    customer: Customer | None = None,
+    product_context: list[dict[str, Any]] | None = None,
+) -> str:
+    has_product_context = product_context is not None and len(product_context) > 0
+    gender = infer_wearer_gender_from_context(product_context or [])
+    if not gender and customer and not has_product_context:
+        gender = (customer.gender or "").strip().lower()
+    if gender == "men":
+        return (
+            "The order/product context is menswear. Show adult male models only "
+            "for the outfits. Do not switch to female models based on styling, "
+            "color, or customer-account assumptions."
+        )
+    if gender == "women":
+        return (
+            "The order/product context is womenswear. Show adult female models only "
+            "for the outfits. Do not switch to male models based on customer-account "
+            "name or buyer assumptions."
+        )
+    if gender == "mixed":
+        return (
+            "The order/product context contains mixed menswear and womenswear. "
+            "Use separate adult models whose presentation matches each outfit, "
+            "or use cropped/editorial product-focused styling where a single gender "
+            "would be misleading."
+        )
+    return (
+        "The intended wearer is ambiguous or unisex. Use gender-neutral adult styling, "
+        "and prefer cropped/editorial product-focused composition if a strongly gendered "
+        "model choice could be wrong."
+    )
+
+
+def prompt_with_visual_model_instruction(
+    prompt: str,
+    *,
+    customer: Customer | None = None,
+    product_context: list[dict[str, Any]] | None = None,
+) -> str:
+    instruction = visual_model_instruction(
+        customer=customer,
+        product_context=product_context,
+    )
+    occasion = occasion_instruction(product_context or [])
+    lower_prompt = prompt.lower()
+    if "show adult male models only" in lower_prompt:
+        return prompt
+    if "show adult female models only" in lower_prompt:
+        return prompt
+    if "gender-neutral adult styling" in lower_prompt:
+        return prompt
+    return f"{instruction} {occasion} {prompt}"
+
+
+def occasion_instruction(product_context: list[dict[str, Any]]) -> str:
+    known = {
+        "office",
+        "work",
+        "formal",
+        "party",
+        "festive",
+        "wedding",
+        "travel",
+        "resort",
+        "vacation",
+        "casual",
+        "streetwear",
+        "ethnic",
+        "evening",
+        "daytime",
+    }
+    occasions: list[str] = []
+    for item in product_context:
+        tags = [str(tag).lower() for tag in (item.get("tags") or [])]
+        title = str(item.get("title") or "").lower()
+        for tag in tags:
+            normalized = tag.replace("occasion_", "").replace("style_", "")
+            if normalized in known and normalized not in occasions:
+                occasions.append(normalized)
+        for word in known:
+            if word in title and word not in occasions:
+                occasions.append(word)
+    if not occasions:
+        return (
+            "Respect the product's natural occasion and avoid mismatched settings "
+            "or styling contexts."
+        )
+    return (
+        "Respect these occasion/style signals: "
+        f"{', '.join(occasions[:4])}. Do not force a mismatched occasion."
+    )
+
+
+def purchase_compliment_line(
+    purchased: list[dict[str, Any]],
+    memory: BuyerMemory,
+) -> str:
+    title = product_titles(purchased) if purchased else "that piece"
+    style_hint = best_style_hint(purchased, memory)
+    if style_hint:
+        return (
+            f"That {title} was a clean pick - it gives {style_hint} energy "
+            "without looking like you tried too hard."
+        )
+    return (
+        f"That {title} was a clean pick - easy to wear, but still sharp enough "
+        "to make the whole outfit feel intentional."
+    )
+
+
+def pairing_compliment_line(
+    purchased: list[dict[str, Any]],
+    recommended: list[dict[str, Any]],
+) -> str:
+    purchased_title = product_titles(purchased) if purchased else "it"
+    if not recommended:
+        return (
+            f"I kept the styling around {purchased_title} simple because the piece "
+            "already has enough personality."
+        )
+    titles = product_titles(recommended[:3])
+    return (
+        f"The pairings work because {titles} add shape, contrast, and a little polish "
+        f"without stealing attention from {purchased_title}."
+    )
+
+
+def best_style_hint(
+    purchased: list[dict[str, Any]],
+    memory: BuyerMemory,
+) -> str:
+    tag_text = " ".join(
+        str(tag)
+        for item in purchased
+        for tag in (item.get("tags") or [])
+    ).lower()
+    memory_text = f"{memory.style_tags or ''} {memory.favorite_colors or ''}".lower()
+    combined = f"{tag_text} {memory_text}"
+    for label in [
+        "resort",
+        "streetwear",
+        "minimal",
+        "formal",
+        "premium",
+        "pastel",
+        "neutral",
+        "ethnic",
+        "oversized",
+        "casual",
+    ]:
+        if label in combined:
+            return label
+    return ""
 
 
 def anniversary_memory_line(memory: BuyerMemory, first_item: str) -> str:
@@ -963,6 +1251,13 @@ def to_outfit_response(outfit: GeneratedOutfitImage) -> GeneratedOutfitImageResp
         task_id=outfit.task_id,
         task_status=outfit.task_status,
         task_progress=outfit.task_progress,
+        credits_reserved=outfit.credits_reserved,
+        credits_used=outfit.credits_used,
+        image_input_tokens=outfit.image_input_tokens,
+        image_output_tokens=outfit.image_output_tokens,
+        text_input_tokens=outfit.text_input_tokens,
+        total_tokens=outfit.total_tokens,
+        image_generation_usage_json=outfit.image_generation_usage_json,
         prompt=outfit.prompt,
         image_url=outfit.image_url,
         recommended_products_json=outfit.recommended_products_json or [],
@@ -985,6 +1280,24 @@ def split_words(value: str | None) -> list[str]:
     if not value:
         return []
     return [part.strip().lower() for part in value.split(",") if part.strip()]
+
+
+def safe_int(value: Any) -> int | None:
+    try:
+        if value is None:
+            return None
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def safe_float(value: Any) -> float | None:
+    try:
+        if value is None:
+            return None
+        return float(value)
+    except (TypeError, ValueError):
+        return None
 
 
 def infer_category_from_text(value: str) -> str | None:

@@ -11,7 +11,9 @@ from app.schemas.outfit import GeneratedOutfitImageResponse
 
 class EmailEngagementCreate(BaseModel):
     customer_id: int | None = None
+    email: str | None = Field(default=None, max_length=320)
     send_log_id: int | None = None
+    provider: str | None = Field(default=None, max_length=64)
     provider_message_id: str | None = Field(default=None, max_length=255)
     campaign_type: str | None = Field(default=None, max_length=128)
     event_type: str = Field(max_length=64)
@@ -24,8 +26,11 @@ class EmailEngagementResponse(BaseModel):
     id: int
     store_id: int
     customer_id: int | None
+    send_log_id: int | None = None
+    provider_message_id: str | None = None
     event_type: str
     campaign_type: str | None
+    url: str | None = None
     timestamp: datetime
 
 
@@ -82,6 +87,24 @@ class SilentCustomerResponse(BaseModel):
     open_rate_60d: float
     click_rate_60d: float
     emails_sent_60d: int
+
+
+class SilentCustomerEngagementSeedRequest(BaseModel):
+    customer_id: int | None = None
+    email: str | None = Field(default=None, max_length=320)
+    sent_count: int = Field(default=5, ge=3, le=30)
+    open_count: int = Field(default=3, ge=0, le=30)
+    click_count: int = Field(default=0, ge=0, le=30)
+    last_purchase_days_ago: int | None = Field(default=90, ge=60, le=3650)
+    campaign_type: str = Field(default="silent_customer_seed", max_length=128)
+
+
+class SilentCustomerEngagementSeedResponse(BaseModel):
+    customer_id: int
+    sent_created: int
+    opens_created: int
+    clicks_created: int
+    detected_as_silent: bool
 
 
 class CustomerReplyCreate(BaseModel):

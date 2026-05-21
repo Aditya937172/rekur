@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from fastapi.concurrency import run_in_threadpool
 from sqlalchemy.orm import Session
 
+from app.core.auth import require_store_access
 from app.db.session import get_db
 from app.schemas import CustomerRecommendations
 from app.services.recommendation_engine import (
@@ -13,7 +14,11 @@ from app.services.recommendation_engine import (
 )
 
 
-router = APIRouter(prefix="/stores/{store_id}/recommendations", tags=["recommendations"])
+router = APIRouter(
+    prefix="/stores/{store_id}/recommendations",
+    tags=["recommendations"],
+    dependencies=[Depends(require_store_access)],
+)
 
 
 @router.get("/customers", response_model=list[CustomerRecommendations])

@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.concurrency import run_in_threadpool
 from sqlalchemy.orm import Session
 
+from app.core.auth import require_message_access, require_store_access
 from app.db.session import get_db
 from app.schemas import (
     ApproveMessageResponse,
@@ -36,7 +37,10 @@ from app.services.message_send_service import (
 
 
 router = APIRouter(tags=["messages"])
-store_router = APIRouter(prefix="/stores/{store_id}/messages")
+store_router = APIRouter(
+    prefix="/stores/{store_id}/messages",
+    dependencies=[Depends(require_store_access)],
+)
 message_router = APIRouter(prefix="/messages")
 
 
@@ -116,6 +120,7 @@ async def get_customer_message(
 @message_router.post("/{message_id}/approve", response_model=ApproveMessageResponse)
 async def approve_generated_message(
     message_id: int,
+    _message=Depends(require_message_access),
     db: Session = Depends(get_db),
 ) -> ApproveMessageResponse:
     try:
@@ -127,6 +132,7 @@ async def approve_generated_message(
 @message_router.post("/{message_id}/reject", response_model=RejectMessageResponse)
 async def reject_generated_message(
     message_id: int,
+    _message=Depends(require_message_access),
     db: Session = Depends(get_db),
 ) -> RejectMessageResponse:
     try:
@@ -139,6 +145,7 @@ async def reject_generated_message(
 async def regenerate_generated_message(
     message_id: int,
     request: RegenerateMessageRequest | None = None,
+    _message=Depends(require_message_access),
     db: Session = Depends(get_db),
 ) -> GeneratedMessageResponse:
     try:
@@ -156,6 +163,7 @@ async def regenerate_generated_message(
 async def send_generated_message(
     message_id: int,
     request: SendApprovedMessageRequest | None = None,
+    _message=Depends(require_message_access),
     db: Session = Depends(get_db),
 ) -> SendApprovedMessageResponse:
     try:

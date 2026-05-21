@@ -21,7 +21,7 @@ from app.models import (
 from app.schemas.outfit import GeneratedOutfitImageResponse
 from app.services.buyer_memory_service import get_buyer_memory
 from app.services.fashion_clip_service import FashionClipService, ProductSignal
-from app.services.gender_service import get_customer_gender
+from app.services.gender_service import resolve_wearer_gender
 from app.services.message_engine import MessageEngineError, call_groq
 from app.services.outfit_service import (
     OutfitServiceError,
@@ -29,6 +29,7 @@ from app.services.outfit_service import (
     product_to_context,
 )
 from app.services.recommendation_engine import get_recommendations_for_customer
+from app.services.send_policy_service import enforce_send_policy
 from app.utils.season_utils import (
     Hemisphere,
     Season,
@@ -138,6 +139,15 @@ async def generate_seasonal_lookbook_for_customer(
     )
 
     trigger_reason = f"seasonal_lookbook_{season.value}"
+    if send_email:
+        enforce_send_policy(
+            db,
+            store_id=store_id,
+            customer_id=customer_id,
+            campaign_type="seasonal_lookbook",
+            trigger_reason=trigger_reason,
+            force=bool(recipient_email),
+        )
 
     try:
         outfit = generate_custom_outfit_for_customer(
@@ -203,7 +213,7 @@ def find_best_outfit_combination(
        - Gender match
     3. Return top combination
     """
-    customer_gender = get_customer_gender(db, customer)
+    customer_gender = resolve_wearer_gender(customer, wardrobe_products)
 
     by_category = categorize_products(wardrobe_products)
 
@@ -319,7 +329,7 @@ def select_best_for_season(
 
         text = f"{product.title} {product.tags or ''}".lower()
 
-        if customer_gender and customer_gender != "unisex":
+        if customer_gender and customer_gender not in {"unisex", "mixed"}:
             gender_tag = f"gender_{customer_gender}"
             if gender_tag in text:
                 score += 10

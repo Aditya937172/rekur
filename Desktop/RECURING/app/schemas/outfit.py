@@ -41,6 +41,13 @@ class GeneratedOutfitImageResponse(BaseModel):
     task_id: str | None
     task_status: str | None
     task_progress: int | None
+    credits_reserved: float | None = None
+    credits_used: float | None = None
+    image_input_tokens: int | None = None
+    image_output_tokens: int | None = None
+    text_input_tokens: int | None = None
+    total_tokens: int | None = None
+    image_generation_usage_json: dict[str, Any] | None = None
     prompt: str
     image_url: str | None
     recommended_products_json: list[dict[str, Any]]

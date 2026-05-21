@@ -7,6 +7,8 @@ from typing import Any, Dict, Iterable, List, Optional
 
 import requests
 
+from app.core.observability import log_pipeline_event
+
 
 RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 
@@ -276,6 +278,14 @@ class ShopifyClient:
                     raise ShopifyAPIError(f"Shopify request failed: {exc}") from exc
                 if attempt >= self.max_retries:
                     raise ShopifyAPIError(f"Shopify request failed: {exc}") from exc
+                log_pipeline_event(
+                    "external_api_retry",
+                    provider="shopify",
+                    operation=path_or_url,
+                    error_type=exc.__class__.__name__,
+                    attempt=attempt + 1,
+                    max_attempts=self.max_retries + 1,
+                )
                 self._sleep_before_retry(attempt)
                 continue
 
@@ -287,6 +297,14 @@ class ShopifyClient:
                     break
                 if attempt >= self.max_retries:
                     break
+                log_pipeline_event(
+                    "external_api_retry",
+                    provider="shopify",
+                    operation=path_or_url,
+                    status_code=response.status_code,
+                    attempt=attempt + 1,
+                    max_attempts=self.max_retries + 1,
+                )
                 retry_after = response.headers.get("Retry-After")
                 if retry_after:
                     time.sleep(float(retry_after))

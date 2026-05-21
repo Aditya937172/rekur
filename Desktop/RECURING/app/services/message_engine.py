@@ -7,6 +7,7 @@ import requests
 from sqlalchemy.orm import Session
 
 from app.core.config import AppSettings, load_settings
+from app.core.observability import log_pipeline_event
 from app.models import Customer
 from app.schemas import CustomerMessage, CustomerRecommendations, ProductRecommendation
 from app.services.recommendation_engine import (
@@ -200,6 +201,14 @@ def call_groq(
                 timeout=settings.groq_timeout_seconds,
             )
             if should_retry(response.status_code) and attempt < max_retries:
+                log_pipeline_event(
+                    "external_api_retry",
+                    provider="groq",
+                    operation="chat_completion",
+                    status_code=response.status_code,
+                    attempt=attempt + 1,
+                    max_attempts=max_retries + 1,
+                )
                 sleep_before_retry(attempt)
                 continue
             if response.status_code >= 400:
@@ -211,6 +220,14 @@ def call_groq(
         except (requests.Timeout, requests.ConnectionError) as exc:
             last_error = exc
             if attempt < max_retries:
+                log_pipeline_event(
+                    "external_api_retry",
+                    provider="groq",
+                    operation="chat_completion",
+                    error_type=exc.__class__.__name__,
+                    attempt=attempt + 1,
+                    max_attempts=max_retries + 1,
+                )
                 sleep_before_retry(attempt)
                 continue
             raise MessageEngineError(

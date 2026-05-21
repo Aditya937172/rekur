@@ -7,6 +7,7 @@ from uuid import uuid4
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.core.observability import log_pipeline_event
 from app.models import Customer, GeneratedOutfitImage, Order, OrderItem, Product, Store
 from app.schemas import (
     DeliveredOrderCreateRequest,
@@ -51,6 +52,20 @@ def create_delivered_order_and_trigger_pipeline(
             f"Customer {request.customer_id} was not found.",
             status_code=404,
         )
+    log_pipeline_event(
+        "trigger_received",
+        pipeline="manual_delivered_order",
+        store_id=store_id,
+        customer_id=customer.id,
+        shopify_order_id=request.shopify_order_id,
+    )
+    log_pipeline_event(
+        "customer_resolved",
+        pipeline="manual_delivered_order",
+        store_id=store_id,
+        customer_id=customer.id,
+        shopify_customer_id=customer.shopify_customer_id,
+    )
 
     shopify_order_id = request.shopify_order_id or local_shopify_order_id()
     existing_order = db.scalar(
@@ -99,6 +114,14 @@ def create_delivered_order_and_trigger_pipeline(
     update_buyer_memory_for_customer(db, store_id, customer.id)
     db.commit()
     db.refresh(order)
+    log_pipeline_event(
+        "order_resolved",
+        pipeline="manual_delivered_order",
+        store_id=store_id,
+        customer_id=customer.id,
+        order_id=order.id,
+        shopify_order_id=order.shopify_order_id,
+    )
 
     return trigger_pipeline_for_existing_order(
         db,
@@ -127,6 +150,14 @@ def trigger_pipeline_for_existing_order(
     update_buyer_memory_for_customer(db, store_id, request.customer_id)
     db.commit()
     db.refresh(order)
+    log_pipeline_event(
+        "order_resolved",
+        pipeline="manual_delivered_order",
+        store_id=store_id,
+        customer_id=request.customer_id,
+        order_id=order.id,
+        shopify_order_id=order.shopify_order_id,
+    )
 
     existing_outfit = db.scalar(
         select(GeneratedOutfitImage)

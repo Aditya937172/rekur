@@ -6,16 +6,18 @@ from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import (
+    auth_router,
     buyer_memory_router,
     email_events_router,
     events_router,
     gmail_router,
     intent_router,
+    internal_router,
     messages_router,
     orders_router,
     outfits_router,
@@ -26,7 +28,10 @@ from app.api.routes import (
     webhooks_router,
 )
 from app.core.config import load_settings
+from app.core.rate_limit import build_rate_limit_middleware
+from app.core.auth import get_current_user
 from app.db.session import init_db
+from app.models import AppUser
 
 logging.basicConfig(
     level=logging.INFO,
@@ -36,6 +41,10 @@ logger = logging.getLogger(__name__)
 
 SENTRY_DSN = os.getenv("SENTRY_DSN")
 ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
+
+
+def parse_bool(value: str | None) -> bool:
+    return str(value or "").strip().lower() in {"1", "true", "yes", "on"}
 
 if SENTRY_DSN:
     import sentry_sdk
@@ -62,13 +71,16 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
         f"Database initialized: {settings.database_url.split('@')[-1] if '@' in settings.database_url else 'local'}"
     )
 
-    from app.scheduler.cron_scheduler import start_scheduler
+    if parse_bool(os.getenv("APP_DISABLE_SCHEDULER")):
+        logger.info("Scheduler disabled by APP_DISABLE_SCHEDULER")
+    else:
+        from app.scheduler.cron_scheduler import start_scheduler
 
-    try:
-        await start_scheduler()
-        logger.info("Scheduler started")
-    except Exception as e:
-        logger.warning(f"Scheduler not started: {e}")
+        try:
+            await start_scheduler()
+            logger.info("Scheduler started")
+        except Exception as e:
+            logger.warning(f"Scheduler not started: {e}")
 
     yield
 
@@ -92,21 +104,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.middleware("http")(build_rate_limit_middleware(load_settings()))
+
 
 @app.get("/health")
 async def health_check() -> dict:
     from app.db.session import SessionLocal
     from app.core.config import load_settings
+    from sqlalchemy import text
 
     db_status = "ok"
     redis_status = "ok"
 
+    db = None
     try:
         db = SessionLocal()
-        db.execute("SELECT 1")
-        db.close()
+        db.execute(text("SELECT 1"))
     except Exception as e:
         db_status = f"error: {str(e)[:50]}"
+    finally:
+        if db is not None:
+            db.close()
 
     try:
         import redis as redis_client
@@ -194,12 +212,51 @@ async def get_celery_status() -> dict:
         return {"workers_online": 0, "active_tasks": 0, "error": str(e)[:50]}
 
 
+@app.get("/celery/dead-letters")
+async def get_celery_dead_letters(
+    limit: int = Query(default=100, ge=1, le=500),
+    _current_user: AppUser = Depends(get_current_user),
+) -> list[dict]:
+    from app.services.dead_letter_service import list_dead_letters
+
+    return list_dead_letters(limit=limit)
+
+
+@app.post("/celery/dead-letters/{dead_letter_id}/requeue")
+async def requeue_celery_dead_letter(
+    dead_letter_id: str,
+    _current_user: AppUser = Depends(get_current_user),
+) -> dict:
+    from app.services.dead_letter_service import get_dead_letter
+    from app.worker import celery_app
+
+    row = get_dead_letter(dead_letter_id)
+    if not row:
+        return {"status": "not_found", "dead_letter_id": dead_letter_id}
+    task_name = row.get("task_name")
+    if not task_name:
+        return {"status": "not_requeued", "reason": "missing task_name"}
+    result = celery_app.send_task(
+        task_name,
+        args=row.get("args") or [],
+        kwargs=row.get("kwargs") or {},
+    )
+    return {
+        "status": "requeued",
+        "dead_letter_id": dead_letter_id,
+        "task_name": task_name,
+        "new_task_id": result.id,
+    }
+
+
 app.include_router(stores_router)
+app.include_router(auth_router)
 app.include_router(buyer_memory_router)
 app.include_router(email_events_router)
 app.include_router(events_router)
 app.include_router(gmail_router)
 app.include_router(intent_router)
+app.include_router(internal_router)
 app.include_router(recommendations_router)
 app.include_router(messages_router)
 app.include_router(orders_router)

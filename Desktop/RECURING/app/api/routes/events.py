@@ -5,6 +5,7 @@ from fastapi.concurrency import run_in_threadpool
 from sqlalchemy import case, func, select
 from sqlalchemy.orm import Session
 
+from app.core.auth import require_store_access
 from app.db.session import get_db
 from app.models import Event, Store, TrackingSession
 from app.schemas import EventAck, EventCreate, EventSummary, SessionRead
@@ -32,6 +33,7 @@ async def create_event(
 @router.get("/stores/{store_id}/events/summary", response_model=EventSummary)
 async def get_events_summary(
     store_id: int,
+    _store=Depends(require_store_access),
     db: Session = Depends(get_db),
 ) -> EventSummary:
     return await run_in_threadpool(build_events_summary, db, store_id)
@@ -40,6 +42,7 @@ async def get_events_summary(
 @router.get("/stores/{store_id}/sessions", response_model=list[SessionRead])
 async def list_sessions(
     store_id: int,
+    _store=Depends(require_store_access),
     db: Session = Depends(get_db),
 ) -> list[TrackingSession]:
     return await run_in_threadpool(build_sessions_list, db, store_id)

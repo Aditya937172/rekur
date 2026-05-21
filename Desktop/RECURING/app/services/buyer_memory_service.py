@@ -8,7 +8,16 @@ from typing import Any
 from sqlalchemy import case, func, select
 from sqlalchemy.orm import Session, selectinload
 
-from app.models import BuyerMemory, Customer, Event, Order, Product, Store, TrackingSession
+from app.models import (
+    BuyerMemory,
+    Customer,
+    Event,
+    Order,
+    Product,
+    ReturnRefund,
+    Store,
+    TrackingSession,
+)
 
 
 class BuyerMemoryServiceError(RuntimeError):
@@ -125,7 +134,9 @@ def update_buyer_memory_for_customer(
 
     first_order = orders[0] if orders else None
     last_order = orders[-1] if orders else None
-    total_spent = sum((Decimal(order.total_price or 0) for order in orders), Decimal("0"))
+    order_total = sum((Decimal(order.total_price or 0) for order in orders), Decimal("0"))
+    refunded_total = refunded_amount_for_customer(db, store_id, customer_id)
+    total_spent = max(order_total - refunded_total, Decimal("0"))
 
     memory = db.scalar(
         select(BuyerMemory).where(
@@ -384,3 +395,20 @@ def build_memory_summary(customer: Customer, memory: BuyerMemory) -> str:
     if memory.interest_summary:
         pieces.append(memory.interest_summary)
     return " ".join(pieces)
+
+
+def refunded_amount_for_customer(
+    db: Session,
+    store_id: int,
+    customer_id: int,
+) -> Decimal:
+    refund_customer_id = func.coalesce(ReturnRefund.customer_id, Order.customer_id)
+    total = db.scalar(
+        select(func.coalesce(func.sum(ReturnRefund.amount), 0))
+        .outerjoin(Order, ReturnRefund.order_id == Order.id)
+        .where(
+            ReturnRefund.store_id == store_id,
+            refund_customer_id == customer_id,
+        )
+    )
+    return Decimal(str(total or 0))

@@ -8,7 +8,8 @@ from typing import Any, Iterable
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from app.models import Customer, Order, OrderItem, Product, Store, SyncRun
+from app.core.observability import capture_exception, log_pipeline_error, log_pipeline_event
+from app.models import Customer, Order, OrderItem, Product, ReturnRefund, Store, SyncRun
 from app.services.nango_service import NangoService, NangoServiceError
 
 
@@ -85,7 +86,12 @@ def customer_city_country(customer: dict[str, Any]) -> tuple[str | None, str | N
 
 def log_progress(label: str, count: int, interval: int) -> None:
     if count and count % interval == 0:
-        print(f"Synced {count} {label}...")
+        log_pipeline_event(
+            "sync_progress",
+            pipeline="shopify_sync",
+            resource=label,
+            count=count,
+        )
 
 
 def sync_store(
@@ -103,6 +109,13 @@ def sync_store(
     db.add(sync_run)
     db.commit()
     db.refresh(sync_run)
+    log_pipeline_event(
+        "trigger_received",
+        pipeline="shopify_sync",
+        store_id=store.id,
+        shopify_store_domain=store.shopify_store_domain,
+        sync_run_id=sync_run.id,
+    )
 
     try:
         products = nango.fetch_products(store.nango_connection_id)
@@ -123,6 +136,15 @@ def sync_store(
         sync_run.customers_synced = customers_synced
         sync_run.orders_synced = orders_synced
         db.commit()
+        log_pipeline_event(
+            "pipeline_completed",
+            pipeline="shopify_sync",
+            store_id=store.id,
+            sync_run_id=sync_run.id,
+            products_synced=products_synced,
+            customers_synced=customers_synced,
+            orders_synced=orders_synced,
+        )
 
         return SyncSummary(
             status="success",
@@ -138,6 +160,14 @@ def sync_store(
             failed_run.finished_at = utc_now()
             failed_run.error_message = str(exc)[:4000]
             db.commit()
+        log_pipeline_error(
+            "pipeline_failed",
+            exc,
+            pipeline="shopify_sync",
+            store_id=store.id,
+            sync_run_id=sync_run.id,
+        )
+        capture_exception(exc, pipeline="shopify_sync", store_id=store.id)
         raise SyncServiceError(f"Store sync failed: {exc}") from exc
 
 
@@ -331,13 +361,35 @@ def update_customer_order_totals(db: Session, store_id: int) -> None:
         .where(Order.store_id == store_id, Order.customer_id.is_not(None))
         .group_by(Order.customer_id)
     ).all()
+    refund_customer_id = func.coalesce(ReturnRefund.customer_id, Order.customer_id)
+    refund_rows = db.execute(
+        select(
+            refund_customer_id.label("customer_id"),
+            func.coalesce(func.sum(ReturnRefund.amount), 0),
+        )
+        .outerjoin(Order, ReturnRefund.order_id == Order.id)
+        .where(
+            ReturnRefund.store_id == store_id,
+            refund_customer_id.is_not(None),
+        )
+        .group_by(refund_customer_id)
+    ).all()
+    refund_totals = {
+        int(customer_id): as_decimal(total_refunded)
+        for customer_id, total_refunded in refund_rows
+    }
+
     customer_by_id = {customer.id: customer for customer in customers}
     for customer_id, order_count, total_spent, last_order_date in aggregates:
         customer = customer_by_id.get(customer_id)
         if not customer:
             continue
         customer.total_orders = int(order_count or 0)
-        customer.total_spent = as_decimal(total_spent)
+        net_spent = as_decimal(total_spent) - refund_totals.get(
+            int(customer_id),
+            Decimal("0"),
+        )
+        customer.total_spent = max(net_spent, Decimal("0"))
         customer.last_order_date = last_order_date
 
     db.flush()

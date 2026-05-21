@@ -1,14 +1,23 @@
+"""Superseded customer gender migration.
+
+Revision ID: 0002_add_customer_gender
+Revises: 0001_bootstrap
+Create Date: 2026-05-21 00:00:00
 """
-Add gender column to customers table
-"""
 
-from alembic import op
-import sqlalchemy as sa
+from typing import Sequence, Union
 
 
-def upgrade():
-    op.add_column("customers", sa.Column("gender", sa.String(32), nullable=True))
+revision: str = "0002_add_customer_gender"
+down_revision: Union[str, None] = "0001_bootstrap"
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
 
 
-def downgrade():
-    op.drop_column("customers", "gender")
+def upgrade() -> None:
+    # The current-schema baseline already includes customers.gender.
+    pass
+
+
+def downgrade() -> None:
+    pass

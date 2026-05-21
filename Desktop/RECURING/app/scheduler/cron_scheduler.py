@@ -9,10 +9,11 @@ import logging
 from typing import Optional
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.schedulers.base import SchedulerNotRunningError
 from apscheduler.triggers.cron import CronTrigger
 from apscheduler.triggers.date import DateTrigger
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
-from apscheduler.executors.pool import ThreadPoolExecutor
+from apscheduler.executors.asyncio import AsyncIOExecutor
 
 from app.core.config import load_settings
 
@@ -29,7 +30,7 @@ def get_scheduler() -> AsyncIOScheduler:
 
         jobstores = {"default": SQLAlchemyJobStore(url=settings.database_url)}
 
-        executors = {"default": ThreadPoolExecutor(20)}
+        executors = {"default": AsyncIOExecutor()}
 
         job_defaults = {
             "coalesce": True,
@@ -49,8 +50,11 @@ def get_scheduler() -> AsyncIOScheduler:
 
 async def start_scheduler():
     scheduler = get_scheduler()
-    scheduler.start()
-    logger.info("Scheduler started")
+    if not scheduler.running:
+        scheduler.start()
+        logger.info("Scheduler started")
+    else:
+        logger.info("Scheduler already running")
 
     add_campaign_jobs(scheduler)
     logger.info("Campaign jobs scheduled")
@@ -59,8 +63,14 @@ async def start_scheduler():
 def shutdown_scheduler():
     global _scheduler
     if _scheduler:
-        _scheduler.shutdown(wait=True)
-        logger.info("Scheduler shutdown complete")
+        try:
+            if _scheduler.running:
+                _scheduler.shutdown(wait=True)
+                logger.info("Scheduler shutdown complete")
+            else:
+                logger.info("Scheduler was not running; shutdown skipped")
+        except SchedulerNotRunningError:
+            logger.info("Scheduler was not running; shutdown skipped")
         _scheduler = None
 
 
@@ -315,14 +325,17 @@ def schedule_test_campaign():
 
 def get_scheduled_jobs() -> list[dict]:
     scheduler = get_scheduler()
+    if not scheduler.get_jobs():
+        add_campaign_jobs(scheduler)
 
     jobs = []
     for job in scheduler.get_jobs():
+        next_run_time = getattr(job, "next_run_time", None)
         jobs.append(
             {
                 "id": job.id,
                 "name": job.name,
-                "next_run": str(job.next_run_time) if job.next_run_time else None,
+                "next_run": str(next_run_time) if next_run_time else None,
                 "trigger": str(job.trigger),
             }
         )

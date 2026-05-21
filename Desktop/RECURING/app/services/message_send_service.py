@@ -5,10 +5,16 @@ from datetime import datetime, timezone
 from sqlalchemy.orm import Session
 
 from app.core.config import AppSettings, load_settings
+from app.core.observability import log_pipeline_event
 from app.models import Customer, GeneratedMessage
 from app.schemas import SendApprovedMessageRequest, SendApprovedMessageResponse
 from app.services.gmail_service import GmailServiceError, send_gmail_message
 from app.services.message_review_service import APPROVED_STATUS, SENT_STATUS
+from app.services.send_policy_service import (
+    SendPolicyError,
+    enforce_send_policy,
+    record_retention_send,
+)
 
 
 class MessageSendServiceError(RuntimeError):
@@ -58,6 +64,18 @@ def send_approved_message(
 
     subject = request.subject or default_subject(message)
     try:
+        enforce_send_policy(
+            db,
+            store_id=message.store_id,
+            customer_id=message.customer_id,
+            campaign_type="approved_message",
+            trigger_reason="message_review",
+            force=bool(request.recipient_email),
+        )
+    except SendPolicyError as exc:
+        raise MessageSendServiceError(str(exc), status_code=exc.status_code) from exc
+
+    try:
         gmail_response = send_gmail_message(
             recipient_email=recipient_email,
             subject=subject,
@@ -69,6 +87,29 @@ def send_approved_message(
 
     message.status = SENT_STATUS
     message.updated_at = utc_now()
+    record_retention_send(
+        db,
+        store_id=message.store_id,
+        customer_id=message.customer_id,
+        campaign_type="approved_message",
+        trigger_reason="message_review",
+        subject=subject,
+        provider="gmail",
+        provider_message_id=gmail_response.get("id"),
+        metadata={
+            "generated_message_id": message.id,
+            "recipient_email": recipient_email,
+        },
+    )
+    log_pipeline_event(
+        "email_sent",
+        pipeline="approved_message_send",
+        provider="gmail",
+        provider_message_id=gmail_response.get("id"),
+        store_id=message.store_id,
+        customer_id=message.customer_id,
+        generated_message_id=message.id,
+    )
     db.commit()
 
     return SendApprovedMessageResponse(

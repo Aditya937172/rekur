@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.models import (
@@ -10,6 +11,7 @@ from app.models import (
     CustomerProfile,
     CustomerReply,
     EmailEngagement,
+    RetentionSendLog,
     ReturnRefund,
     Store,
 )
@@ -20,10 +22,13 @@ from app.schemas import (
     EmailEngagementResponse,
     ReturnRefundCreate,
     ReturnRefundResponse,
+    SilentCustomerEngagementSeedRequest,
+    SilentCustomerEngagementSeedResponse,
 )
 from app.services.buyer_memory_service import get_buyer_memory
 from app.services.message_engine import MessageEngineError, call_groq
 from app.core.config import AppSettings, load_settings
+from app.services.send_policy_service import record_retention_send
 
 
 class RetentionDataServiceError(RuntimeError):
@@ -36,35 +41,160 @@ def utc_now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+VALID_EMAIL_EVENTS = {
+    "sent",
+    "open",
+    "click",
+    "bounce",
+    "unsubscribe",
+    "spam",
+    "dropped",
+    "deferred",
+}
+
+
 def record_email_engagement(
     db: Session,
     store_id: int,
     request: EmailEngagementCreate,
 ) -> EmailEngagementResponse:
     ensure_store(db, store_id)
-    if request.customer_id is not None:
-        ensure_customer(db, store_id, request.customer_id)
-    row = EmailEngagement(
+    event_type = request.event_type.strip().lower()
+    if event_type not in VALID_EMAIL_EVENTS:
+        raise RetentionDataServiceError(
+            f"Unsupported email event_type '{request.event_type}'.",
+            status_code=400,
+        )
+
+    send_log = resolve_send_log(
+        db,
         store_id=store_id,
-        customer_id=request.customer_id,
         send_log_id=request.send_log_id,
         provider_message_id=request.provider_message_id,
-        campaign_type=request.campaign_type,
-        event_type=request.event_type,
+    )
+    customer_id = request.customer_id
+    if send_log:
+        customer_id = send_log.customer_id
+    elif customer_id is not None:
+        ensure_customer(db, store_id, customer_id)
+    elif request.email:
+        customer = db.scalar(
+            select(Customer).where(
+                Customer.store_id == store_id,
+                Customer.email == request.email,
+            )
+        )
+        if customer:
+            customer_id = customer.id
+
+    if customer_id is None:
+        raise RetentionDataServiceError(
+            "Email engagement could not be mapped. Pass provider_message_id, send_log_id, customer_id, or customer email.",
+            status_code=404,
+        )
+
+    campaign_type = request.campaign_type or (
+        send_log.campaign_type if send_log else None
+    )
+    row = EmailEngagement(
+        store_id=store_id,
+        customer_id=customer_id,
+        send_log_id=send_log.id if send_log else request.send_log_id,
+        provider_message_id=(
+            request.provider_message_id
+            or (send_log.provider_message_id if send_log else None)
+        ),
+        campaign_type=campaign_type,
+        event_type=event_type,
         url=request.url,
-        metadata_json=request.metadata,
+        metadata_json={
+            **request.metadata,
+            "provider": request.provider,
+            "email": request.email,
+        },
         timestamp=request.timestamp or utc_now(),
     )
     db.add(row)
     db.commit()
     db.refresh(row)
-    return EmailEngagementResponse(
-        id=row.id,
-        store_id=row.store_id,
-        customer_id=row.customer_id,
-        event_type=row.event_type,
-        campaign_type=row.campaign_type,
-        timestamp=row.timestamp,
+    return email_engagement_response(row)
+
+
+def seed_silent_customer_engagement(
+    db: Session,
+    store_id: int,
+    request: SilentCustomerEngagementSeedRequest,
+) -> SilentCustomerEngagementSeedResponse:
+    ensure_store(db, store_id)
+    customer = resolve_customer_for_test_seed(db, store_id, request)
+    now = utc_now()
+    if request.last_purchase_days_ago is not None:
+        customer.last_order_date = now - timedelta(days=request.last_purchase_days_ago)
+
+    sent_count = request.sent_count
+    open_count = min(request.open_count, sent_count)
+    click_count = min(request.click_count, sent_count)
+    send_logs: list[RetentionSendLog] = []
+    for index in range(sent_count):
+        sent_at = now - timedelta(days=min(59, sent_count - index))
+        send_log = record_retention_send(
+            db,
+            store_id=store_id,
+            customer_id=customer.id,
+            campaign_type=request.campaign_type,
+            trigger_reason="silent_customer_test_seed",
+            subject=f"Silent customer seed {index + 1}",
+            provider="gmail",
+            provider_message_id=(
+                f"gmail-seed-{store_id}-{customer.id}-{int(now.timestamp())}-{index}"
+            ),
+            metadata={"source": "silent_customer_seed"},
+            sent_at=sent_at,
+        )
+        send_logs.append(send_log)
+
+    for send_log in send_logs[:open_count]:
+        db.add(
+            EmailEngagement(
+                store_id=store_id,
+                customer_id=customer.id,
+                send_log_id=send_log.id,
+                provider_message_id=send_log.provider_message_id,
+                campaign_type=send_log.campaign_type,
+                event_type="open",
+                metadata_json={"provider": "gmail", "source": "silent_customer_seed"},
+                timestamp=(send_log.sent_at or now) + timedelta(minutes=5),
+            )
+        )
+
+    for send_log in send_logs[:click_count]:
+        db.add(
+            EmailEngagement(
+                store_id=store_id,
+                customer_id=customer.id,
+                send_log_id=send_log.id,
+                provider_message_id=send_log.provider_message_id,
+                campaign_type=send_log.campaign_type,
+                event_type="click",
+                url="https://example.com/local-test-click",
+                metadata_json={"provider": "gmail", "source": "silent_customer_seed"},
+                timestamp=(send_log.sent_at or now) + timedelta(minutes=8),
+            )
+        )
+
+    db.commit()
+    from app.services.retention_campaign_service import detect_silent_customers
+
+    detected = any(
+        row.customer_id == customer.id
+        for row in detect_silent_customers(db, store_id, limit=1000)
+    )
+    return SilentCustomerEngagementSeedResponse(
+        customer_id=customer.id,
+        sent_created=sent_count,
+        opens_created=open_count,
+        clicks_created=click_count,
+        detected_as_silent=detected,
     )
 
 
@@ -262,6 +392,68 @@ def ensure_customer(db: Session, store_id: int, customer_id: int) -> Customer:
             status_code=404,
         )
     return customer
+
+
+def resolve_send_log(
+    db: Session,
+    *,
+    store_id: int,
+    send_log_id: int | None,
+    provider_message_id: str | None,
+) -> RetentionSendLog | None:
+    send_log = None
+    if send_log_id is not None:
+        send_log = db.get(RetentionSendLog, send_log_id)
+    elif provider_message_id:
+        send_log = db.scalar(
+            select(RetentionSendLog).where(
+                RetentionSendLog.store_id == store_id,
+                RetentionSendLog.provider_message_id == provider_message_id,
+            )
+        )
+
+    if send_log and send_log.store_id != store_id:
+        raise RetentionDataServiceError(
+            "Email engagement send_log belongs to a different store.",
+            status_code=409,
+        )
+    return send_log
+
+
+def resolve_customer_for_test_seed(
+    db: Session,
+    store_id: int,
+    request: SilentCustomerEngagementSeedRequest,
+) -> Customer:
+    if request.customer_id is not None:
+        return ensure_customer(db, store_id, request.customer_id)
+    if request.email:
+        customer = db.scalar(
+            select(Customer).where(
+                Customer.store_id == store_id,
+                Customer.email == request.email,
+            )
+        )
+        if customer:
+            return customer
+    raise RetentionDataServiceError(
+        "Pass customer_id or an email that belongs to a customer in this store.",
+        status_code=404,
+    )
+
+
+def email_engagement_response(row: EmailEngagement) -> EmailEngagementResponse:
+    return EmailEngagementResponse(
+        id=row.id,
+        store_id=row.store_id,
+        customer_id=row.customer_id,
+        send_log_id=row.send_log_id,
+        provider_message_id=row.provider_message_id,
+        event_type=row.event_type,
+        campaign_type=row.campaign_type,
+        url=row.url,
+        timestamp=row.timestamp,
+    )
 
 
 def display_name(customer: Customer) -> str:

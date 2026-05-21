@@ -6,7 +6,9 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
+from app.core.auth import get_current_user
 from app.db.session import get_db
+from app.models import AppUser
 from app.services.reply_processor import process_customer_reply
 
 logger = logging.getLogger(__name__)
@@ -23,7 +25,9 @@ class InboundReplyRequest(BaseModel):
 class InboundReplyResponse(BaseModel):
     status: str
     customer_id: int | None = None
+    customer_reply_id: int | None = None
     signals: dict | None = None
+    acknowledgment_status: str | None = None
 
 
 def process_reply_async(
@@ -73,6 +77,7 @@ async def receive_inbound_reply(
 @router.post("/process", response_model=InboundReplyResponse)
 async def process_reply_sync(
     request: InboundReplyRequest,
+    _current_user: AppUser = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> InboundReplyResponse:
     from app.core.config import load_settings
@@ -90,5 +95,22 @@ async def process_reply_sync(
     return InboundReplyResponse(
         status=result.get("status", "unknown"),
         customer_id=result.get("customer_id"),
+        customer_reply_id=result.get("customer_reply_id"),
         signals=result.get("signals"),
+        acknowledgment_status=result.get("acknowledgment_status"),
     )
+
+
+@router.post("/poll-gmail")
+async def poll_gmail_replies_now(
+    _current_user: AppUser = Depends(get_current_user),
+) -> dict:
+    from app.services.campaign_orchestrator import poll_gmail_for_replies_all_stores
+
+    try:
+        return await poll_gmail_for_replies_all_stores()
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Gmail reply polling failed: {exc}",
+        ) from exc

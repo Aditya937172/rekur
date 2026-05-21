@@ -4,12 +4,17 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from fastapi.concurrency import run_in_threadpool
 from sqlalchemy.orm import Session
 
+from app.core.auth import require_store_access
 from app.db.session import get_db
 from app.schemas import CustomerIntent
 from app.services.intent_engine import IntentEngineError, get_customer_intents
 
 
-router = APIRouter(prefix="/stores/{store_id}/intent", tags=["intent"])
+router = APIRouter(
+    prefix="/stores/{store_id}/intent",
+    tags=["intent"],
+    dependencies=[Depends(require_store_access)],
+)
 
 
 @router.get("/customers", response_model=list[CustomerIntent])

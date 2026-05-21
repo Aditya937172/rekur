@@ -39,7 +39,6 @@ Customers must meet ALL of the following:
 - ✅ Country field populated (for hemisphere detection)
 
 ### 3. FashionCLIP Outfit Detection
-
 **Process:**
 
 1. Load all owned products from `BuyerMemory.wardrobe_items_json`

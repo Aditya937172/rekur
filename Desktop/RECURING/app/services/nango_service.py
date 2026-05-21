@@ -7,6 +7,7 @@ from urllib.parse import parse_qs, urlparse
 import httpx
 
 from app.core.config import AppSettings, load_settings
+from app.core.retry import ExternalAPIRetryError, httpx_request_with_retries
 
 
 class NangoServiceError(RuntimeError):
@@ -48,7 +49,13 @@ class NangoService:
         for path in ("/health", "/api/v1/health", "/"):
             try:
                 with self._client() as client:
-                    response = client.get(path)
+                    response = httpx_request_with_retries(
+                        client,
+                        "GET",
+                        path,
+                        provider="nango",
+                        operation="health_check",
+                    )
                 if response.status_code < 500:
                     return {
                         "ok": response.status_code < 400,
@@ -150,10 +157,9 @@ class NangoService:
         }
         if organization_id:
             payload["organization"] = {"id": organization_id}
-        if success_url:
-            payload["success_url"] = success_url
-        if error_url:
-            payload["error_url"] = error_url
+        # This self-hosted Nango image rejects success_url/error_url/callback_url
+        # on /connect/sessions. The returned connect_link is enough to approve
+        # or refresh a Shopify connection.
         return self._request("POST", "/connect/sessions", json=payload)
 
     def fetch_products(self, connection_id: str) -> list[Dict[str, Any]]:
@@ -243,14 +249,23 @@ class NangoService:
                 "NANGO_SECRET_KEY is required for authenticated Nango API calls."
             )
 
-        with self._client() as client:
-            response = client.request(
-                method,
-                path,
-                params=params,
-                json=json,
-                headers=self._auth_headers(),
-            )
+        try:
+            with self._client() as client:
+                response = httpx_request_with_retries(
+                    client,
+                    method,
+                    path,
+                    provider="nango",
+                    operation=path.strip("/") or "root",
+                    params=params,
+                    json=json,
+                    headers=self._auth_headers(),
+                )
+        except (httpx.HTTPError, ExternalAPIRetryError) as exc:
+            raise NangoServiceError(
+                f"Nango {method} {path} failed after retries: {exc}",
+                response_body=str(exc),
+            ) from exc
         if response.status_code >= 400:
             raise NangoServiceError(
                 f"Nango {method} {path} failed with HTTP {response.status_code}.",
@@ -284,18 +299,27 @@ class NangoService:
                 "NANGO_SECRET_KEY is required for Shopify sync through Nango."
             )
 
-        with self._client() as client:
-            response = client.request(
-                method,
-                f"/proxy/{endpoint.lstrip('/')}",
-                params=params,
-                json=json,
-                headers={
-                    **self._auth_headers(),
-                    "Provider-Config-Key": provider_config_key or self.provider_config_key,
-                    "Connection-Id": connection_id,
-                },
-            )
+        try:
+            with self._client() as client:
+                response = httpx_request_with_retries(
+                    client,
+                    method,
+                    f"/proxy/{endpoint.lstrip('/')}",
+                    provider="nango_proxy",
+                    operation=endpoint.lstrip("/"),
+                    params=params,
+                    json=json,
+                    headers={
+                        **self._auth_headers(),
+                        "Provider-Config-Key": provider_config_key or self.provider_config_key,
+                        "Connection-Id": connection_id,
+                    },
+                )
+        except (httpx.HTTPError, ExternalAPIRetryError) as exc:
+            raise NangoServiceError(
+                f"Nango proxy {method} {endpoint} failed after retries: {exc}",
+                response_body=str(exc),
+            ) from exc
         if response.status_code >= 400:
             raise NangoServiceError(
                 f"Nango proxy {method} {endpoint} failed with HTTP {response.status_code}.",

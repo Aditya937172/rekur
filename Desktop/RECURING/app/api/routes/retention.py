@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.concurrency import run_in_threadpool
 from sqlalchemy.orm import Session
 
+from app.core.auth import require_store_access
 from app.db.session import get_db
 from app.schemas import (
     CampaignRunRequest,
@@ -15,6 +16,8 @@ from app.schemas import (
     EmailEngagementResponse,
     ReturnRefundCreate,
     ReturnRefundResponse,
+    SilentCustomerEngagementSeedRequest,
+    SilentCustomerEngagementSeedResponse,
     SilentCustomerResponse,
 )
 from app.services.retention_campaign_service import (
@@ -30,10 +33,15 @@ from app.services.retention_data_service import (
     handle_customer_reply,
     record_email_engagement,
     record_return_refund,
+    seed_silent_customer_engagement,
 )
 
 
-router = APIRouter(prefix="/stores/{store_id}/retention", tags=["retention"])
+router = APIRouter(
+    prefix="/stores/{store_id}/retention",
+    tags=["retention"],
+    dependencies=[Depends(require_store_access)],
+)
 
 
 @router.post("/email-engagement", response_model=EmailEngagementResponse)
@@ -44,6 +52,26 @@ async def create_email_engagement(
 ) -> EmailEngagementResponse:
     try:
         return await run_in_threadpool(record_email_engagement, db, store_id, request)
+    except RetentionDataServiceError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
+
+
+@router.post(
+    "/email-engagement/seed-silent-customer",
+    response_model=SilentCustomerEngagementSeedResponse,
+)
+async def seed_silent_customer_email_engagement(
+    store_id: int,
+    request: SilentCustomerEngagementSeedRequest,
+    db: Session = Depends(get_db),
+) -> SilentCustomerEngagementSeedResponse:
+    try:
+        return await run_in_threadpool(
+            seed_silent_customer_engagement,
+            db,
+            store_id,
+            request,
+        )
     except RetentionDataServiceError as exc:
         raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
 

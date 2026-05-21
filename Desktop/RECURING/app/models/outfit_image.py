@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from sqlalchemy import JSON, Column, DateTime, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import JSON, Column, DateTime, Float, ForeignKey, Index, Integer, String, Text
 
 from app.db.base import Base
 
@@ -33,6 +33,13 @@ class GeneratedOutfitImage(Base):
     task_id = Column(String(255), nullable=True, index=True)
     task_status = Column(String(64), nullable=True)
     task_progress = Column(Integer, nullable=True)
+    credits_reserved = Column(Float, nullable=True)
+    credits_used = Column(Float, nullable=True)
+    image_input_tokens = Column(Integer, nullable=True)
+    image_output_tokens = Column(Integer, nullable=True)
+    text_input_tokens = Column(Integer, nullable=True)
+    total_tokens = Column(Integer, nullable=True)
+    image_generation_usage_json = Column(JSON, nullable=True)
     prompt = Column(Text, nullable=False)
     image_url = Column(Text, nullable=True)
     image_base64 = Column(Text, nullable=True)

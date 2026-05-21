@@ -10,7 +10,17 @@ from typing import Iterable
 from sqlalchemy import case, func, select
 from sqlalchemy.orm import Session
 
-from app.models import Customer, Event, Order, OrderItem, Product, Store, TrackingSession
+from app.models import (
+    BuyerMemory,
+    Customer,
+    CustomerProfile,
+    Event,
+    Order,
+    OrderItem,
+    Product,
+    Store,
+    TrackingSession,
+)
 from app.schemas import CustomerRecommendations, ProductRecommendation
 from app.services.intent_engine import get_customer_intents
 
@@ -101,6 +111,11 @@ def build_recommendations(
     top_selling = load_top_selling_product_ids(db, store_id, limit=max(product_limit, 10))
     behavior_by_customer = load_recent_behavior(db, store_id, customer_ids)
     purchased_by_customer = load_purchased_product_ids(db, store_id, customer_ids)
+    preference_terms_by_customer = load_customer_preference_terms(
+        db,
+        store_id,
+        customer_ids,
+    )
     intent_by_customer = {
         item.customer_id: item
         for item in get_customer_intents(
@@ -118,6 +133,7 @@ def build_recommendations(
             top_selling_product_ids=top_selling,
             behavior=behavior_by_customer.get(customer_id, {}),
             purchased_product_ids=purchased_by_customer.get(customer_id, set()),
+            preference_terms=preference_terms_by_customer.get(customer_id, set()),
             limit=product_limit,
         )
         intent = intent_by_customer.get(customer_id)
@@ -144,6 +160,7 @@ def recommend_for_customer(
     top_selling_product_ids: list[int],
     behavior: dict[int, ProductBehavior],
     purchased_product_ids: set[int],
+    preference_terms: set[str],
     limit: int,
 ) -> list[ProductRecommendation]:
     recommendations: list[ProductRecommendation] = []
@@ -202,6 +219,22 @@ def recommend_for_customer(
         if len(recommendations) >= limit:
             break
 
+    preference_candidates = find_preference_matching_products(
+        preference_terms,
+        product_profiles.values(),
+        exclude_ids=purchased_product_ids | seen_product_ids,
+    )
+    for product in preference_candidates:
+        add_recommendation(
+            recommendations,
+            seen_product_ids,
+            product,
+            "Matches stated style preference",
+            limit,
+        )
+        if len(recommendations) >= limit:
+            break
+
     for product_id in top_selling_product_ids:
         if product_id in purchased_product_ids:
             continue
@@ -216,6 +249,79 @@ def recommend_for_customer(
             break
 
     return recommendations
+
+
+def load_customer_preference_terms(
+    db: Session,
+    store_id: int,
+    customer_ids: list[int],
+) -> dict[int, set[str]]:
+    terms_by_customer: dict[int, set[str]] = defaultdict(set)
+    memories = db.scalars(
+        select(BuyerMemory).where(
+            BuyerMemory.store_id == store_id,
+            BuyerMemory.customer_id.in_(customer_ids),
+        )
+    ).all()
+    for memory in memories:
+        terms_by_customer[memory.customer_id].update(parse_freeform_terms(memory.style_tags))
+        terms_by_customer[memory.customer_id].update(parse_freeform_terms(memory.favorite_colors))
+        terms_by_customer[memory.customer_id].update(parse_freeform_terms(memory.interest_summary))
+
+    profiles = db.scalars(
+        select(CustomerProfile).where(
+            CustomerProfile.store_id == store_id,
+            CustomerProfile.customer_id.in_(customer_ids),
+        )
+    ).all()
+    for profile in profiles:
+        dimensions = profile.preference_dimensions_json or {}
+        for key in [
+            "mentioned_styles",
+            "mentioned_colors",
+            "wardrobe_gaps",
+            "occasion_friction",
+            "general_preferences",
+        ]:
+            values = dimensions.get(key) or []
+            if isinstance(values, str):
+                values = [values]
+            for value in values:
+                terms_by_customer[profile.customer_id].update(parse_freeform_terms(str(value)))
+        for key in ["vibe_label", "style_orientation", "lifestyle"]:
+            if dimensions.get(key):
+                terms_by_customer[profile.customer_id].update(
+                    parse_freeform_terms(str(dimensions[key]))
+                )
+        if profile.dominant_aesthetic:
+            terms_by_customer[profile.customer_id].update(
+                parse_freeform_terms(profile.dominant_aesthetic)
+            )
+        if profile.color_palette:
+            terms_by_customer[profile.customer_id].update(
+                parse_freeform_terms(profile.color_palette)
+            )
+    return terms_by_customer
+
+
+def find_preference_matching_products(
+    preference_terms: set[str],
+    candidates: Iterable[ProductProfile],
+    *,
+    exclude_ids: set[int],
+) -> list[ProductProfile]:
+    if not preference_terms:
+        return []
+    scored: list[tuple[int, ProductProfile]] = []
+    for candidate in candidates:
+        if candidate.id in exclude_ids:
+            continue
+        product_terms = candidate.tags | candidate.keywords
+        score = len(preference_terms & product_terms)
+        if score > 0:
+            scored.append((score, candidate))
+    scored.sort(key=lambda item: (item[0], item[1].id), reverse=True)
+    return [candidate for _, candidate in scored]
 
 
 def load_recent_behavior(
@@ -381,6 +487,28 @@ def parse_tags(value: str | None) -> frozenset[str]:
         for tag in value.split(",")
         if tag and tag.strip()
     )
+
+
+def parse_freeform_terms(value: str | None) -> set[str]:
+    if not value:
+        return set()
+    stop_words = {
+        "and",
+        "the",
+        "for",
+        "with",
+        "that",
+        "this",
+        "wants",
+        "struggles",
+        "style",
+        "preference",
+    }
+    return {
+        token
+        for token in re.findall(r"[a-zA-Z][a-zA-Z0-9-]{2,}", value.lower())
+        if token not in stop_words
+    }
 
 
 def title_keywords(title: str | None) -> frozenset[str]:

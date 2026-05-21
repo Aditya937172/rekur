@@ -71,6 +71,7 @@ htmlcov/
 
 # Generated files
 data/shopify_seed_state.json
+data/dead_letters/
 public/generated/
 alembic/__pycache__/
 

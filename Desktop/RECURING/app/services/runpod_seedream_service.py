@@ -7,6 +7,8 @@ from typing import Any
 import requests
 
 from app.core.config import AppSettings, load_settings
+from app.core.observability import log_pipeline_event
+from app.core.retry import ExternalAPIRetryError, requests_request_with_retries
 
 
 class RunPodSeedreamError(RuntimeError):
@@ -32,25 +34,41 @@ def generate_seedream_image(
     settings = settings or load_settings()
     ensure_runpod_configured(settings)
 
-    run_response = requests.post(
-        f"{settings.runpod_base_url}/{settings.runpod_seedream_endpoint_id}/run",
-        headers=runpod_headers(settings),
-        json={
-            "input": {
-                "model": "seedream-v4",
-                "prompt": prompt,
-                "num_images": 1,
-            }
-        },
-        timeout=settings.runpod_timeout_seconds,
-    )
+    try:
+        run_response = requests_request_with_retries(
+            "POST",
+            f"{settings.runpod_base_url}/{settings.runpod_seedream_endpoint_id}/run",
+            provider="runpod",
+            operation="create_seedream_job",
+            settings=settings,
+            headers=runpod_headers(settings),
+            json={
+                "input": {
+                    "model": "seedream-v4",
+                    "prompt": prompt,
+                    "num_images": 1,
+                }
+            },
+            timeout=settings.runpod_timeout_seconds,
+        )
+    except ExternalAPIRetryError as exc:
+        raise RunPodSeedreamError(str(exc), status_code=502) from exc
     if run_response.status_code >= 400:
         raise RunPodSeedreamError(
             f"RunPod Seedream request failed with HTTP {run_response.status_code}: {run_response.text[:500]}",
             status_code=502,
         )
-    payload = run_response.json()
+    try:
+        payload = run_response.json()
+    except ValueError as exc:
+        raise RunPodSeedreamError("RunPod returned invalid JSON.", status_code=502) from exc
     job_id = str(payload.get("id") or payload.get("job_id") or "")
+    log_pipeline_event(
+        "image_task_created",
+        provider="runpod_seedream",
+        task_id=job_id or None,
+        status=payload.get("status"),
+    )
     if not job_id:
         return parse_seedream_output(payload, job_id=None)
     return poll_seedream_job(settings=settings, job_id=job_id)
@@ -64,17 +82,30 @@ def poll_seedream_job(
     deadline = time.monotonic() + settings.runpod_max_wait_seconds
     last_payload: dict[str, Any] = {}
     while time.monotonic() < deadline:
-        response = requests.get(
-            f"{settings.runpod_base_url}/{settings.runpod_seedream_endpoint_id}/status/{job_id}",
-            headers=runpod_headers(settings),
-            timeout=settings.runpod_timeout_seconds,
-        )
+        try:
+            response = requests_request_with_retries(
+                "GET",
+                f"{settings.runpod_base_url}/{settings.runpod_seedream_endpoint_id}/status/{job_id}",
+                provider="runpod",
+                operation="get_seedream_job",
+                settings=settings,
+                headers=runpod_headers(settings),
+                timeout=settings.runpod_timeout_seconds,
+            )
+        except ExternalAPIRetryError as exc:
+            raise RunPodSeedreamError(str(exc), status_code=502) from exc
         if response.status_code >= 400:
             raise RunPodSeedreamError(
                 f"RunPod Seedream status failed with HTTP {response.status_code}: {response.text[:500]}",
                 status_code=502,
             )
-        payload = response.json()
+        try:
+            payload = response.json()
+        except ValueError as exc:
+            raise RunPodSeedreamError(
+                "RunPod status endpoint returned invalid JSON.",
+                status_code=502,
+            ) from exc
         last_payload = payload
         status = str(payload.get("status") or "").upper()
         if status in {"COMPLETED", "SUCCEEDED"}:
@@ -126,7 +157,7 @@ def first_value(value: Any) -> Any:
 def ensure_runpod_configured(settings: AppSettings) -> None:
     if not settings.runpod_api_key or not settings.runpod_seedream_endpoint_id:
         raise RunPodSeedreamError(
-            "RUNPOD_API_KEY and RUNPOD_SEEDREAM_ENDPOINT_ID are required for Seedream V4 image generation.",
+            "RUNPOD_API_KEY and RUNPOD_SEEDREAM_ENDPOINT_ID are required only when IMAGE_PROVIDER=runpod_seedream.",
             status_code=400,
         )
 

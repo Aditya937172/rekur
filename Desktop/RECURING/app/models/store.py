@@ -29,3 +29,8 @@ class Store(Base):
     sync_runs = relationship("SyncRun", back_populates="store", cascade="all, delete-orphan")
     sessions = relationship("TrackingSession", back_populates="store", cascade="all, delete-orphan")
     events = relationship("Event", back_populates="store", cascade="all, delete-orphan")
+    ownerships = relationship(
+        "StoreOwnership",
+        back_populates="store",
+        cascade="all, delete-orphan",
+    )

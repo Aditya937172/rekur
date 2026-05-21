@@ -23,6 +23,11 @@ from app.services.outfit_service import (
     generate_custom_outfit_for_customer,
     product_to_context,
 )
+from app.services.send_policy_service import (
+    SendPolicyError,
+    already_sent_anniversary_year,
+    enforce_send_policy,
+)
 from app.models import Customer
 
 
@@ -83,16 +88,16 @@ def run_first_order_anniversary_campaign(
             )
             continue
 
-        if not request.force and already_created_this_anniversary_year(
+        if not request.force and already_sent_anniversary_year(
             db,
-            store_id,
-            memory.customer_id,
-            today.year,
+            store_id=store_id,
+            customer_id=memory.customer_id,
+            year=today.year,
         ):
             skipped.append(
                 AnniversarySkippedCustomer(
                     customer_id=memory.customer_id,
-                    reason="anniversary outfit already created this year",
+                    reason=f"anniversary already sent in {today.year}",
                 )
             )
             continue
@@ -118,6 +123,15 @@ def run_first_order_anniversary_campaign(
                 memory=memory,
                 product_context=product_context,
             )
+            if request.send_email:
+                enforce_send_policy(
+                    db,
+                    store_id=store_id,
+                    customer_id=memory.customer_id,
+                    campaign_type="purchase_anniversary",
+                    trigger_reason=FIRST_ORDER_ANNIVERSARY_TRIGGER,
+                    force=request.force or bool(request.recipient_email),
+                )
             outfit = generate_custom_outfit_for_customer(
                 db,
                 store_id=store_id,
@@ -132,7 +146,7 @@ def run_first_order_anniversary_campaign(
                 recipient_email=request.recipient_email,
                 settings=settings,
             )
-        except OutfitServiceError as exc:
+        except (OutfitServiceError, SendPolicyError) as exc:
             skipped.append(
                 AnniversarySkippedCustomer(
                     customer_id=memory.customer_id,
@@ -163,17 +177,17 @@ def anniversary_product_context(
     memory: BuyerMemory,
     first_order: Order,
 ) -> list[dict[str, object]]:
-    from app.services.gender_service import get_customer_gender
+    from app.services.gender_service import resolve_wearer_gender
 
     first_products = [
         item.product for item in first_order.items if item.product is not None
     ]
 
     customer = db.query(Customer).filter(Customer.id == memory.customer_id).first()
-    customer_gender = get_customer_gender(db, customer) if customer else None
+    wearer_gender = resolve_wearer_gender(customer, first_products)
 
     similar_products = find_similar_products_to_first_purchase(
-        db, store, first_products, customer_gender, limit=3
+        db, store, first_products, wearer_gender, limit=3
     )
 
     chosen: list[Product] = []
@@ -223,7 +237,7 @@ def find_similar_products_to_first_purchase(
         all_products_query.order_by(Product.updated_at.desc())
     ).all()
 
-    if customer_gender and customer_gender != "unisex":
+    if customer_gender and customer_gender not in {"unisex", "mixed"}:
         gender_tag = f"gender_{customer_gender}"
         gender_products = [
             p for p in all_products if p.tags and gender_tag in p.tags.lower()

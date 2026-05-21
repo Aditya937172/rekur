@@ -1,3 +1,4 @@
+from app.models.auth import AppUser, StoreOwnership
 from app.models.buyer_memory import BuyerMemory
 from app.models.customer import Customer
 from app.models.generated_message import GeneratedMessage
@@ -19,6 +20,7 @@ from app.models.tracking import Event, TrackingSession
 
 __all__ = [
     "BuyerMemory",
+    "AppUser",
     "Customer",
     "CustomerProfile",
     "CustomerReply",
@@ -34,6 +36,7 @@ __all__ = [
     "RetentionSendLog",
     "ReturnRefund",
     "Store",
+    "StoreOwnership",
     "SyncRun",
     "TrackingSession",
 ]

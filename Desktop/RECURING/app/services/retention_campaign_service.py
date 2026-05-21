@@ -29,7 +29,10 @@ from app.services.outfit_service import (
     product_to_context,
 )
 from app.services.recommendation_engine import get_recommendations_for_customer
-from app.services.send_policy_service import SendPolicyError, enforce_send_policy
+from app.services.send_policy_service import (
+    SendPolicyError,
+    enforce_send_policy,
+)
 
 
 class RetentionCampaignServiceError(RuntimeError):
@@ -54,6 +57,7 @@ def run_seasonal_lookbook_campaign(
     store = ensure_store(db, store_id)
     season_name = season or current_season()
     rows = eligible_customers(db, store_id, request, min_orders=3)
+    trigger_reason = f"seasonal_lookbook_{season_name.strip().lower().replace(' ', '_')}"
     outfits = []
     skipped: list[dict[str, Any]] = []
     sent = 0
@@ -66,6 +70,7 @@ def run_seasonal_lookbook_campaign(
                 store_id=store_id,
                 customer_id=customer.id,
                 campaign_type="seasonal_lookbook",
+                trigger_reason=trigger_reason,
                 force=request.force or bool(request.recipient_email),
             )
             memory = update_buyer_memory_for_customer(db, store_id, customer.id)
@@ -104,7 +109,7 @@ def run_seasonal_lookbook_campaign(
                 customer_id=customer.id,
                 order_id=None,
                 product_context=product_context,
-                trigger_reason="seasonal_lookbook",
+                trigger_reason=trigger_reason,
                 prompt=prompt,
                 email_subject=subject,
                 email_body=body,
@@ -311,6 +316,7 @@ def run_silent_customer_campaign(
                 store_id=store_id,
                 customer_id=customer.id,
                 campaign_type="silent_customer",
+                trigger_reason="silent_customer",
                 force=request.force or bool(request.recipient_email),
             )
             memory = get_buyer_memory(db, store_id, customer.id)

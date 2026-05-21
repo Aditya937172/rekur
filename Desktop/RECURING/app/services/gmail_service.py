@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import base64
+import logging
+from email.utils import parseaddr
 from email.message import EmailMessage
 from typing import Any
 from urllib.parse import urlencode
@@ -8,6 +10,11 @@ from urllib.parse import urlencode
 import requests
 
 from app.core.config import AppSettings, load_settings
+from app.core.observability import log_pipeline_event
+from app.core.retry import ExternalAPIRetryError, requests_request_with_retries
+
+
+logger = logging.getLogger(__name__)
 
 
 class GmailServiceError(RuntimeError):
@@ -44,8 +51,11 @@ def exchange_code_for_tokens(
 ) -> dict[str, Any]:
     settings = settings or load_settings()
     ensure_oauth_client_configured(settings)
-    response = requests.post(
+    response = gmail_request(
+        "POST",
         settings.gmail_token_uri,
+        operation="exchange_code_for_tokens",
+        settings=settings,
         data={
             "code": code,
             "client_id": settings.google_client_id,
@@ -60,7 +70,7 @@ def exchange_code_for_tokens(
             google_error_message("Gmail token exchange failed", response),
             status_code=502,
         )
-    return response.json()
+    return parse_gmail_json(response, "Gmail token exchange")
 
 
 def refresh_access_token(*, settings: AppSettings | None = None) -> str:
@@ -72,8 +82,11 @@ def refresh_access_token(*, settings: AppSettings | None = None) -> str:
             status_code=400,
         )
 
-    response = requests.post(
+    response = gmail_request(
+        "POST",
         settings.gmail_token_uri,
+        operation="refresh_access_token",
+        settings=settings,
         data={
             "client_id": settings.google_client_id,
             "client_secret": settings.google_client_secret,
@@ -88,7 +101,7 @@ def refresh_access_token(*, settings: AppSettings | None = None) -> str:
             status_code=502,
         )
 
-    access_token = response.json().get("access_token")
+    access_token = parse_gmail_json(response, "Gmail access token refresh").get("access_token")
     if not access_token:
         raise GmailServiceError(
             "Google token response did not include an access token.",
@@ -120,8 +133,11 @@ def send_gmail_message(
         inline_images=inline_images,
     )
 
-    response = requests.post(
+    response = gmail_request(
+        "POST",
         f"{settings.gmail_api_base_url}/users/me/messages/send",
+        operation="send_message",
+        settings=settings,
         headers={
             "Authorization": f"Bearer {access_token}",
             "Content-Type": "application/json",
@@ -134,7 +150,14 @@ def send_gmail_message(
             google_error_message("Gmail send failed", response),
             status_code=502,
         )
-    return response.json()
+    payload = parse_gmail_json(response, "Gmail send")
+    log_pipeline_event(
+        "email_sent",
+        provider="gmail",
+        provider_message_id=payload.get("id"),
+        recipient_email=recipient_email,
+    )
+    return payload
 
 
 def build_raw_message(
@@ -227,8 +250,11 @@ def list_gmail_messages(
     settings = settings or load_settings()
     access_token = refresh_access_token(settings=settings)
 
-    response = requests.get(
+    response = gmail_request(
+        "GET",
         f"{settings.gmail_api_base_url}/users/me/messages",
+        operation="list_messages",
+        settings=settings,
         headers={"Authorization": f"Bearer {access_token}"},
         params={"q": query, "maxResults": max_results},
         timeout=settings.gmail_timeout_seconds,
@@ -240,7 +266,7 @@ def list_gmail_messages(
             status_code=502,
         )
 
-    return response.json().get("messages", [])
+    return parse_gmail_json(response, "Gmail list messages").get("messages", [])
 
 
 def get_gmail_message(
@@ -251,8 +277,11 @@ def get_gmail_message(
     settings = settings or load_settings()
     access_token = refresh_access_token(settings=settings)
 
-    response = requests.get(
+    response = gmail_request(
+        "GET",
         f"{settings.gmail_api_base_url}/users/me/messages/{message_id}",
+        operation="get_message",
+        settings=settings,
         headers={"Authorization": f"Bearer {access_token}"},
         params={"format": "full"},
         timeout=settings.gmail_timeout_seconds,
@@ -264,25 +293,35 @@ def get_gmail_message(
             status_code=502,
         )
 
-    return response.json()
+    return parse_gmail_json(response, "Gmail get message")
 
 
 def decode_gmail_body(payload: dict) -> str:
-    body_data = ""
+    plain = decode_gmail_part(payload, preferred_mime="text/plain")
+    if plain:
+        return plain
+    return decode_gmail_part(payload, preferred_mime="text/html")
 
-    if "body" in payload and "data" in payload["body"]:
-        body_data = payload["body"]["data"]
-    elif "parts" in payload:
-        for part in payload["parts"]:
-            if part.get("mimeType") == "text/plain" and "data" in part.get("body", {}):
-                body_data = part["body"]["data"]
-                break
-            elif part.get("mimeType") == "text/html" and "data" in part.get("body", {}):
-                body_data = part["body"]["data"]
 
-    if body_data:
-        return base64.urlsafe_b64decode(body_data).decode("utf-8", errors="replace")
+def decode_gmail_part(payload: dict, *, preferred_mime: str) -> str:
+    mime_type = payload.get("mimeType")
+    body = payload.get("body") or {}
+    body_data = body.get("data")
+    if mime_type == preferred_mime and body_data:
+        return decode_gmail_body_data(body_data)
+
+    for part in payload.get("parts") or []:
+        if not isinstance(part, dict):
+            continue
+        decoded = decode_gmail_part(part, preferred_mime=preferred_mime)
+        if decoded:
+            return decoded
     return ""
+
+
+def decode_gmail_body_data(body_data: str) -> str:
+    padded = body_data + "=" * (-len(body_data) % 4)
+    return base64.urlsafe_b64decode(padded).decode("utf-8", errors="replace")
 
 
 def extract_email_headers(message: dict) -> dict:
@@ -290,20 +329,18 @@ def extract_email_headers(message: dict) -> dict:
     header_dict = {h["name"]: h["value"] for h in headers}
 
     from_header = header_dict.get("From", "")
-    if "<" in from_header and ">" in from_header:
-        from_email = from_header.split("<")[1].split(">")[0]
-    else:
-        from_email = from_header
+    from_name, from_email = parseaddr(from_header)
 
     return {
         "message_id": message.get("id"),
         "thread_id": message.get("threadId"),
         "from_email": from_email.strip().lower(),
-        "from_name": from_header.split("<")[0].strip()
-        if "<" in from_header
-        else from_header,
+        "from_name": from_name.strip() or from_header,
         "subject": header_dict.get("Subject", ""),
         "date": header_dict.get("Date", ""),
+        "rfc_message_id": header_dict.get("Message-ID") or header_dict.get("Message-Id"),
+        "in_reply_to": header_dict.get("In-Reply-To"),
+        "references": header_dict.get("References"),
     }
 
 
@@ -318,6 +355,8 @@ def list_recent_replies(
 
     query_parts = ["in:inbox"]
     query_parts.append("is:unread")
+    if settings.gmail_sender_email:
+        query_parts.append(f"-from:{settings.gmail_sender_email}")
 
     if after_timestamp:
         query_parts.append(f"after:{after_timestamp}")
@@ -344,6 +383,9 @@ def list_recent_replies(
                         "from_name": headers["from_name"],
                         "subject": headers["subject"],
                         "body": body.strip()[:2000],
+                        "rfc_message_id": headers.get("rfc_message_id"),
+                        "in_reply_to": headers.get("in_reply_to"),
+                        "references": headers.get("references"),
                     }
                 )
         except Exception as e:
@@ -360,8 +402,11 @@ def mark_message_as_read(
     settings = settings or load_settings()
     access_token = refresh_access_token(settings=settings)
 
-    response = requests.post(
+    response = gmail_request(
+        "POST",
         f"{settings.gmail_api_base_url}/users/me/messages/{message_id}/modify",
+        operation="mark_message_as_read",
+        settings=settings,
         headers={
             "Authorization": f"Bearer {access_token}",
             "Content-Type": "application/json",
@@ -371,3 +416,34 @@ def mark_message_as_read(
     )
 
     return response.status_code < 400
+
+
+def gmail_request(
+    method: str,
+    url: str,
+    *,
+    operation: str,
+    settings: AppSettings,
+    **kwargs: Any,
+) -> requests.Response:
+    try:
+        return requests_request_with_retries(
+            method,
+            url,
+            provider="gmail",
+            operation=operation,
+            settings=settings,
+            **kwargs,
+        )
+    except ExternalAPIRetryError as exc:
+        raise GmailServiceError(str(exc), status_code=502) from exc
+
+
+def parse_gmail_json(response: requests.Response, context: str) -> dict[str, Any]:
+    try:
+        payload = response.json()
+    except ValueError as exc:
+        raise GmailServiceError(f"{context} returned invalid JSON.", status_code=502) from exc
+    if not isinstance(payload, dict):
+        raise GmailServiceError(f"{context} returned unexpected JSON.", status_code=502)
+    return payload
