@@ -737,6 +737,9 @@ def patch_fake_image_generation(*, enabled: bool):
             task_progress=100,
             image_url=None,
             image_base64=ONE_PIXEL_PNG,
+            credits_reserved=0.0,
+            credits_used=0.0,
+            usage={"credits_used": 0.0, "source": "acceptance_fake"},
             raw_response={"source": "acceptance_fake"},
         )
 

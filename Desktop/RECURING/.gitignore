@@ -71,9 +71,11 @@ htmlcov/
 
 # Generated files
 data/shopify_seed_state.json
+data/acceptance_report.json
 data/dead_letters/
 public/generated/
 alembic/__pycache__/
+MD/
 
 # Temporary files
 *.tmp
