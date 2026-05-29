@@ -38,6 +38,7 @@ class ProductProfile:
     keywords: frozenset[str]
     image_url: str | None
     price: Decimal | None
+    in_stock: bool
 
 
 @dataclass
@@ -415,7 +416,12 @@ def load_top_selling_product_ids(
 
 
 def load_product_profiles(db: Session, store_id: int) -> dict[int, ProductProfile]:
-    products = db.scalars(select(Product).where(Product.store_id == store_id)).all()
+    products = db.scalars(
+        select(Product).where(
+            Product.store_id == store_id,
+            Product.in_stock.is_(True),
+        )
+    ).all()
     return {
         product.id: ProductProfile(
             id=product.id,
@@ -425,6 +431,7 @@ def load_product_profiles(db: Session, store_id: int) -> dict[int, ProductProfil
             keywords=title_keywords(product.title),
             image_url=product.image_url,
             price=product.price,
+            in_stock=bool(product.in_stock),
         )
         for product in products
     }
@@ -457,7 +464,12 @@ def add_recommendation(
     reason: str,
     limit: int,
 ) -> None:
-    if len(recommendations) >= limit or not product or product.id in seen_product_ids:
+    if (
+        len(recommendations) >= limit
+        or not product
+        or product.id in seen_product_ids
+        or not product.in_stock
+    ):
         return
     seen_product_ids.add(product.id)
     recommendations.append(

@@ -3,10 +3,12 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 from sqlalchemy import (
+    Boolean,
     Column,
     DateTime,
     ForeignKey,
     Integer,
+    JSON,
     Numeric,
     String,
     Text,
@@ -36,6 +38,8 @@ class Product(Base):
     price = Column(Numeric(12, 2), nullable=True)
     image_url = Column(Text, nullable=True)
     tags = Column(Text, nullable=True)
+    in_stock = Column(Boolean, default=True, nullable=False)
+    variant_inventory_json = Column(JSON, nullable=False, default=list)
     created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
     updated_at = Column(
         DateTime(timezone=True),

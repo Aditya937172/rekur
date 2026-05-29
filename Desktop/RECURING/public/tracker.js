@@ -28,6 +28,7 @@
   var timeSinceLastVisit = previousVisitAt ? now - previousVisitAt : null;
   var visibleSince = document.visibilityState === "visible" ? now : null;
   var visibleMs = 0;
+  var eventQueue = Promise.resolve();
 
   if (!firstSeen) {
     localStorage.setItem(firstSeenKey, String(now));
@@ -105,14 +106,22 @@
       extra || {}
     );
 
-    fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      keepalive: true,
-    }).catch(function () {
-      // Tracking should never break the storefront experience.
-    });
+    eventQueue = eventQueue
+      .catch(function () {
+        // A failed analytics event should not block later events.
+      })
+      .then(function () {
+        return fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          keepalive: true,
+        });
+      })
+      .catch(function () {
+        // Tracking should never break the storefront experience.
+      });
+    return eventQueue;
   }
 
   function detectDeviceType() {

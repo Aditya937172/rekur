@@ -4,6 +4,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models import Customer, Event, Product, Store, TrackingSession
@@ -161,7 +162,17 @@ def get_or_create_session(
             created_at=event_time,
         )
         db.add(tracking_session)
-        db.flush()
+        try:
+            db.flush()
+        except IntegrityError:
+            db.rollback()
+            tracking_session = db.scalar(
+                select(TrackingSession).where(
+                    TrackingSession.session_id == session_id
+                )
+            )
+            if not tracking_session:
+                raise
         return tracking_session
 
     if tracking_session.store_id != store.id:

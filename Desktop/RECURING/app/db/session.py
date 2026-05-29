@@ -70,6 +70,14 @@ def run_sqlite_compat_migrations() -> None:
                 connection.execute(
                     text("ALTER TABLE products ADD COLUMN handle VARCHAR(500)")
                 )
+            if "in_stock" not in product_columns:
+                connection.execute(
+                    text("ALTER TABLE products ADD COLUMN in_stock BOOLEAN NOT NULL DEFAULT 1")
+                )
+            if "variant_inventory_json" not in product_columns:
+                connection.execute(
+                    text("ALTER TABLE products ADD COLUMN variant_inventory_json JSON")
+                )
             connection.execute(
                 text(
                     "CREATE INDEX IF NOT EXISTS ix_products_handle "

@@ -35,7 +35,12 @@ from app.models import (
     TrackingSession,
 )
 from app.services.buyer_memory_service import update_buyer_memory_for_customer
-from app.services.sync_service import parse_shopify_datetime, update_customer_order_totals
+from app.services.sync_service import (
+    parse_shopify_datetime,
+    product_is_in_stock,
+    product_variant_inventory,
+    update_customer_order_totals,
+)
 from app.tasks.outfit_tasks import (
     generate_and_send_outfit_task,
     run_generate_and_send_outfit,
@@ -136,6 +141,8 @@ def upsert_product_from_payload(db, store_id: int, payload: dict[str, Any]) -> P
     variants = payload.get("variants") or []
     if variants and isinstance(variants[0], dict) and variants[0].get("price") is not None:
         product.price = as_decimal(variants[0].get("price"))
+    product.variant_inventory_json = product_variant_inventory(payload)
+    product.in_stock = product_is_in_stock(payload)
 
     image = payload.get("image") or {}
     images = payload.get("images") or []

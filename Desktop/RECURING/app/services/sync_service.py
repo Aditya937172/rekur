@@ -74,6 +74,49 @@ def product_image_url(product: dict[str, Any]) -> str | None:
     return None
 
 
+def product_variant_inventory(product: dict[str, Any]) -> list[dict[str, Any]]:
+    variants = product.get("variants") or []
+    inventory: list[dict[str, Any]] = []
+    for variant in variants:
+        if not isinstance(variant, dict):
+            continue
+        title = str(variant.get("title") or "")
+        option_values = [
+            str(variant.get(key) or "")
+            for key in ("option1", "option2", "option3")
+            if variant.get(key)
+        ]
+        inventory.append(
+            {
+                "id": as_shopify_id(variant.get("id")),
+                "title": title,
+                "sku": variant.get("sku"),
+                "option_values": option_values,
+                "inventory_quantity": int(variant.get("inventory_quantity") or 0),
+                "inventory_policy": variant.get("inventory_policy"),
+                "inventory_management": variant.get("inventory_management"),
+                "available": variant_is_available(variant),
+            }
+        )
+    return inventory
+
+
+def variant_is_available(variant: dict[str, Any]) -> bool:
+    if not variant.get("inventory_management"):
+        return True
+    quantity = int(variant.get("inventory_quantity") or 0)
+    if quantity > 0:
+        return True
+    return str(variant.get("inventory_policy") or "").lower() == "continue"
+
+
+def product_is_in_stock(product: dict[str, Any]) -> bool:
+    variants = product.get("variants") or []
+    if not variants:
+        return True
+    return any(variant_is_available(variant) for variant in variants if isinstance(variant, dict))
+
+
 def customer_city_country(customer: dict[str, Any]) -> tuple[str | None, str | None]:
     address = customer.get("default_address") or {}
     if not address:
@@ -203,6 +246,8 @@ def upsert_products(
         product.price = first_product_price(product_data)
         product.image_url = product_image_url(product_data)
         product.tags = product_data.get("tags")
+        product.variant_inventory_json = product_variant_inventory(product_data)
+        product.in_stock = product_is_in_stock(product_data)
         product.updated_at = (
             parse_shopify_datetime(product_data.get("updated_at")) or utc_now()
         )

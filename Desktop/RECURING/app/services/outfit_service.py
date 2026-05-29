@@ -645,8 +645,20 @@ def select_pairing_products(
     all_products = db.scalars(
         all_products_query.order_by(Product.updated_at.desc())
     ).all()
+    all_products = [
+        product
+        for product in all_products
+        if product_recommendable_for_memory(product, memory)
+    ]
 
     if wearer_gender and wearer_gender not in {"unisex", "mixed"}:
+        compatible_products = [
+            product
+            for product in all_products
+            if product_gender_compatible(product, wearer_gender)
+        ]
+        if compatible_products:
+            all_products = compatible_products
         gender_tag = f"gender_{wearer_gender}"
         gender_products = [
             p for p in all_products if p.tags and gender_tag in p.tags.lower()
@@ -698,7 +710,11 @@ def select_pairing_products(
             scored.append((score, product))
 
     scored.sort(key=lambda item: (item[0], item[1].updated_at), reverse=True)
-    chosen = [product for _, product in scored[:limit]]
+    chosen = category_balanced_selection(
+        scored,
+        categories=categories,
+        limit=limit,
+    )
     if len(chosen) >= limit:
         return chosen
 
@@ -718,6 +734,50 @@ def select_pairing_products(
             chosen.append(product)
             if len(chosen) >= limit:
                 break
+    return chosen
+
+
+def product_gender_compatible(product: Product, wearer_gender: str) -> bool:
+    tags = (product.tags or "").lower()
+    if "gender_unisex" in tags or "gender_mixed" in tags:
+        return True
+    if f"gender_{wearer_gender}" in tags:
+        return True
+    if wearer_gender == "male" and "gender_female" in tags:
+        return False
+    if wearer_gender == "female" and "gender_male" in tags:
+        return False
+    return True
+
+
+def category_balanced_selection(
+    scored: list[tuple[int, Product]],
+    *,
+    categories: set[str | None],
+    limit: int,
+) -> list[Product]:
+    chosen: list[Product] = []
+    selected_ids: set[int] = set()
+    for category in pairing_category_priority(categories):
+        for _, product in scored:
+            if product.id in selected_ids:
+                continue
+            text = f"{product.title} {product.tags or ''}".lower()
+            product_category = infer_category_from_text(text)
+            if product_category == category or category in text:
+                chosen.append(product)
+                selected_ids.add(product.id)
+                break
+        if len(chosen) >= limit:
+            return chosen
+
+    for _, product in scored:
+        if product.id in selected_ids:
+            continue
+        chosen.append(product)
+        selected_ids.add(product.id)
+        if len(chosen) >= limit:
+            break
     return chosen
 
 
@@ -762,17 +822,118 @@ def select_supplementary_vibe_products(
     return [product for _, product in scored[:limit]]
 
 
+def product_recommendable_for_memory(product: Product, memory: BuyerMemory) -> bool:
+    if getattr(product, "in_stock", True) is False:
+        return False
+    preferred_size = preferred_size_from_memory(memory)
+    if preferred_size and not variant_available_for_size(product, preferred_size):
+        return False
+    if already_over_owned_style(product, memory):
+        return False
+    return True
+
+
+def preferred_size_from_memory(memory: BuyerMemory) -> str | None:
+    text_parts: list[str] = [
+        memory.style_tags or "",
+        memory.memory_summary or "",
+        memory.wardrobe_summary or "",
+    ]
+    for item in memory.wardrobe_items_json or []:
+        if not isinstance(item, dict):
+            continue
+        text_parts.extend(
+            str(item.get(key) or "")
+            for key in ("title", "tags", "size", "variant_title")
+        )
+    text = " ".join(text_parts).lower()
+    size_patterns = [
+        r"\bw(?:2[8-9]|3[0-9]|4[0-4])\b",
+        r"\b(?:xxs|xs|s|m|l|xl|xxl|xxxl)\b",
+    ]
+    for pattern in size_patterns:
+        match = re.search(pattern, text)
+        if match:
+            return match.group(0)
+    return None
+
+
+def variant_available_for_size(product: Product, preferred_size: str) -> bool:
+    inventory = product.variant_inventory_json or []
+    if not inventory:
+        return getattr(product, "in_stock", True) is not False
+
+    normalized_size = preferred_size.lower()
+    matching_variants: list[dict[str, Any]] = []
+    for variant in inventory:
+        if not isinstance(variant, dict):
+            continue
+        variant_text = " ".join(
+            [
+                str(variant.get("title") or ""),
+                " ".join(str(value) for value in variant.get("option_values") or []),
+            ]
+        ).lower()
+        tokens = set(re.findall(r"[a-z0-9]+", variant_text))
+        if normalized_size in tokens:
+            matching_variants.append(variant)
+
+    if not matching_variants:
+        return getattr(product, "in_stock", True) is not False
+
+    for variant in matching_variants:
+        if variant.get("available") is True:
+            return True
+        quantity = safe_int(variant.get("inventory_quantity")) or 0
+        if quantity > 0:
+            return True
+    return False
+
+
+def already_over_owned_style(product: Product, memory: BuyerMemory) -> bool:
+    product_text = f"{product.title} {product.tags or ''}".lower()
+    guarded_tokens = {"plaid", "flannel"}
+    product_tokens = set(style_tokens(product_text))
+    repeated_tokens = guarded_tokens & product_tokens
+    if not repeated_tokens:
+        return False
+
+    ownership_counts = {token: 0 for token in repeated_tokens}
+    for item in memory.wardrobe_items_json or []:
+        if not isinstance(item, dict):
+            continue
+        item_text = " ".join(
+            str(item.get(key) or "") for key in ("title", "tags", "category")
+        ).lower()
+        item_tokens = set(style_tokens(item_text))
+        for token in repeated_tokens:
+            if token in item_tokens:
+                ownership_counts[token] += 1
+
+    return any(count >= 3 for count in ownership_counts.values())
+
+
 def pairing_categories(categories: set[str | None]) -> set[str]:
     pairings = {
         "shirt": {"jeans", "trousers", "jacket", "accessories"},
+        "flannel": {"jeans", "jacket", "boots", "accessories"},
         "tee": {"jeans", "cargos", "jacket", "accessories"},
         "t-shirt": {"jeans", "cargos", "jacket", "accessories"},
-        "jeans": {"shirt", "tee", "t-shirt", "hoodie", "jacket"},
+        "jeans": {"shirt", "tee", "t-shirt", "hoodie", "jacket", "boots", "belt"},
         "trousers": {"shirt", "jacket", "accessories"},
         "cargos": {"tee", "hoodie", "jacket"},
         "dress": {"jacket", "accessories"},
         "hoodie": {"cargos", "jeans", "accessories"},
         "jacket": {"tee", "shirt", "jeans", "dress"},
+        "boots": {"jeans", "shirt", "flannel", "jacket", "skirt"},
+        "footwear": {"jeans", "shirt", "flannel", "jacket", "skirt"},
+        "belt": {"jeans", "shirt", "flannel", "boots"},
+        "hat": {"jeans", "shirt", "flannel", "boots"},
+        "skirt": {"shirt", "jacket", "boots", "accessories"},
+        "bag": {"jeans", "shirt", "dress", "jacket"},
+        "jewellery": {"shirt", "dress", "jacket", "jeans"},
+        "jewelry": {"shirt", "dress", "jacket", "jeans"},
+        "accessories": {"shirt", "dress", "jacket", "jeans", "boots"},
         "ethnic": {"accessories", "trousers"},
     }
     wanted: set[str] = set()
@@ -780,6 +941,36 @@ def pairing_categories(categories: set[str | None]) -> set[str]:
         if category:
             wanted.update(pairings.get(category, set()))
     return wanted or {"shirt", "jeans", "jacket", "accessories"}
+
+
+def pairing_category_priority(categories: set[str | None]) -> list[str]:
+    priority_by_anchor = {
+        "boots": ["jeans", "shirt", "flannel", "jacket", "skirt"],
+        "footwear": ["jeans", "shirt", "flannel", "jacket", "skirt"],
+        "belt": ["jeans", "shirt", "flannel", "boots"],
+        "hat": ["jeans", "shirt", "flannel", "boots"],
+        "jewellery": ["shirt", "jeans", "jacket", "dress"],
+        "jewelry": ["shirt", "jeans", "jacket", "dress"],
+        "bag": ["shirt", "jeans", "jacket", "dress"],
+        "accessories": ["shirt", "jeans", "jacket", "dress", "boots"],
+        "jeans": ["shirt", "jacket", "boots", "belt"],
+        "shirt": ["jeans", "jacket", "boots", "accessories"],
+        "flannel": ["jeans", "jacket", "boots", "accessories"],
+        "tee": ["jeans", "jacket", "boots", "accessories"],
+        "t-shirt": ["jeans", "jacket", "boots", "accessories"],
+        "jacket": ["shirt", "jeans", "boots", "accessories"],
+        "skirt": ["shirt", "jacket", "boots", "accessories"],
+        "dress": ["jacket", "boots", "accessories"],
+    }
+    priority: list[str] = []
+    for category in categories:
+        for candidate in priority_by_anchor.get(category or "", []):
+            if candidate not in priority:
+                priority.append(candidate)
+    for candidate in ["shirt", "jeans", "jacket", "boots", "accessories"]:
+        if candidate not in priority:
+            priority.append(candidate)
+    return priority
 
 
 def build_product_context(
@@ -1303,6 +1494,15 @@ def safe_float(value: Any) -> float | None:
 def infer_category_from_text(value: str) -> str | None:
     text = value.lower()
     for category in [
+        "boots",
+        "footwear",
+        "belt",
+        "hat",
+        "skirt",
+        "bag",
+        "jewellery",
+        "jewelry",
+        "flannel",
         "shirt",
         "t-shirt",
         "tee",
